@@ -117,13 +117,14 @@
             this.tabListPageOrders.Size = new System.Drawing.Size(658, 461);
             this.tabListPageOrders.TabIndex = 0;
             this.tabListPageOrders.Text = "Замовлення";
+            this.tabListPageOrders.Paint += new System.Windows.Forms.PaintEventHandler(this.tabListPageOrders_Paint);
             // 
             // tabListPageContragents
             // 
             this.tabListPageContragents.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabListPageContragents.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabListPageContragents.Name = "tabListPageContragents";
-            this.tabListPageContragents.Size = new System.Drawing.Size(42, 192);
+            this.tabListPageContragents.Size = new System.Drawing.Size(658, 461);
             this.tabListPageContragents.TabIndex = 1;
             this.tabListPageContragents.Text = "Клієнти";
             // 
@@ -132,7 +133,7 @@
             this.tabListPageEmployee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabListPageEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabListPageEmployee.Name = "tabListPageEmployee";
-            this.tabListPageEmployee.Size = new System.Drawing.Size(42, 192);
+            this.tabListPageEmployee.Size = new System.Drawing.Size(658, 461);
             this.tabListPageEmployee.TabIndex = 2;
             this.tabListPageEmployee.Text = "Співробітники";
             // 

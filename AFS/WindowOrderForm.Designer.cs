@@ -1,4 +1,6 @@
-﻿namespace ASF.Documents
+﻿using Victors;
+
+namespace ASF.Documents
 {
     partial class WindowOrderForm
     {
@@ -26,9 +28,10 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent(string key)
+        private void InitializeComponent(string key, FBClient client)
         {
             Key = key;
+            Client = client;
             InitializeComponent();
         }
         private void InitializeComponent()
@@ -263,6 +266,7 @@
         #endregion
         
         public string Key { get; private set; }
+        private FBClient Client { get; set; }
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;

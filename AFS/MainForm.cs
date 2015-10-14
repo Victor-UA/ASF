@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Victors;
 using ASF.Documents;
+using System.Collections.Generic;
+using Cyotek.Windows.Forms;
 
 namespace AFS
 {
@@ -17,27 +19,46 @@ namespace AFS
         {
             InitializeComponent();
         }
-        protected DataTable DT { get; set; }
+        
+        private FBClient Client = new FBClient(@"character set=WIN1251;data source=localhost;initial catalog=D:\NASTROECHNAYA_2015.GDB ;user id=SYSDBA;password=masterkey");
         private void Form1_Load(object sender, EventArgs e)
         {
-            VFBClient.ConnectionStr = @"character set=WIN1251;data source=localhost;initial catalog=D:\NASTROECHNAYA_2015.GDB ;user id=SYSDBA;password=masterkey";
-            DT = VFBClient.QueryRecordsList("select * from orders");
-            grid1.Controller.AddController(new MainFormGridController(DT,"orderid"));
-            VFBClient.SGridFill(grid1, DT, new Dictionary("Номер замовлення", "orderno"));
+            foreach (TabListPage page in tabList1.TabListPages)
+            {
+                page.Tag = false; //Ознака, що сторінка не завантажена
+            }
         }
         private class MainFormGridController : GridController
         {
-            public MainFormGridController(DataTable dt, string key) : base(dt, key)
+            private FBClient Client;
+            public MainFormGridController(DataTable dt, string key, FBClient client) : base(dt, key)
             {
+                Client = client;
             }
             public override void OnDoubleClick(SourceGrid.CellContext sender, EventArgs e)
             {
                 if (sender.Position.Row > 0)
                 {
-                    idocWindowOrder Order = new idocWindowOrder(DT.Rows[sender.Position.Row - 1][Key].ToString());
+                    idocWindowOrder Order = new idocWindowOrder(DT.Rows[sender.Position.Row - 1][Key].ToString(), Client);
                     Order.Show();
                 }
             }
+        }
+        private void tabListPageOrders_Paint(object sender, PaintEventArgs e)
+        {
+            TabListPage page = (TabListPage)sender;
+            if (!(bool)page.Tag)
+            {
+                DataTable dt = Client.QueryRecordsList("select * from orders");
+                grid1.Controller.AddController(new MainFormGridController(dt, "orderid", Client));
+                SourceGridUtilities.Fill(grid1, dt, new Dictionary(new List<dynamic>
+                {
+                    "Номер замовлення", "orderno",
+                    "Дата готовності", "dateorder"
+                }));
+                page.Tag = true;
+            }
+            
         }
     }
 }

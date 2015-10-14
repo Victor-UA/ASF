@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Victors;
 
 namespace ASF.Documents
 {
@@ -21,19 +22,19 @@ namespace ASF.Documents
         public string Type { get; private set; } = "idocWindowOrder";
         public string Key { get; private set; }
         private Form MainForm;
-        public idocWindowOrder(string key)
+        public idocWindowOrder(string key, FBClient client)
         {
-            Constructor(key);
+            Constructor(key, client);
         }
-        public idocWindowOrder(int key)
+        public idocWindowOrder(int key, FBClient client)
         {
-            Constructor(key.ToString());
+            Constructor(key.ToString(), client);
         }
         
-        private void Constructor(string key)
+        private void Constructor(string key, FBClient client)
         {
             Key = key;
-            MainForm = new WindowOrderForm(key);
+            MainForm = new WindowOrderForm(key, client);
         }
         public void Show()
         {

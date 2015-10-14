@@ -14,14 +14,13 @@ namespace ASF.Documents
 {
     public partial class WindowOrderForm : Form
     {
-        public WindowOrderForm(string key)
+        public WindowOrderForm(string key, FBClient client)
         {
-            InitializeComponent(key);
+            InitializeComponent(key, client);
         }
-
         private void WindowOrderForm_Load(object sender, EventArgs e)
         {
-            DataTable dt = VFBClient.QueryRecordsList("select * from vtorders o where o.orderid=" + Key);
+            DataTable dt = Client.QueryRecordsList("select * from vtorders o where o.orderid=" + Key);
             
             if (dt.Rows.Count > 0)
             {
@@ -45,9 +44,9 @@ namespace ASF.Documents
                     where osr.orderid=:orderid
                     order by osr.changedate";
                 SQL = SQL.Replace(":orderid", Key);
-                DataTable dtOrderStates = VFBClient.QueryRecordsList(SQL);
+                DataTable dtOrderStates = Client.QueryRecordsList(SQL);
                 grid_OrderStates.Controller.AddController(new GridController(dtOrderStates, "orderstatesregid"));
-                VFBClient.SGridFill(grid_OrderStates, dtOrderStates);
+                SourceGridUtilities.Fill(grid_OrderStates, dtOrderStates);
             }
             else
             {
