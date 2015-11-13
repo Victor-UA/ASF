@@ -28,16 +28,18 @@ namespace ASF.Documents
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent(string key, FBClient client)
+        private void InitializeComponent(idocWindowOrder document)
         {
-            Key = key;
-            Client = client;
+            Document = document;
             InitializeComponent();
         }
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.документToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.зберегтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusIsChanged = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tabList1 = new Cyotek.Windows.Forms.TabList();
             this.tabListPageMain = new Cyotek.Windows.Forms.TabListPage();
@@ -53,6 +55,8 @@ namespace ASF.Documents
             this.tabListPageStates = new Cyotek.Windows.Forms.TabListPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid_OrderStates = new SourceGrid.Grid();
+            this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.tabList1.SuspendLayout();
@@ -64,19 +68,45 @@ namespace ASF.Documents
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.документToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(921, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // документToolStripMenuItem
+            // 
+            this.документToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.зберегтиToolStripMenuItem});
+            this.документToolStripMenuItem.Name = "документToolStripMenuItem";
+            this.документToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.документToolStripMenuItem.Text = "Документ";
+            // 
+            // зберегтиToolStripMenuItem
+            // 
+            this.зберегтиToolStripMenuItem.Name = "зберегтиToolStripMenuItem";
+            this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.зберегтиToolStripMenuItem.Text = "Зберегти";
+            this.зберегтиToolStripMenuItem.Click += new System.EventHandler(this.зберегтиToolStripMenuItem_Click);
+            // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusIsChanged});
             this.statusStrip1.Location = new System.Drawing.Point(0, 464);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(921, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusIsChanged
+            // 
+            this.toolStripStatusIsChanged.Name = "toolStripStatusIsChanged";
+            this.toolStripStatusIsChanged.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStripStatusIsChanged.Size = new System.Drawing.Size(140, 17);
+            this.toolStripStatusIsChanged.Text = "toolStripStatusIsChanged";
             // 
             // toolStripContainer1
             // 
@@ -137,6 +167,7 @@ namespace ASF.Documents
             this.tB_OrderNo.Name = "tB_OrderNo";
             this.tB_OrderNo.Size = new System.Drawing.Size(413, 20);
             this.tB_OrderNo.TabIndex = 25;
+            this.tB_OrderNo.ModifiedChanged += new System.EventHandler(this.tB_OrderNo_ModifiedChanged);
             // 
             // dTP_AgreementDate
             // 
@@ -210,7 +241,7 @@ namespace ASF.Documents
             this.tabListPageStates.Controls.Add(this.panel2);
             this.tabListPageStates.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabListPageStates.Name = "tabListPageStates";
-            this.tabListPageStates.Size = new System.Drawing.Size(42, 192);
+            this.tabListPageStates.Size = new System.Drawing.Size(763, 407);
             this.tabListPageStates.TabIndex = 1;
             this.tabListPageStates.Text = "Стан";
             // 
@@ -220,7 +251,7 @@ namespace ASF.Documents
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(38, 188);
+            this.panel2.Size = new System.Drawing.Size(759, 403);
             this.panel2.TabIndex = 0;
             // 
             // grid_OrderStates
@@ -231,7 +262,7 @@ namespace ASF.Documents
             this.grid_OrderStates.Name = "grid_OrderStates";
             this.grid_OrderStates.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.grid_OrderStates.SelectionMode = SourceGrid.GridSelectionMode.Cell;
-            this.grid_OrderStates.Size = new System.Drawing.Size(38, 188);
+            this.grid_OrderStates.Size = new System.Drawing.Size(759, 403);
             this.grid_OrderStates.TabIndex = 1;
             this.grid_OrderStates.TabStop = true;
             this.grid_OrderStates.ToolTipText = "";
@@ -244,11 +275,16 @@ namespace ASF.Documents
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
-            this.MinimumSize = new System.Drawing.Size(600, 38);
+            this.MinimumSize = new System.Drawing.Size(800, 400);
             this.Name = "WindowOrderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "WindowForm";
+            this.Text = "Замовлення";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WindowOrderForm_FormClosing);
             this.Load += new System.EventHandler(this.WindowOrderForm_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
@@ -265,8 +301,21 @@ namespace ASF.Documents
 
         #endregion
         
-        public string Key { get; private set; }
-        private FBClient Client { get; set; }
+        private idocWindowOrder Document { get; set; }
+        public bool isCreated { get; set; }
+        private bool _isChanged;
+        public bool isChanged
+        {
+            get
+            {
+                return _isChanged;
+            }
+            set
+            {
+                _isChanged = value;
+                toolStripStatusIsChanged.Text = value ? "Changed" : ""; 
+            }
+        }
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
@@ -284,5 +333,8 @@ namespace ASF.Documents
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private SourceGrid.Grid grid_OrderStates;
+        private System.Windows.Forms.ToolStripMenuItem документToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem зберегтиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusIsChanged;
     }
 }
