@@ -54,7 +54,8 @@ namespace AFS
                 SourceGridUtilities.Fill(grid1, dt, new Dictionary(new List<dynamic>
                 {
                     "Номер замовлення", "orderno",
-                    "Дата готовності", "dateorder"
+                    "Дата готовності", "dateorder",
+                    "Стан", "VORDERSTATENAME"
                 }));
                 page.Tag = true;
             }
