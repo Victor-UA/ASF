@@ -87,7 +87,7 @@ namespace ASF.Documents
             // зберегтиToolStripMenuItem
             // 
             this.зберегтиToolStripMenuItem.Name = "зберегтиToolStripMenuItem";
-            this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.зберегтиToolStripMenuItem.Text = "Зберегти";
             this.зберегтиToolStripMenuItem.Click += new System.EventHandler(this.зберегтиToolStripMenuItem_Click);
             // 
@@ -167,7 +167,7 @@ namespace ASF.Documents
             this.tB_OrderNo.Name = "tB_OrderNo";
             this.tB_OrderNo.Size = new System.Drawing.Size(413, 20);
             this.tB_OrderNo.TabIndex = 25;
-            this.tB_OrderNo.ModifiedChanged += new System.EventHandler(this.tB_OrderNo_ModifiedChanged);
+            this.tB_OrderNo.TextChanged += new System.EventHandler(this.tB_OrderNo_TextChanged);
             // 
             // dTP_AgreementDate
             // 
@@ -316,18 +316,19 @@ namespace ASF.Documents
                 toolStripStatusIsChanged.Text = value ? "Changed" : ""; 
             }
         }
+
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private Cyotek.Windows.Forms.TabList tabList1;
         private Cyotek.Windows.Forms.TabListPage tabListPageMain;
-        private Victors.DateTimePicker dTP_AgreementDate;
+        public Victors.DateTimePicker dTP_AgreementDate;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tB_AgreementNo;
+        public System.Windows.Forms.TextBox tB_AgreementNo;
         private System.Windows.Forms.Label label4;
-        private Victors.DateTimePicker dTP_DateOrder;
+        public Victors.DateTimePicker dTP_DateOrder;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tB_OrderNo;
+        public System.Windows.Forms.TextBox tB_OrderNo;
         private System.Windows.Forms.Label label1;
         private Cyotek.Windows.Forms.TabListPage tabListPageStates;
         private System.Windows.Forms.Panel panel1;

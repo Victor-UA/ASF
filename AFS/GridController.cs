@@ -9,7 +9,7 @@ namespace AFS
         private SourceGrid.Cells.Views.Cell MouseEnterView = new SourceGrid.Cells.Views.Cell();
         private SourceGrid.Cells.Views.Cell MouseLeaveView = new SourceGrid.Cells.Views.Cell();
         protected DataTable DT;
-        protected string Key;
+        protected string Key; //Найменування ключового поля
         public GridController(DataTable dt, string key)
         {
             MouseEnterView.BackColor = Color.LightGreen;

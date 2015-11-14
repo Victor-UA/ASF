@@ -49,7 +49,7 @@ namespace AFS
             TabListPage page = (TabListPage)sender;
             if (!(bool)page.Tag)
             {
-                DataTable dt = Client.QueryRecordsList("select * from orders");
+                DataTable dt = Client.QueryRecordsList(qryOrders);
                 grid1.Controller.AddController(new MainFormGridController(dt, "orderid", Client));
                 SourceGridUtilities.Fill(grid1, dt, new Dictionary(new List<dynamic>
                 {
@@ -58,7 +58,12 @@ namespace AFS
                 }));
                 page.Tag = true;
             }
-            
         }
+
+        //Скрипти SQL
+        private string qryOrders { get; set; } = 
+            @"
+select * from vtorders
+            ";
     }
 }
