@@ -33,7 +33,7 @@ namespace AFS
         {
             private FBClient Client;
             private SourceGrid.Grid Grid;
-            public MainFormGridController(SourceGrid.Grid grid, DataTable dt, string key, FBClient client) : base(dt, key)
+            public MainFormGridController(SourceGrid.Grid grid, DataTable dt, string key, FBClient client)
             {
                 Client = client;
                 Grid = grid;

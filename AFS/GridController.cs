@@ -8,19 +8,26 @@ namespace AFS
     {
         private SourceGrid.Cells.Views.Cell MouseEnterView = new SourceGrid.Cells.Views.Cell();
         private SourceGrid.Cells.Views.Cell MouseLeaveView = new SourceGrid.Cells.Views.Cell();
-        protected DataTable DT;
-        protected string Key; //Найменування ключового поля
-        public GridController(DataTable dt, string key)
-        {
-            MouseEnterView.BackColor = Color.LightGreen;
-            DT = dt;
-            Key = key;
-        }
-        public GridController(DataTable dt, string key, Color BackColor)
+        //protected DataTable DT;
+        //protected string Key; //Найменування ключового поля
+        //public GridController(DataTable dt, string key)
+
+        //public GridController(DataTable dt, string key, Color BackColor)
+        private void Constructor(Color BackColor)
         {
             MouseEnterView.BackColor = BackColor;
-            DT = dt;
-            Key = key;
+        }
+        public GridController(Color BackColor)
+        {
+            Constructor(BackColor);
+            //DT = dt;
+            //Key = key;
+        }
+        public GridController()
+        {
+            Constructor(Color.LightGreen);
+            //DT = dt;
+            //Key = key;
         }
         public override void OnMouseEnter(SourceGrid.CellContext sender, EventArgs e)
         {

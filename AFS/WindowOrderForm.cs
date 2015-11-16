@@ -24,24 +24,25 @@ namespace ASF.Documents
         private class OrderStatesGridController : GridController
         {
             private FBClient Client;
-            public OrderStatesGridController(DataTable dt, string key, FBClient client) : base(dt, key)
+            private SourceGrid.Grid Grid;
+            public OrderStatesGridController(SourceGrid.Grid grid, DataTable dt, string key, FBClient client)
             {
                 Client = client;
+                Grid = grid;
             }
             public override void OnDoubleClick(SourceGrid.CellContext sender, EventArgs e)
             {
                 if (sender.Position.Row > 0)
                 {
-                    //idocWindowOrder Order = new idocWindowOrder(DT.Rows[sender.Position.Row - 1][Key].ToString(), Client);
-                    //Order.Show();
-                    MessageBox.Show("Редагування стану замовлення...", sender.Value.ToString());
+                    SourceGridUtilities.RowTag rt = (SourceGridUtilities.RowTag)Grid.Rows[sender.Position.Row].Tag;
+                    MessageBox.Show("Редагуємо стан: id=" + rt.Key.ToString(), sender.Value.ToString());
                 }
             }
         }
         public void OrderStatesLoad()
         {
             DataTable dtOrderStates = Document.Client.QueryRecordsList(qryOrderStates.ToString().Replace(":orderid", Document.Key));
-            grid_OrderStates.Controller.AddController(new OrderStatesGridController(dtOrderStates, "orderstatesregid", Document.Client));
+            grid_OrderStates.Controller.AddController(new OrderStatesGridController(grid_OrderStates, dtOrderStates, "orderstatesregid", Document.Client));
             SourceGridUtilities.Grid.Fill(grid_OrderStates, dtOrderStates, "orderstatesregid", new Dictionary(new List<dynamic>
                 {
                     "Дата", "changedate",
