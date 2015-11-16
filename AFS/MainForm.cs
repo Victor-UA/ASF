@@ -28,30 +28,35 @@ namespace AFS
                 page.Tag = false; //Ознака, що сторінка не завантажена
             }
         }
+
         private class MainFormGridController : GridController
         {
             private FBClient Client;
-            public MainFormGridController(DataTable dt, string key, FBClient client) : base(dt, key)
+            private SourceGrid.Grid Grid;
+            public MainFormGridController(SourceGrid.Grid grid, DataTable dt, string key, FBClient client) : base(dt, key)
             {
                 Client = client;
+                Grid = grid;
             }
             public override void OnDoubleClick(SourceGrid.CellContext sender, EventArgs e)
             {
                 if (sender.Position.Row > 0)
                 {
-                    idocWindowOrder Order = new idocWindowOrder(DT.Rows[sender.Position.Row - 1][Key].ToString(), Client);
+                    SourceGridUtilities.RowTag rt = (SourceGridUtilities.RowTag)Grid.Rows[sender.Position.Row].Tag;
+                    idocWindowOrder Order = new idocWindowOrder(rt.Key.ToString(), Client);
                     Order.Show();
                 }
             }
         }
+
         private void tabListPageOrders_Paint(object sender, PaintEventArgs e)
         {
             TabListPage page = (TabListPage)sender;
             if (!(bool)page.Tag)
             {
                 DataTable dt = Client.QueryRecordsList(qryOrders);
-                grid1.Controller.AddController(new MainFormGridController(dt, "orderid", Client));
-                SourceGridUtilities.Fill(grid1, dt, new Dictionary(new List<dynamic>
+                grid1.Controller.AddController(new MainFormGridController(grid1, dt, "orderid", Client));
+                SourceGridUtilities.Grid.Fill(grid1, dt, "orderid", new Dictionary(new List<dynamic>
                 {
                     "Номер замовлення", "orderno",
                     "Дата готовності", "dateorder",

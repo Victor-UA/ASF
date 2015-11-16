@@ -42,7 +42,7 @@ namespace ASF.Documents
         {
             DataTable dtOrderStates = Document.Client.QueryRecordsList(qryOrderStates.ToString().Replace(":orderid", Document.Key));
             grid_OrderStates.Controller.AddController(new OrderStatesGridController(dtOrderStates, "orderstatesregid", Document.Client));
-            SourceGridUtilities.Fill(grid_OrderStates, dtOrderStates, new Dictionary(new List<dynamic>
+            SourceGridUtilities.Grid.Fill(grid_OrderStates, dtOrderStates, "orderstatesregid", new Dictionary(new List<dynamic>
                 {
                     "Дата", "changedate",
                     "Стан", "name",
@@ -72,7 +72,21 @@ namespace ASF.Documents
             Text = tB_OrderNo.Text;
             isChanged = true;
         }
+        private void tB_AgreementNo_TextChanged(object sender, EventArgs e)
+        {
+            isChanged = true;
+        }
 
+        private void dTP_DateOrder_ValueChanged(object sender, EventArgs e)
+        {
+            isChanged = true;
+        }
+
+        private void dTP_AgreementDate_ValueChanged(object sender, EventArgs e)
+        {
+            isChanged = true;
+        }
+        
         //Запити SQL
         private string qryOrderStates { get; set; } =
             @"
@@ -89,5 +103,16 @@ from orderstatesreg osr
 where osr.orderid=:orderid
 order by osr.changedate
             ";
+        //Запити SQL
+
+        private void tB_Customer_TextChanged(object sender, EventArgs e)
+        {
+            isChanged = true;
+        }
+
+        private void dTP_ProdDate_ValueChanged(object sender, EventArgs e)
+        {
+            isChanged = true;
+        }
     }
 }

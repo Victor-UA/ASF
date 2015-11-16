@@ -71,6 +71,28 @@ namespace ASF.Documents
                 MainForm.dTP_AgreementDate.Value = value;
             }
         }
+        public string Customer
+        {
+            get
+            {
+                return MainForm.tB_Customer.Text;
+            }
+            set
+            {
+                MainForm.tB_Customer.Text = value;
+            }
+        }
+        public DateTime ProdDate
+        {
+            get
+            {
+                return MainForm.dTP_ProdDate.Value;
+            }
+            set
+            {
+                MainForm.dTP_ProdDate.Value = value;
+            }
+        }
 
         public bool isCreated
         {
@@ -113,6 +135,8 @@ namespace ASF.Documents
                 DateOrder = dt.Rows[0]["dateorder"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["dateorder"];
                 AgreementNo = dt.Rows[0]["AgreementNo"].ToString();
                 AgreementDate = dt.Rows[0]["AgreementDate"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["AgreementDate"];
+                Customer = dt.Rows[0]["VCUSTOMERNAME"].ToString();
+                ProdDate = dt.Rows[0]["ProdDate"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["ProdDate"];
 
                 isCreated = true;
                 isChanged = false;
@@ -182,6 +206,8 @@ namespace ASF.Documents
             @"
 select * from vtorders o where o.orderid=:orderid
             ";
+        //Скрипти SQL
+
         private string qryInsertIntoOrders { get; set; } =
             @"
 insert into ORDERS
