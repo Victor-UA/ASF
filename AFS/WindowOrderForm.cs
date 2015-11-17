@@ -41,6 +41,8 @@ namespace ASF.Documents
         }
         public void OrderStatesLoad()
         {
+//            CheckFieldsMain();
+
             DataTable dtOrderStates = Document.Client.QueryRecordsList(qryOrderStates.ToString().Replace(":orderid", Document.Key));
             grid_OrderStates.Controller.AddController(new OrderStatesGridController(grid_OrderStates, dtOrderStates, "orderstatesregid", Document.Client));
             SourceGridUtilities.Grid.Fill(grid_OrderStates, dtOrderStates, "orderstatesregid", new Dictionary(new List<dynamic>
@@ -56,6 +58,7 @@ namespace ASF.Documents
         {
             Document.Save();
         }
+
         private void WindowOrderForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (isChanged)
@@ -67,15 +70,6 @@ namespace ASF.Documents
                 }
                 e.Cancel = mb == DialogResult.Cancel;
             }
-        }
-        private void tB_OrderNo_TextChanged(object sender, EventArgs e)
-        {
-            Text = tB_OrderNo.Text;
-            isChanged = true;
-        }
-        private void tB_AgreementNo_TextChanged(object sender, EventArgs e)
-        {
-            isChanged = true;
         }
 
         private void dTP_DateOrder_ValueChanged(object sender, EventArgs e)
@@ -106,12 +100,124 @@ order by osr.changedate
             ";
         //Запити SQL
 
+        private idocWindowOrder Document { get; set; }
+        public bool isCreated { get; set; } = true;
+        private bool _ReadOnly = false;
+        public bool ReadOnly
+        {
+            get
+            {
+                return _ReadOnly;
+            }
+            set
+            {
+                _ReadOnly = value;
+                foreach (Control x in MainPanel1.Controls)
+                {
+                    if (x is TextBox)
+                    {
+                        (x as TextBox).ReadOnly = _ReadOnly;
+                    }
+                    if (x is Victors.DateTimePicker)
+                    {
+                        (x as Victors.DateTimePicker).Enabled = _ReadOnly;
+                    }
+                }
+            }
+        }
+        private bool _isChanged;
+        public bool isChanged
+        {
+            get
+            {
+                return _isChanged;
+            }
+            set
+            {
+                _isChanged = value;              
+                toolStripStatusIsChanged.Text = value ? "Змінено" : "";
+                toolStripStatusIsChanged.ForeColor = CanBeSaved ? Color.DarkGreen : Color.DarkRed;
+                CheckFieldsMain();
+            }
+        }
+        private bool _CanBeSaved = true;
+        public bool CanBeSaved
+        {
+            get
+            {
+                return _CanBeSaved;
+            }
+            set
+            {
+                _CanBeSaved = value;
+                зберегтиToolStripMenuItem.Enabled = value;
+            }
+        }
+        private void CheckFieldsMain()
+        {
+            CanBeSaved = true;
+            foreach (Control x in MainPanel1.Controls)
+            {
+                if (x is TextBox)
+                {
+                    if ((new[] { tB_OrderNo, tB_Customer, tB_Currency }).Contains(x))
+                    {
+                        if ((x as TextBox).Text == "")
+                        {
+                            CanBeSaved = false;
+                            x.BackColor = Color.LightYellow;
+                        }
+                        else
+                        {
+                            x.BackColor = SystemColors.Window;
+                        }
+                    }
+                    if (new[] { tB_TotalCost, tB_TotalPrice }.Contains(x))
+                    {
+                        if (!Extension.IsNumeric((x as TextBox).Text) && (x as TextBox).Text != "")
+                        {
+                            CanBeSaved = false;
+                            x.BackColor = Color.LightYellow;
+                        }
+                        else
+                        {
+                            x.BackColor = SystemColors.Window;
+                        }
+                    }
+                }
+            }
+        }
+        private void tB_OrderNo_TextChanged(object sender, EventArgs e)
+        {
+            Text = tB_OrderNo.Text;
+            isChanged = true;
+        }
+        private void tB_AgreementNo_TextChanged(object sender, EventArgs e)
+        {
+            isChanged = true;
+        }
+
         private void tB_Customer_TextChanged(object sender, EventArgs e)
         {
             isChanged = true;
         }
 
         private void dTP_ProdDate_ValueChanged(object sender, EventArgs e)
+        {
+            isChanged = true;
+        }
+
+        private void tB_TotalCost_TextChanged(object sender, EventArgs e)
+        {
+            isChanged = true;
+        }
+
+        private void tB_TotalPrice_TextChanged(object sender, EventArgs e)
+        {
+            isChanged = true;
+        }
+
+        private void tB_Currency_TextChanged(object sender, EventArgs e)
         {
             isChanged = true;
         }

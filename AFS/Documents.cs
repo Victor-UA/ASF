@@ -93,6 +93,17 @@ namespace ASF.Documents
                 MainForm.dTP_ProdDate.Value = value;
             }
         }
+        public string Owner
+        {
+            get
+            {
+                return MainForm.toolStripStatusOwner.Text;
+            }
+            set
+            {
+                MainForm.toolStripStatusOwner.Text = value;
+            }
+        }
 
         public bool isCreated
         {
@@ -137,6 +148,7 @@ namespace ASF.Documents
                 AgreementDate = dt.Rows[0]["AgreementDate"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["AgreementDate"];
                 Customer = dt.Rows[0]["VCUSTOMERNAME"].ToString();
                 ProdDate = dt.Rows[0]["ProdDate"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["ProdDate"];
+                Owner = dt.Rows[0]["VMANAGERNAME"].ToString();
 
                 isCreated = true;
                 isChanged = false;

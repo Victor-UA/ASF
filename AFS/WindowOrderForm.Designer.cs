@@ -40,32 +40,40 @@ namespace ASF.Documents
             this.зберегтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusIsChanged = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusOwner = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tabList1 = new Cyotek.Windows.Forms.TabList();
             this.tabListPageMain = new Cyotek.Windows.Forms.TabListPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.tB_OrderNo = new System.Windows.Forms.TextBox();
+            this.MainPanel1 = new System.Windows.Forms.Panel();
+            this.tB_AgreementNo = new System.Windows.Forms.TextBox();
             this.dTP_AgreementDate = new Victors.DateTimePicker();
+            this.tB_OrderNo = new System.Windows.Forms.TextBox();
+            this.dTP_ProdDate = new Victors.DateTimePicker();
+            this.tB_Customer = new System.Windows.Forms.TextBox();
+            this.dTP_DateOrder = new Victors.DateTimePicker();
+            this.tB_TotalCost = new System.Windows.Forms.TextBox();
+            this.tB_TotalPrice = new System.Windows.Forms.TextBox();
+            this.tB_Currency = new System.Windows.Forms.TextBox();
+            this.b_SelectCurrency = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.b_SelectCustomer = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.tB_AgreementNo = new System.Windows.Forms.TextBox();
-            this.dTP_DateOrder = new Victors.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.tabListPageStates = new Cyotek.Windows.Forms.TabListPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid_OrderStates = new SourceGrid.Grid();
-            this.tB_Customer = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dTP_ProdDate = new Victors.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.tabList1.SuspendLayout();
             this.tabListPageMain.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.MainPanel1.SuspendLayout();
             this.tabListPageStates.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -77,7 +85,7 @@ namespace ASF.Documents
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(921, 24);
-            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // документToolStripMenuItem
@@ -91,26 +99,43 @@ namespace ASF.Documents
             // зберегтиToolStripMenuItem
             // 
             this.зберегтиToolStripMenuItem.Name = "зберегтиToolStripMenuItem";
-            this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.зберегтиToolStripMenuItem.Text = "Зберегти";
             this.зберегтиToolStripMenuItem.Click += new System.EventHandler(this.зберегтиToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusIsChanged});
+            this.toolStripStatusIsChanged,
+            this.toolStripStatusOwner});
             this.statusStrip1.Location = new System.Drawing.Point(0, 464);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(921, 22);
-            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusIsChanged
             // 
+            this.toolStripStatusIsChanged.AutoSize = false;
+            this.toolStripStatusIsChanged.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusIsChanged.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.toolStripStatusIsChanged.Name = "toolStripStatusIsChanged";
             this.toolStripStatusIsChanged.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripStatusIsChanged.Size = new System.Drawing.Size(140, 17);
+            this.toolStripStatusIsChanged.Size = new System.Drawing.Size(70, 17);
             this.toolStripStatusIsChanged.Text = "toolStripStatusIsChanged";
+            // 
+            // toolStripStatusOwner
+            // 
+            this.toolStripStatusOwner.AutoSize = false;
+            this.toolStripStatusOwner.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusOwner.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.toolStripStatusOwner.Name = "toolStripStatusOwner";
+            this.toolStripStatusOwner.Size = new System.Drawing.Size(200, 17);
+            this.toolStripStatusOwner.Text = "toolStripStatusOwner";
             // 
             // toolStripContainer1
             // 
@@ -124,7 +149,7 @@ namespace ASF.Documents
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 24);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.Size = new System.Drawing.Size(921, 440);
-            this.toolStripContainer1.TabIndex = 4;
+            this.toolStripContainer1.TabIndex = 2;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
             // tabList1
@@ -140,81 +165,39 @@ namespace ASF.Documents
             // tabListPageMain
             // 
             this.tabListPageMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabListPageMain.Controls.Add(this.panel1);
+            this.tabListPageMain.Controls.Add(this.MainPanel1);
             this.tabListPageMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabListPageMain.Name = "tabListPageMain";
             this.tabListPageMain.Size = new System.Drawing.Size(763, 407);
             this.tabListPageMain.TabIndex = 0;
             this.tabListPageMain.Text = "Загальне";
             // 
-            // panel1
+            // MainPanel1
             // 
-            this.panel1.Controls.Add(this.dTP_ProdDate);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.tB_Customer);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.tB_OrderNo);
-            this.panel1.Controls.Add(this.dTP_AgreementDate);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.tB_AgreementNo);
-            this.panel1.Controls.Add(this.dTP_DateOrder);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(761, 405);
-            this.panel1.TabIndex = 32;
-            // 
-            // tB_OrderNo
-            // 
-            this.tB_OrderNo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_OrderNo.Location = new System.Drawing.Point(99, 3);
-            this.tB_OrderNo.Name = "tB_OrderNo";
-            this.tB_OrderNo.Size = new System.Drawing.Size(395, 20);
-            this.tB_OrderNo.TabIndex = 25;
-            this.tB_OrderNo.TextChanged += new System.EventHandler(this.tB_OrderNo_TextChanged);
-            // 
-            // dTP_AgreementDate
-            // 
-            this.dTP_AgreementDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dTP_AgreementDate.Location = new System.Drawing.Point(612, 29);
-            this.dTP_AgreementDate.Name = "dTP_AgreementDate";
-            this.dTP_AgreementDate.Size = new System.Drawing.Size(146, 20);
-            this.dTP_AgreementDate.TabIndex = 31;
-            this.dTP_AgreementDate.Value = new System.DateTime(2015, 10, 7, 22, 52, 46, 0);
-            this.dTP_AgreementDate.ValueChanged += new System.EventHandler(this.dTP_AgreementDate_ValueChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "Найменування";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(500, 32);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 13);
-            this.label3.TabIndex = 30;
-            this.label3.Text = "Дата договору";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(500, 58);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 13);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "Дата готовності";
+            this.MainPanel1.Controls.Add(this.tB_AgreementNo);
+            this.MainPanel1.Controls.Add(this.dTP_AgreementDate);
+            this.MainPanel1.Controls.Add(this.tB_OrderNo);
+            this.MainPanel1.Controls.Add(this.dTP_ProdDate);
+            this.MainPanel1.Controls.Add(this.tB_Customer);
+            this.MainPanel1.Controls.Add(this.dTP_DateOrder);
+            this.MainPanel1.Controls.Add(this.tB_TotalCost);
+            this.MainPanel1.Controls.Add(this.tB_TotalPrice);
+            this.MainPanel1.Controls.Add(this.tB_Currency);
+            this.MainPanel1.Controls.Add(this.b_SelectCurrency);
+            this.MainPanel1.Controls.Add(this.label8);
+            this.MainPanel1.Controls.Add(this.b_SelectCustomer);
+            this.MainPanel1.Controls.Add(this.label7);
+            this.MainPanel1.Controls.Add(this.label6);
+            this.MainPanel1.Controls.Add(this.label5);
+            this.MainPanel1.Controls.Add(this.label1);
+            this.MainPanel1.Controls.Add(this.label3);
+            this.MainPanel1.Controls.Add(this.label2);
+            this.MainPanel1.Controls.Add(this.label4);
+            this.MainPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPanel1.Location = new System.Drawing.Point(0, 0);
+            this.MainPanel1.Name = "MainPanel1";
+            this.MainPanel1.Size = new System.Drawing.Size(761, 405);
+            this.MainPanel1.TabIndex = 0;
             // 
             // tB_AgreementNo
             // 
@@ -224,8 +207,54 @@ namespace ASF.Documents
             this.tB_AgreementNo.Location = new System.Drawing.Point(99, 29);
             this.tB_AgreementNo.Name = "tB_AgreementNo";
             this.tB_AgreementNo.Size = new System.Drawing.Size(395, 20);
-            this.tB_AgreementNo.TabIndex = 29;
+            this.tB_AgreementNo.TabIndex = 2;
             this.tB_AgreementNo.TextChanged += new System.EventHandler(this.tB_AgreementNo_TextChanged);
+            // 
+            // dTP_AgreementDate
+            // 
+            this.dTP_AgreementDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dTP_AgreementDate.Location = new System.Drawing.Point(612, 29);
+            this.dTP_AgreementDate.Name = "dTP_AgreementDate";
+            this.dTP_AgreementDate.Size = new System.Drawing.Size(146, 20);
+            this.dTP_AgreementDate.TabIndex = 3;
+            this.dTP_AgreementDate.Value = new System.DateTime(2015, 10, 7, 22, 52, 46, 0);
+            this.dTP_AgreementDate.ValueChanged += new System.EventHandler(this.dTP_AgreementDate_ValueChanged);
+            // 
+            // tB_OrderNo
+            // 
+            this.tB_OrderNo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tB_OrderNo.Location = new System.Drawing.Point(99, 3);
+            this.tB_OrderNo.Name = "tB_OrderNo";
+            this.tB_OrderNo.Size = new System.Drawing.Size(395, 20);
+            this.tB_OrderNo.TabIndex = 0;
+            this.tB_OrderNo.TextChanged += new System.EventHandler(this.tB_OrderNo_TextChanged);
+            // 
+            // dTP_ProdDate
+            // 
+            this.dTP_ProdDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dTP_ProdDate.Location = new System.Drawing.Point(612, 3);
+            this.dTP_ProdDate.Name = "dTP_ProdDate";
+            this.dTP_ProdDate.Size = new System.Drawing.Size(146, 20);
+            this.dTP_ProdDate.TabIndex = 1;
+            this.dTP_ProdDate.Value = new System.DateTime(2015, 10, 7, 22, 52, 46, 0);
+            this.dTP_ProdDate.ValueChanged += new System.EventHandler(this.dTP_ProdDate_ValueChanged);
+            // 
+            // tB_Customer
+            // 
+            this.tB_Customer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tB_Customer.BackColor = System.Drawing.SystemColors.Window;
+            this.tB_Customer.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tB_Customer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tB_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tB_Customer.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.tB_Customer.Location = new System.Drawing.Point(99, 55);
+            this.tB_Customer.Name = "tB_Customer";
+            this.tB_Customer.ReadOnly = true;
+            this.tB_Customer.Size = new System.Drawing.Size(362, 20);
+            this.tB_Customer.TabIndex = 4;
+            this.tB_Customer.TextChanged += new System.EventHandler(this.tB_Customer_TextChanged);
             // 
             // dTP_DateOrder
             // 
@@ -233,9 +262,132 @@ namespace ASF.Documents
             this.dTP_DateOrder.Location = new System.Drawing.Point(612, 55);
             this.dTP_DateOrder.Name = "dTP_DateOrder";
             this.dTP_DateOrder.Size = new System.Drawing.Size(146, 20);
-            this.dTP_DateOrder.TabIndex = 27;
+            this.dTP_DateOrder.TabIndex = 6;
             this.dTP_DateOrder.Value = new System.DateTime(2015, 10, 7, 22, 51, 11, 34);
             this.dTP_DateOrder.ValueChanged += new System.EventHandler(this.dTP_DateOrder_ValueChanged);
+            // 
+            // tB_TotalCost
+            // 
+            this.tB_TotalCost.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tB_TotalCost.Location = new System.Drawing.Point(99, 81);
+            this.tB_TotalCost.Name = "tB_TotalCost";
+            this.tB_TotalCost.Size = new System.Drawing.Size(395, 20);
+            this.tB_TotalCost.TabIndex = 7;
+            this.tB_TotalCost.TextChanged += new System.EventHandler(this.tB_TotalCost_TextChanged);
+            // 
+            // tB_TotalPrice
+            // 
+            this.tB_TotalPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tB_TotalPrice.Location = new System.Drawing.Point(99, 107);
+            this.tB_TotalPrice.Name = "tB_TotalPrice";
+            this.tB_TotalPrice.Size = new System.Drawing.Size(395, 20);
+            this.tB_TotalPrice.TabIndex = 8;
+            this.tB_TotalPrice.TextChanged += new System.EventHandler(this.tB_TotalPrice_TextChanged);
+            // 
+            // tB_Currency
+            // 
+            this.tB_Currency.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tB_Currency.BackColor = System.Drawing.SystemColors.Window;
+            this.tB_Currency.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tB_Currency.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tB_Currency.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tB_Currency.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.tB_Currency.Location = new System.Drawing.Point(500, 107);
+            this.tB_Currency.Name = "tB_Currency";
+            this.tB_Currency.ReadOnly = true;
+            this.tB_Currency.Size = new System.Drawing.Size(221, 20);
+            this.tB_Currency.TabIndex = 9;
+            this.tB_Currency.TextChanged += new System.EventHandler(this.tB_Currency_TextChanged);
+            // 
+            // b_SelectCurrency
+            // 
+            this.b_SelectCurrency.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.b_SelectCurrency.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.b_SelectCurrency.Location = new System.Drawing.Point(727, 105);
+            this.b_SelectCurrency.Name = "b_SelectCurrency";
+            this.b_SelectCurrency.Size = new System.Drawing.Size(27, 23);
+            this.b_SelectCurrency.TabIndex = 10;
+            this.b_SelectCurrency.Text = "...";
+            this.b_SelectCurrency.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 110);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(50, 13);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Вартість";
+            // 
+            // b_SelectCustomer
+            // 
+            this.b_SelectCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.b_SelectCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.b_SelectCustomer.Location = new System.Drawing.Point(467, 53);
+            this.b_SelectCustomer.Name = "b_SelectCustomer";
+            this.b_SelectCustomer.Size = new System.Drawing.Size(27, 23);
+            this.b_SelectCustomer.TabIndex = 5;
+            this.b_SelectCustomer.Text = "...";
+            this.b_SelectCustomer.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 84);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(70, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Собівартість";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(500, 6);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(106, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Дата виготовлення";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 58);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Клієнт";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Найменування";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(500, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(82, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Дата договору";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(500, 58);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(89, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Дата готовності";
             // 
             // label4
             // 
@@ -243,7 +395,7 @@ namespace ASF.Documents
             this.label4.Location = new System.Drawing.Point(3, 32);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 13);
-            this.label4.TabIndex = 28;
+            this.label4.TabIndex = 9;
             this.label4.Text = "Номер договору";
             // 
             // tabListPageStates
@@ -278,47 +430,6 @@ namespace ASF.Documents
             this.grid_OrderStates.TabStop = true;
             this.grid_OrderStates.ToolTipText = "";
             // 
-            // tB_Customer
-            // 
-            this.tB_Customer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_Customer.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tB_Customer.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tB_Customer.Location = new System.Drawing.Point(99, 55);
-            this.tB_Customer.Name = "tB_Customer";
-            this.tB_Customer.Size = new System.Drawing.Size(395, 20);
-            this.tB_Customer.TabIndex = 33;
-            this.tB_Customer.TextChanged += new System.EventHandler(this.tB_Customer_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 58);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 13);
-            this.label5.TabIndex = 32;
-            this.label5.Text = "Клієнт";
-            // 
-            // dTP_ProdDate
-            // 
-            this.dTP_ProdDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dTP_ProdDate.Location = new System.Drawing.Point(612, 3);
-            this.dTP_ProdDate.Name = "dTP_ProdDate";
-            this.dTP_ProdDate.Size = new System.Drawing.Size(146, 20);
-            this.dTP_ProdDate.TabIndex = 35;
-            this.dTP_ProdDate.Value = new System.DateTime(2015, 10, 7, 22, 52, 46, 0);
-            this.dTP_ProdDate.ValueChanged += new System.EventHandler(this.dTP_ProdDate_ValueChanged);
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(500, 6);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(106, 13);
-            this.label6.TabIndex = 34;
-            this.label6.Text = "Дата виготовлення";
-            // 
             // WindowOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,8 +453,8 @@ namespace ASF.Documents
             this.toolStripContainer1.PerformLayout();
             this.tabList1.ResumeLayout(false);
             this.tabListPageMain.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.MainPanel1.ResumeLayout(false);
+            this.MainPanel1.PerformLayout();
             this.tabListPageStates.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -353,23 +464,7 @@ namespace ASF.Documents
 
         #endregion
         
-        private idocWindowOrder Document { get; set; }
-        public bool isCreated { get; set; }
-        private bool _isChanged;
-        public bool isChanged
-        {
-            get
-            {
-                return _isChanged;
-            }
-            set
-            {
-                _isChanged = value;
-                toolStripStatusIsChanged.Text = value ? "Змінено" : ""; 
-            }
-        }
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private Cyotek.Windows.Forms.TabList tabList1;
@@ -383,15 +478,24 @@ namespace ASF.Documents
         public System.Windows.Forms.TextBox tB_OrderNo;
         private System.Windows.Forms.Label label1;
         private Cyotek.Windows.Forms.TabListPage tabListPageStates;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel MainPanel1;
         private System.Windows.Forms.Panel panel2;
         private SourceGrid.Grid grid_OrderStates;
         private System.Windows.Forms.ToolStripMenuItem документToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem зберегтиToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusIsChanged;
         public System.Windows.Forms.TextBox tB_Customer;
         private System.Windows.Forms.Label label5;
         public DateTimePicker dTP_ProdDate;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button b_SelectCustomer;
+        public System.Windows.Forms.TextBox tB_TotalCost;
+        private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.TextBox tB_TotalPrice;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button b_SelectCurrency;
+        public System.Windows.Forms.TextBox tB_Currency;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusOwner;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem зберегтиToolStripMenuItem;
     }
 }
