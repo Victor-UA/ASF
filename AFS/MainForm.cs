@@ -71,5 +71,11 @@ namespace AFS
             @"
 select * from vtorders
             ";
+
+        private void toolStripButton_New_Click(object sender, EventArgs e)
+        {
+            idocWindowOrder Order = new idocWindowOrder(Client);
+            Order.Show();
+        }
     }
 }

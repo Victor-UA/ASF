@@ -37,8 +37,10 @@
             this.contextMenuStripGrid1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tabList1 = new Cyotek.Windows.Forms.TabList();
             this.tabListPageOrders = new Cyotek.Windows.Forms.TabListPage();
-            this.tabListPageContragents = new Cyotek.Windows.Forms.TabListPage();
+            this.tabListPageCustomers = new Cyotek.Windows.Forms.TabListPage();
             this.tabListPageEmployee = new Cyotek.Windows.Forms.TabListPage();
+            this.toolStripButton_New = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabList1.SuspendLayout();
             this.tabListPageOrders.SuspendLayout();
@@ -63,6 +65,8 @@
             // toolStrip1
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton_New});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(816, 25);
@@ -100,7 +104,7 @@
             // tabList1
             // 
             this.tabList1.Controls.Add(this.tabListPageOrders);
-            this.tabList1.Controls.Add(this.tabListPageContragents);
+            this.tabList1.Controls.Add(this.tabListPageCustomers);
             this.tabList1.Controls.Add(this.tabListPageEmployee);
             this.tabList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabList1.Location = new System.Drawing.Point(0, 49);
@@ -116,17 +120,19 @@
             this.tabListPageOrders.Name = "tabListPageOrders";
             this.tabListPageOrders.Size = new System.Drawing.Size(658, 461);
             this.tabListPageOrders.TabIndex = 0;
+            this.tabListPageOrders.Tag = "idocWindowOrder";
             this.tabListPageOrders.Text = "Замовлення";
             this.tabListPageOrders.Paint += new System.Windows.Forms.PaintEventHandler(this.tabListPageOrders_Paint);
             // 
-            // tabListPageContragents
+            // tabListPageCustomers
             // 
-            this.tabListPageContragents.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabListPageContragents.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabListPageContragents.Name = "tabListPageContragents";
-            this.tabListPageContragents.Size = new System.Drawing.Size(658, 461);
-            this.tabListPageContragents.TabIndex = 1;
-            this.tabListPageContragents.Text = "Клієнти";
+            this.tabListPageCustomers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabListPageCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabListPageCustomers.Name = "tabListPageCustomers";
+            this.tabListPageCustomers.Size = new System.Drawing.Size(658, 461);
+            this.tabListPageCustomers.TabIndex = 1;
+            this.tabListPageCustomers.Tag = "idocCustomer";
+            this.tabListPageCustomers.Text = "Клієнти";
             // 
             // tabListPageEmployee
             // 
@@ -135,7 +141,17 @@
             this.tabListPageEmployee.Name = "tabListPageEmployee";
             this.tabListPageEmployee.Size = new System.Drawing.Size(658, 461);
             this.tabListPageEmployee.TabIndex = 2;
+            this.tabListPageEmployee.Tag = "idocEmployee";
             this.tabListPageEmployee.Text = "Співробітники";
+            // 
+            // toolStripButton_New
+            // 
+            this.toolStripButton_New.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_New.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_New.Name = "toolStripButton_New";
+            this.toolStripButton_New.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_New.ToolTipText = "New document";
+            this.toolStripButton_New.Click += new System.EventHandler(this.toolStripButton_New_Click);
             // 
             // MainForm
             // 
@@ -152,6 +168,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "База даних компанії";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.tabList1.ResumeLayout(false);
             this.tabListPageOrders.ResumeLayout(false);
@@ -170,8 +188,9 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStripGrid1;
         private Cyotek.Windows.Forms.TabList tabList1;
         private Cyotek.Windows.Forms.TabListPage tabListPageOrders;
-        private Cyotek.Windows.Forms.TabListPage tabListPageContragents;
+        private Cyotek.Windows.Forms.TabListPage tabListPageCustomers;
         private Cyotek.Windows.Forms.TabListPage tabListPageEmployee;
+        private System.Windows.Forms.ToolStripButton toolStripButton_New;
     }
 }
 

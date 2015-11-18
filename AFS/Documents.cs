@@ -24,6 +24,29 @@ namespace ASF.Documents
     
     public class idocWindowOrder : idocDocument
     {
+        private void Constructor(string key, FBClient client)
+        {
+            Key = key;
+            Client = client;
+            MainForm = new WindowOrderForm(this);
+            Load();
+        }
+        public idocWindowOrder(string key, FBClient client)
+        {
+            Constructor(key, client);
+        }
+        public idocWindowOrder(int key, FBClient client)
+        {
+            Constructor(key.ToString(), client);
+        }
+        public idocWindowOrder(FBClient client)
+        {
+            Constructor("", client);
+        }
+
+
+        private WindowOrderForm MainForm;
+
         public string Type { get; private set; } = "idocWindowOrder";
         public string Key { get; private set; }
 
@@ -82,6 +105,18 @@ namespace ASF.Documents
                 MainForm.tB_Customer.Text = value;
             }
         }
+        public string Currency
+        {
+            get
+            {
+                return MainForm.tB_Currency.Text;
+            }
+            set
+            {
+                MainForm.tB_Currency.Text = value;
+            }
+
+        }
         public DateTime ProdDate
         {
             get
@@ -102,6 +137,39 @@ namespace ASF.Documents
             set
             {
                 MainForm.toolStripStatusOwner.Text = value;
+            }
+        }
+        public string TotalCost
+        {
+            get
+            {
+                return MainForm.tB_TotalCost.Text;
+            }
+            set
+            {
+                MainForm.tB_TotalCost.Text = value;
+            }
+        }
+        public string TotalPrice
+        {
+            get
+            {
+                return MainForm.tB_TotalPrice.Text;
+            }
+            set
+            {
+                MainForm.tB_TotalPrice.Text = value;
+            }
+        }
+        public string RComment
+        {
+            get
+            {
+                return MainForm.tB_RComment.Text;
+            }
+            set
+            {
+                MainForm.tB_RComment.Text = value;
             }
         }
 
@@ -131,38 +199,50 @@ namespace ASF.Documents
 
         public void Create()
         {
-            Key = Client.QueryValue(@"select gen_id(gen_orders, 1) from rdb$database").toString;
+            long key = Client.QueryValue(@"select gen_id(gen_orders, 1) from rdb$database");
+            Key = key.ToString();
             isCreated = false;
             isChanged = true;
         }
         public void Load()
         {
-            DataTable dt = Client.QueryRecordsList(qryOrderLoad.ToString().Replace(":orderid", Key));
-
-            if (dt.Rows.Count > 0)
+            if (Key == "")
             {
-                OrderNo = dt.Rows[0]["orderno"].ToString();
-                MainForm.Text = OrderNo;
-                DateOrder = dt.Rows[0]["dateorder"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["dateorder"];
-                AgreementNo = dt.Rows[0]["AgreementNo"].ToString();
-                AgreementDate = dt.Rows[0]["AgreementDate"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["AgreementDate"];
-                Customer = dt.Rows[0]["VCUSTOMERNAME"].ToString();
-                ProdDate = dt.Rows[0]["ProdDate"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["ProdDate"];
-                Owner = dt.Rows[0]["VMANAGERNAME"].ToString();
+                Create();
 
-                isCreated = true;
-                isChanged = false;
+                AgreementDate = DateTime.Now;
+                ProdDate = DateTime.MinValue;
+                DateOrder = DateTime.MinValue;
+
+                MainForm.Text = "Нове замовлення";
+                Currency = "грн.";
+                Owner = "Administrator";
             }
             else
             {
-                Create();
-                OrderNo = "";
-                MainForm.Text = "Нове замовлення";
-                AgreementNo = "";
-                DateOrder = DateTime.Now;
-                AgreementDate = DateTime.Now;
+                DataTable dt = Client.QueryRecordsList(qryOrderLoad.ToString().Replace(":orderid", Key));
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    AgreementDate = dt.Rows[0]["AgreementDate"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["AgreementDate"];
+                    ProdDate = dt.Rows[0]["ProdDate"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["ProdDate"];
+                    DateOrder = dt.Rows[0]["dateorder"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["dateorder"];
+
+                    OrderNo = dt.Rows[0]["orderno"].ToString();
+                    MainForm.Text = OrderNo;
+                    AgreementNo = dt.Rows[0]["AgreementNo"].ToString();
+                    Customer = dt.Rows[0]["VCUSTOMERNAME"].ToString();
+                    TotalCost = "";
+                    TotalPrice = dt.Rows[0]["TOTALPRICE"].ToString();
+                    Currency = dt.Rows[0]["VCURRENCYNAME"].ToString();
+                    RComment = dt.Rows[0]["RCOMMENT"].ToString();
+                    Owner = dt.Rows[0]["VMANAGERNAME"].ToString();
+
+                    isCreated = true;
+                    isChanged = false;
+
+                    MainForm.OrderStatesLoad();
+                }
             }
-            MainForm.OrderStatesLoad();
         }
         public void Save()
         {
@@ -188,29 +268,6 @@ namespace ASF.Documents
         public void Close()
         {
             MainForm.Close();
-        }
-
-        private WindowOrderForm MainForm;
-        public idocWindowOrder(string key, FBClient client)
-        {
-            Constructor(key, client);
-        }
-        public idocWindowOrder(int key, FBClient client)
-        {
-            Constructor(key.ToString(), client);
-        }
-        public idocWindowOrder(FBClient client)
-        {
-            Create();
-            Constructor(Key, client);
-        }
-
-        private void Constructor(string key, FBClient client)
-        {
-            Key = key;
-            Client = client;
-            MainForm = new WindowOrderForm(this);
-            Load();
         }
 
         //Скрипти SQL

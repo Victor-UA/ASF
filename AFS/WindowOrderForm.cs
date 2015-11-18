@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AFS;
 using Victors;
+using System.Globalization;
 
 namespace ASF.Documents
 {
@@ -58,7 +59,6 @@ namespace ASF.Documents
         {
             Document.Save();
         }
-
         private void WindowOrderForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (isChanged)
@@ -71,17 +71,15 @@ namespace ASF.Documents
                 e.Cancel = mb == DialogResult.Cancel;
             }
         }
-
         private void dTP_DateOrder_ValueChanged(object sender, EventArgs e)
         {
             isChanged = true;
         }
-
         private void dTP_AgreementDate_ValueChanged(object sender, EventArgs e)
         {
             isChanged = true;
         }
-        
+
         //Запити SQL
         private string qryOrderStates { get; set; } =
             @"
@@ -101,9 +99,9 @@ order by osr.changedate
         //Запити SQL
 
         private idocWindowOrder Document { get; set; }
-        public bool isCreated { get; set; } = true;
+        public  bool isCreated { get; set; } = true;
         private bool _ReadOnly = false;
-        public bool ReadOnly
+        public  bool ReadOnly
         {
             get
             {
@@ -126,7 +124,7 @@ order by osr.changedate
             }
         }
         private bool _isChanged;
-        public bool isChanged
+        public  bool isChanged
         {
             get
             {
@@ -141,7 +139,7 @@ order by osr.changedate
             }
         }
         private bool _CanBeSaved = true;
-        public bool CanBeSaved
+        public  bool CanBeSaved
         {
             get
             {
@@ -187,6 +185,7 @@ order by osr.changedate
                 }
             }
         }
+
         private void tB_OrderNo_TextChanged(object sender, EventArgs e)
         {
             Text = tB_OrderNo.Text;
@@ -196,30 +195,37 @@ order by osr.changedate
         {
             isChanged = true;
         }
-
         private void tB_Customer_TextChanged(object sender, EventArgs e)
         {
             isChanged = true;
         }
-
         private void dTP_ProdDate_ValueChanged(object sender, EventArgs e)
         {
             isChanged = true;
         }
-
         private void tB_TotalCost_TextChanged(object sender, EventArgs e)
         {
             isChanged = true;
         }
-
         private void tB_TotalPrice_TextChanged(object sender, EventArgs e)
         {
             isChanged = true;
         }
-
         private void tB_Currency_TextChanged(object sender, EventArgs e)
         {
             isChanged = true;
+        }
+
+        private void tB_TotalPrice_Leave(object sender, EventArgs e)
+        {
+            //MessageBox.Show(string.Format(CultureInfo.InvariantCulture, "{0:0,0}", Convert.ToSingle(tB_TotalPrice.Text)));
+            tB_TotalPrice.Text = string.Format(CultureInfo.InvariantCulture,"{0:0,0}", Convert.ToDecimal(tB_TotalPrice.Text));
+            tB_TotalPrice.Text = tB_TotalPrice.Text.Replace(",", " ");
+        }
+
+        private void tB_TotalPrice_Enter(object sender, EventArgs e)
+        {
+            tB_TotalPrice.Text = tB_TotalPrice.Text.Replace(" ", "");
         }
     }
 }
