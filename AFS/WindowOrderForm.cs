@@ -241,5 +241,10 @@ order by osr.changedate
         {
             isChanged = true;
         }
+
+        private void toolStripButton_Save_Click(object sender, EventArgs e)
+        {
+            Document.Save();
+        }
     }
 }

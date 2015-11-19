@@ -32,6 +32,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton_New = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grid1 = new SourceGrid.Grid();
             this.contextMenuStripGrid1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -39,7 +40,6 @@
             this.tabListPageOrders = new Cyotek.Windows.Forms.TabListPage();
             this.tabListPageCustomers = new Cyotek.Windows.Forms.TabListPage();
             this.tabListPageEmployee = new Cyotek.Windows.Forms.TabListPage();
-            this.toolStripButton_New = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabList1.SuspendLayout();
@@ -72,6 +72,16 @@
             this.toolStrip1.Size = new System.Drawing.Size(816, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton_New
+            // 
+            this.toolStripButton_New.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_New.Image = global::AFS.Properties.Resources.NewDocument;
+            this.toolStripButton_New.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_New.Name = "toolStripButton_New";
+            this.toolStripButton_New.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_New.ToolTipText = "New document";
+            this.toolStripButton_New.Click += new System.EventHandler(this.toolStripButton_New_Click);
             // 
             // panel1
             // 
@@ -129,7 +139,7 @@
             this.tabListPageCustomers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabListPageCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabListPageCustomers.Name = "tabListPageCustomers";
-            this.tabListPageCustomers.Size = new System.Drawing.Size(658, 461);
+            this.tabListPageCustomers.Size = new System.Drawing.Size(42, 192);
             this.tabListPageCustomers.TabIndex = 1;
             this.tabListPageCustomers.Tag = "idocCustomer";
             this.tabListPageCustomers.Text = "Клієнти";
@@ -139,19 +149,10 @@
             this.tabListPageEmployee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabListPageEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabListPageEmployee.Name = "tabListPageEmployee";
-            this.tabListPageEmployee.Size = new System.Drawing.Size(658, 461);
+            this.tabListPageEmployee.Size = new System.Drawing.Size(42, 192);
             this.tabListPageEmployee.TabIndex = 2;
             this.tabListPageEmployee.Tag = "idocEmployee";
             this.tabListPageEmployee.Text = "Співробітники";
-            // 
-            // toolStripButton_New
-            // 
-            this.toolStripButton_New.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_New.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_New.Name = "toolStripButton_New";
-            this.toolStripButton_New.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton_New.ToolTipText = "New document";
-            this.toolStripButton_New.Click += new System.EventHandler(this.toolStripButton_New_Click);
             // 
             // MainForm
             // 
