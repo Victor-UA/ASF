@@ -45,9 +45,14 @@ namespace ASF.Documents
             this.tabList1 = new Cyotek.Windows.Forms.TabList();
             this.tabListPageMain = new Cyotek.Windows.Forms.TabListPage();
             this.MainPanel1 = new System.Windows.Forms.Panel();
+            this.tB_RComment = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.tB_AgreementNo = new System.Windows.Forms.TextBox();
+            this.dTP_AgreementDate = new Victors.DateTimePicker();
             this.tB_OrderNo = new System.Windows.Forms.TextBox();
+            this.dTP_ProdDate = new Victors.DateTimePicker();
             this.tB_Customer = new System.Windows.Forms.TextBox();
+            this.dTP_DateOrder = new Victors.DateTimePicker();
             this.tB_TotalCost = new System.Windows.Forms.TextBox();
             this.tB_TotalPrice = new System.Windows.Forms.TextBox();
             this.tB_Currency = new System.Windows.Forms.TextBox();
@@ -64,11 +69,6 @@ namespace ASF.Documents
             this.tabListPageStates = new Cyotek.Windows.Forms.TabListPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid_OrderStates = new SourceGrid.Grid();
-            this.dTP_AgreementDate = new Victors.DateTimePicker();
-            this.dTP_ProdDate = new Victors.DateTimePicker();
-            this.dTP_DateOrder = new Victors.DateTimePicker();
-            this.tB_RComment = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -204,6 +204,28 @@ namespace ASF.Documents
             this.MainPanel1.Size = new System.Drawing.Size(761, 405);
             this.MainPanel1.TabIndex = 0;
             // 
+            // tB_RComment
+            // 
+            this.tB_RComment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tB_RComment.Location = new System.Drawing.Point(99, 133);
+            this.tB_RComment.Multiline = true;
+            this.tB_RComment.Name = "tB_RComment";
+            this.tB_RComment.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tB_RComment.Size = new System.Drawing.Size(622, 269);
+            this.tB_RComment.TabIndex = 19;
+            this.tB_RComment.WordWrap = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 136);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(57, 13);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Коментар";
+            // 
             // tB_AgreementNo
             // 
             this.tB_AgreementNo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -215,6 +237,16 @@ namespace ASF.Documents
             this.tB_AgreementNo.TabIndex = 2;
             this.tB_AgreementNo.TextChanged += new System.EventHandler(this.tB_AgreementNo_TextChanged);
             // 
+            // dTP_AgreementDate
+            // 
+            this.dTP_AgreementDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dTP_AgreementDate.Location = new System.Drawing.Point(612, 29);
+            this.dTP_AgreementDate.Name = "dTP_AgreementDate";
+            this.dTP_AgreementDate.Size = new System.Drawing.Size(146, 20);
+            this.dTP_AgreementDate.TabIndex = 3;
+            this.dTP_AgreementDate.Value = new System.DateTime(2015, 10, 7, 22, 52, 46, 0);
+            this.dTP_AgreementDate.ValueChanged += new System.EventHandler(this.dTP_AgreementDate_ValueChanged);
+            // 
             // tB_OrderNo
             // 
             this.tB_OrderNo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -224,6 +256,16 @@ namespace ASF.Documents
             this.tB_OrderNo.Size = new System.Drawing.Size(395, 20);
             this.tB_OrderNo.TabIndex = 0;
             this.tB_OrderNo.TextChanged += new System.EventHandler(this.tB_OrderNo_TextChanged);
+            // 
+            // dTP_ProdDate
+            // 
+            this.dTP_ProdDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dTP_ProdDate.Location = new System.Drawing.Point(612, 3);
+            this.dTP_ProdDate.Name = "dTP_ProdDate";
+            this.dTP_ProdDate.Size = new System.Drawing.Size(146, 20);
+            this.dTP_ProdDate.TabIndex = 1;
+            this.dTP_ProdDate.Value = new System.DateTime(2015, 10, 7, 22, 52, 46, 0);
+            this.dTP_ProdDate.ValueChanged += new System.EventHandler(this.dTP_ProdDate_ValueChanged);
             // 
             // tB_Customer
             // 
@@ -241,13 +283,26 @@ namespace ASF.Documents
             this.tB_Customer.TabIndex = 4;
             this.tB_Customer.TextChanged += new System.EventHandler(this.tB_Customer_TextChanged);
             // 
+            // dTP_DateOrder
+            // 
+            this.dTP_DateOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dTP_DateOrder.Location = new System.Drawing.Point(612, 55);
+            this.dTP_DateOrder.Name = "dTP_DateOrder";
+            this.dTP_DateOrder.Size = new System.Drawing.Size(146, 20);
+            this.dTP_DateOrder.TabIndex = 6;
+            this.dTP_DateOrder.Value = new System.DateTime(2015, 10, 7, 22, 51, 11, 34);
+            this.dTP_DateOrder.ValueChanged += new System.EventHandler(this.dTP_DateOrder_ValueChanged);
+            // 
             // tB_TotalCost
             // 
             this.tB_TotalCost.Location = new System.Drawing.Point(99, 81);
             this.tB_TotalCost.Name = "tB_TotalCost";
             this.tB_TotalCost.Size = new System.Drawing.Size(156, 20);
             this.tB_TotalCost.TabIndex = 7;
+            this.tB_TotalCost.Tag = "0";
             this.tB_TotalCost.TextChanged += new System.EventHandler(this.tB_TotalCost_TextChanged);
+            this.tB_TotalCost.Enter += new System.EventHandler(this.tB_TotalCost_Enter);
+            this.tB_TotalCost.Leave += new System.EventHandler(this.tB_TotalCost_Leave);
             // 
             // tB_TotalPrice
             // 
@@ -255,6 +310,7 @@ namespace ASF.Documents
             this.tB_TotalPrice.Name = "tB_TotalPrice";
             this.tB_TotalPrice.Size = new System.Drawing.Size(156, 20);
             this.tB_TotalPrice.TabIndex = 8;
+            this.tB_TotalPrice.Tag = "0";
             this.tB_TotalPrice.TextChanged += new System.EventHandler(this.tB_TotalPrice_TextChanged);
             this.tB_TotalPrice.Enter += new System.EventHandler(this.tB_TotalPrice_Enter);
             this.tB_TotalPrice.Leave += new System.EventHandler(this.tB_TotalPrice_Leave);
@@ -375,7 +431,7 @@ namespace ASF.Documents
             this.tabListPageStates.Controls.Add(this.panel2);
             this.tabListPageStates.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabListPageStates.Name = "tabListPageStates";
-            this.tabListPageStates.Size = new System.Drawing.Size(763, 407);
+            this.tabListPageStates.Size = new System.Drawing.Size(42, 192);
             this.tabListPageStates.TabIndex = 1;
             this.tabListPageStates.Text = "Стан";
             // 
@@ -385,7 +441,7 @@ namespace ASF.Documents
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(759, 403);
+            this.panel2.Size = new System.Drawing.Size(38, 188);
             this.panel2.TabIndex = 0;
             // 
             // grid_OrderStates
@@ -396,62 +452,10 @@ namespace ASF.Documents
             this.grid_OrderStates.Name = "grid_OrderStates";
             this.grid_OrderStates.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.grid_OrderStates.SelectionMode = SourceGrid.GridSelectionMode.Cell;
-            this.grid_OrderStates.Size = new System.Drawing.Size(759, 403);
+            this.grid_OrderStates.Size = new System.Drawing.Size(38, 188);
             this.grid_OrderStates.TabIndex = 1;
             this.grid_OrderStates.TabStop = true;
             this.grid_OrderStates.ToolTipText = "";
-            // 
-            // dTP_AgreementDate
-            // 
-            this.dTP_AgreementDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dTP_AgreementDate.Location = new System.Drawing.Point(612, 29);
-            this.dTP_AgreementDate.Name = "dTP_AgreementDate";
-            this.dTP_AgreementDate.Size = new System.Drawing.Size(146, 20);
-            this.dTP_AgreementDate.TabIndex = 3;
-            this.dTP_AgreementDate.Value = new System.DateTime(2015, 10, 7, 22, 52, 46, 0);
-            this.dTP_AgreementDate.ValueChanged += new System.EventHandler(this.dTP_AgreementDate_ValueChanged);
-            // 
-            // dTP_ProdDate
-            // 
-            this.dTP_ProdDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dTP_ProdDate.Location = new System.Drawing.Point(612, 3);
-            this.dTP_ProdDate.Name = "dTP_ProdDate";
-            this.dTP_ProdDate.Size = new System.Drawing.Size(146, 20);
-            this.dTP_ProdDate.TabIndex = 1;
-            this.dTP_ProdDate.Value = new System.DateTime(2015, 10, 7, 22, 52, 46, 0);
-            this.dTP_ProdDate.ValueChanged += new System.EventHandler(this.dTP_ProdDate_ValueChanged);
-            // 
-            // dTP_DateOrder
-            // 
-            this.dTP_DateOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dTP_DateOrder.Location = new System.Drawing.Point(612, 55);
-            this.dTP_DateOrder.Name = "dTP_DateOrder";
-            this.dTP_DateOrder.Size = new System.Drawing.Size(146, 20);
-            this.dTP_DateOrder.TabIndex = 6;
-            this.dTP_DateOrder.Value = new System.DateTime(2015, 10, 7, 22, 51, 11, 34);
-            this.dTP_DateOrder.ValueChanged += new System.EventHandler(this.dTP_DateOrder_ValueChanged);
-            // 
-            // tB_RComment
-            // 
-            this.tB_RComment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_RComment.Location = new System.Drawing.Point(99, 133);
-            this.tB_RComment.Multiline = true;
-            this.tB_RComment.Name = "tB_RComment";
-            this.tB_RComment.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tB_RComment.Size = new System.Drawing.Size(622, 269);
-            this.tB_RComment.TabIndex = 19;
-            this.tB_RComment.WordWrap = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 136);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(57, 13);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "Коментар";
             // 
             // WindowOrderForm
             // 

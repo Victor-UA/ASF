@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -139,26 +140,30 @@ namespace ASF.Documents
                 MainForm.toolStripStatusOwner.Text = value;
             }
         }
-        public string TotalCost
+        public decimal TotalCost
         {
             get
             {
-                return MainForm.tB_TotalCost.Text;
+                return (decimal)MainForm.tB_TotalCost.Tag;
             }
             set
             {
-                MainForm.tB_TotalCost.Text = value;
+                MainForm.tB_TotalCost.Tag = value;
+                MainForm.tB_TotalCost.Text = string.Format(CultureInfo.InvariantCulture, "{0:#,0.00}", value);
+                MainForm.tB_TotalCost.Text = MainForm.tB_TotalCost.Text.Replace(",", " ");
             }
         }
-        public string TotalPrice
+        public decimal TotalPrice
         {
             get
             {
-                return MainForm.tB_TotalPrice.Text;
+                return (decimal)MainForm.tB_TotalPrice.Tag;
             }
             set
             {
-                MainForm.tB_TotalPrice.Text = value;
+                MainForm.tB_TotalPrice.Tag = value;
+                MainForm.tB_TotalPrice.Text = string.Format(CultureInfo.InvariantCulture, "{0:#,0.00}", value);
+                MainForm.tB_TotalPrice.Text = MainForm.tB_TotalPrice.Text.Replace(",", " ");
             }
         }
         public string RComment
@@ -231,8 +236,8 @@ namespace ASF.Documents
                     MainForm.Text = OrderNo;
                     AgreementNo = dt.Rows[0]["AgreementNo"].ToString();
                     Customer = dt.Rows[0]["VCUSTOMERNAME"].ToString();
-                    TotalCost = "";
-                    TotalPrice = dt.Rows[0]["TOTALPRICE"].ToString();
+                    TotalCost = 0;
+                    TotalPrice = (decimal)dt.Rows[0]["TOTALPRICE"];
                     Currency = dt.Rows[0]["VCURRENCYNAME"].ToString();
                     RComment = dt.Rows[0]["RCOMMENT"].ToString();
                     Owner = dt.Rows[0]["VMANAGERNAME"].ToString();

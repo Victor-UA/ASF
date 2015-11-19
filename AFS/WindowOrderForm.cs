@@ -132,10 +132,10 @@ order by osr.changedate
             }
             set
             {
-                _isChanged = value;              
+                _isChanged = value;
+                CheckFieldsMain();
                 toolStripStatusIsChanged.Text = value ? "Змінено" : "";
                 toolStripStatusIsChanged.ForeColor = CanBeSaved ? Color.DarkGreen : Color.DarkRed;
-                CheckFieldsMain();
             }
         }
         private bool _CanBeSaved = true;
@@ -206,26 +206,40 @@ order by osr.changedate
         private void tB_TotalCost_TextChanged(object sender, EventArgs e)
         {
             isChanged = true;
+            try
+            {
+                tB_TotalCost.Tag = Convert.ToDecimal(tB_TotalCost.Text);
+            }
+            catch { }
+        }
+        private void tB_TotalCost_Enter(object sender, EventArgs e)
+        {
+            tB_TotalCost.Text = tB_TotalCost.Text.Replace(" ", "");
+        }
+        private void tB_TotalCost_Leave(object sender, EventArgs e)
+        {
+            Document.TotalCost = (decimal)tB_TotalCost.Tag;
         }
         private void tB_TotalPrice_TextChanged(object sender, EventArgs e)
         {
             isChanged = true;
+            try
+            {
+                tB_TotalPrice.Tag = Convert.ToDecimal(tB_TotalPrice.Text);
+            }
+            catch { }
+        }
+        private void tB_TotalPrice_Enter(object sender, EventArgs e)
+        {
+            tB_TotalPrice.Text = tB_TotalPrice.Text.Replace(" ", "");
+        }
+        private void tB_TotalPrice_Leave(object sender, EventArgs e)
+        {
+            Document.TotalPrice = (decimal)tB_TotalPrice.Tag;
         }
         private void tB_Currency_TextChanged(object sender, EventArgs e)
         {
             isChanged = true;
-        }
-
-        private void tB_TotalPrice_Leave(object sender, EventArgs e)
-        {
-            //MessageBox.Show(string.Format(CultureInfo.InvariantCulture, "{0:0,0}", Convert.ToSingle(tB_TotalPrice.Text)));
-            tB_TotalPrice.Text = string.Format(CultureInfo.InvariantCulture,"{0:0,0}", Convert.ToDecimal(tB_TotalPrice.Text));
-            tB_TotalPrice.Text = tB_TotalPrice.Text.Replace(",", " ");
-        }
-
-        private void tB_TotalPrice_Enter(object sender, EventArgs e)
-        {
-            tB_TotalPrice.Text = tB_TotalPrice.Text.Replace(" ", "");
         }
     }
 }
