@@ -29,11 +29,11 @@ namespace AFS
             }
         }
 
-        private class MainFormGridController : GridController
+        private class OrdersGridController : GridController
         {
             private FBClient Client;
             private SourceGrid.Grid Grid;
-            public MainFormGridController(SourceGrid.Grid grid, DataTable dt, string key, FBClient client)
+            public OrdersGridController(SourceGrid.Grid grid, DataTable dt, string key, FBClient client)
             {
                 Client = client;
                 Grid = grid;
@@ -55,8 +55,8 @@ namespace AFS
             if (!(bool)page.Tag)
             {
                 DataTable dt = Client.QueryRecordsList(qryOrders);
-                grid1.Controller.AddController(new MainFormGridController(grid1, dt, "orderid", Client));
-                SourceGridUtilities.Grid.Fill(grid1, dt, "orderid", new Dictionary(new List<dynamic>
+                OrdersGrid.Controller.AddController(new OrdersGridController(OrdersGrid, dt, "orderid", Client));
+                SourceGridUtilities.Grid.Fill(OrdersGrid, dt, "orderid", new Dictionary(new List<dynamic>
                 {
                     "Номер замовлення", "orderno",
                     "Дата готовності", "dateorder",
@@ -71,11 +71,61 @@ namespace AFS
             @"
 select * from vtorders
             ";
+        private string qryCustomers { get; set; } =
+            @"
+select * from getcustomers
+            ";
+        //Скрипти SQL
 
         private void toolStripButton_New_Click(object sender, EventArgs e)
         {
-            idocWindowOrder Order = new idocWindowOrder(Client);
-            Order.Show();
+            switch (tabList1.SelectedPage.Text)
+            {
+                case "Замовлення":
+                    idocWindowOrder Order = new idocWindowOrder(Client);
+                    Order.Show();
+                    break;
+                case "Клієнти":
+                    break;
+                case "Співробітники":
+                    break;
+            }
+        }
+
+        private class CustomersGridController : GridController
+        {
+            private FBClient Client;
+            private SourceGrid.Grid Grid;
+            public CustomersGridController(SourceGrid.Grid grid, DataTable dt, string key, FBClient client)
+            {
+                Client = client;
+                Grid = grid;
+            }
+            public override void OnDoubleClick(SourceGrid.CellContext sender, EventArgs e)
+            {
+                if (sender.Position.Row > 0)
+                {
+                    SourceGridUtilities.RowTag rt = (SourceGridUtilities.RowTag)Grid.Rows[sender.Position.Row].Tag;
+                    //idocWindowOrder Order = new idocWindowOrder(rt.Key.ToString(), Client);
+                    //Order.Show();
+                }
+            }
+        }
+        private void tabListPageCustomers_Paint(object sender, PaintEventArgs e)
+        {
+            TabListPage page = (TabListPage)sender;
+            if (!(bool)page.Tag)
+            {
+                DataTable dt = Client.QueryRecordsList(qryCustomers);
+                CustomersGrid.Controller.AddController(new CustomersGridController(CustomersGrid, dt, "customerid", Client));
+                SourceGridUtilities.Grid.Fill(CustomersGrid, dt, "customerid", new Dictionary(new List<dynamic>
+                {
+                    "Найменування", "Name",
+                    "Адреса", "adress",
+                    "Номер телефону", "phone"
+                }));
+                page.Tag = true;
+            }
         }
     }
 }

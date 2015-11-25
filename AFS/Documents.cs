@@ -149,8 +149,9 @@ namespace ASF.Documents
             set
             {
                 MainForm.tB_TotalCost.Tag = value;
-                MainForm.tB_TotalCost.Text = string.Format(CultureInfo.InvariantCulture, "{0:#,0.00}", value);
-                MainForm.tB_TotalCost.Text = MainForm.tB_TotalCost.Text.Replace(",", " ");
+                string text = string.Format(CultureInfo.InvariantCulture, "{0:#,0.00}", value);
+                text = text.Replace(",", " ");
+                MainForm.tB_TotalCost.Text = text;
             }
         }
         public decimal TotalPrice
@@ -162,8 +163,9 @@ namespace ASF.Documents
             set
             {
                 MainForm.tB_TotalPrice.Tag = value;
-                MainForm.tB_TotalPrice.Text = string.Format(CultureInfo.InvariantCulture, "{0:#,0.00}", value);
-                MainForm.tB_TotalPrice.Text = MainForm.tB_TotalPrice.Text.Replace(",", " ");
+                string text = string.Format(CultureInfo.InvariantCulture, "{0:#,0.00}", value);
+                text = text.Replace(",", " ");
+                MainForm.tB_TotalPrice.Text = text;
             }
         }
         public string RComment

@@ -210,15 +210,27 @@ order by osr.changedate
             {
                 tB_TotalCost.Tag = Convert.ToDecimal(tB_TotalCost.Text);
             }
-            catch { }
+            catch
+            {
+                tB_TotalCost.Tag = 0;
+            }
         }
         private void tB_TotalCost_Enter(object sender, EventArgs e)
         {
+            tB_TotalCost.TextChanged -= tB_TotalCost_TextChanged;
             tB_TotalCost.Text = tB_TotalCost.Text.Replace(" ", "");
+            tB_TotalCost.TextChanged += tB_TotalCost_TextChanged;
         }
         private void tB_TotalCost_Leave(object sender, EventArgs e)
         {
-            Document.TotalCost = (decimal)tB_TotalCost.Tag;
+            try
+            {
+                Document.TotalCost = (decimal)tB_TotalCost.Tag;
+            }
+            catch
+            {
+                Document.TotalCost = 0;
+            }
         }
         private void tB_TotalPrice_TextChanged(object sender, EventArgs e)
         {
@@ -227,15 +239,27 @@ order by osr.changedate
             {
                 tB_TotalPrice.Tag = Convert.ToDecimal(tB_TotalPrice.Text);
             }
-            catch { }
+            catch
+            {
+                tB_TotalPrice.Tag = 0;
+            }
         }
         private void tB_TotalPrice_Enter(object sender, EventArgs e)
         {
+            tB_TotalPrice.TextChanged -= tB_TotalPrice_TextChanged;
             tB_TotalPrice.Text = tB_TotalPrice.Text.Replace(" ", "");
+            tB_TotalPrice.TextChanged += tB_TotalPrice_TextChanged;
         }
         private void tB_TotalPrice_Leave(object sender, EventArgs e)
         {
-            Document.TotalPrice = (decimal)tB_TotalPrice.Tag;
+            try
+            {
+                Document.TotalPrice = (decimal)tB_TotalPrice.Tag;
+            }
+            catch
+            {
+                Document.TotalPrice = 0;
+            }
         }
         private void tB_Currency_TextChanged(object sender, EventArgs e)
         {
