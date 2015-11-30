@@ -28,11 +28,7 @@ namespace ASF.Documents
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent(idocWindowOrder document)
-        {
-            Document = document;
-            InitializeComponent();
-        }
+        
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -478,7 +474,7 @@ namespace ASF.Documents
             // toolStripButton_Save
             // 
             this.toolStripButton_Save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_Save.Image = global::AFS.Properties.Resources.Save;
+            this.toolStripButton_Save.Image = AFS.Properties.Resources.Save;
             this.toolStripButton_Save.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton_Save.Name = "toolStripButton_Save";
             this.toolStripButton_Save.Size = new System.Drawing.Size(23, 22);

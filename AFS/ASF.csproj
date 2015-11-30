@@ -76,8 +76,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Documents\DocumentForms\CustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documents\DocumentForms\CustomerForm.Designer.cs">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Documents\DocumentForms\DocumentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GridController.cs" />
-    <Compile Include="Documents.cs" />
+    <Compile Include="Documents\Documents.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,10 +100,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="WindowOrderForm.cs">
+    <Compile Include="Documents\DocumentForms\WindowOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowOrderForm.Designer.cs">
+    <Compile Include="Documents\DocumentForms\WindowOrderForm.Designer.cs">
       <DependentUpon>WindowOrderForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
@@ -105,7 +114,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="WindowOrderForm.resx">
+    <EmbeddedResource Include="Documents\DocumentForms\WindowOrderForm.resx">
       <DependentUpon>WindowOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

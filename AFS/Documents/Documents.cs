@@ -12,45 +12,112 @@ using Victors;
 
 namespace ASF.Documents
 {
-    public interface idocDocument
+    public interface idoc
     {
         string Type { get; }
         string Key { get; }
-        bool isChanged { get; }
         bool isCreated { get; }
+        bool isChanged { get; }
+        void Create();
         void Show();
+        void Close();
         void Save();
         void Delete();
     }
-    
-    public class idocWindowOrder : idocDocument
+    public class idocDocument : idoc
     {
-        private void Constructor(string key, FBClient client)
+        protected virtual void Constructor(string key, FBClient client, string type)
         {
+            Type = type;
             Key = key;
             Client = client;
-            MainForm = new WindowOrderForm(this);
             Load();
         }
-        public idocWindowOrder(string key, FBClient client)
+        
+        public idocDocument(string key, FBClient client, string type)
         {
-            Constructor(key, client);
+            Constructor(key, client, type);
         }
-        public idocWindowOrder(int key, FBClient client)
+        public idocDocument(int key, FBClient client, string type)
         {
-            Constructor(key.ToString(), client);
+            Constructor(key.ToString(), client, type);
         }
-        public idocWindowOrder(FBClient client)
+        public idocDocument(FBClient client, string type)
         {
-            Constructor("", client);
+            Constructor("", client, type);
         }
 
+        public string Type { get; protected set; }
+        public string Key { get; protected set; }
+
+        public FBClient Client { get; private set; }
+
+        virtual public void Load() { }
+
+        public virtual bool isCreated { get; protected set; }
+        public virtual bool isChanged { get; protected set; }
+
+        virtual public void Create() { }
+        virtual public void Show() { }
+        virtual public void Close() { }
+        virtual public void Save() { }
+        virtual public void Delete() { }
+    }
+    public class idocWindowOrder : idocDocument
+    {
+        protected override void Constructor(string key, FBClient client, string type)
+        {
+            MainForm = new WindowOrderForm(this);
+            base.Constructor(key, client, type);
+        }
+        public idocWindowOrder(string key, FBClient client) : base(key, client, "idocWindowOrder") { }
+        public idocWindowOrder(int key, FBClient client) : base(key, client, "idocWindowOrder") { }
+        public idocWindowOrder(FBClient client) : base("", client, "idocWindowOrder") { }
+        public override void Load()
+        {
+            if (Key == "")
+            {
+                Create();
+
+                AgreementDate = DateTime.Now;
+                ProdDate = DateTime.MinValue;
+                DateOrder = DateTime.MinValue;
+
+                MainForm.Text = "Нове замовлення";
+                Currency = "грн.";
+                Owner = "Administrator";
+            }
+            else
+            {
+                DataTable dt = Client.QueryRecordsList(qryOrderLoad.ToString().Replace(":orderid", Key));
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    AgreementDate = dt.Rows[0]["AgreementDate"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["AgreementDate"];
+                    ProdDate = dt.Rows[0]["ProdDate"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["ProdDate"];
+                    DateOrder = dt.Rows[0]["dateorder"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["dateorder"];
+
+                    OrderNo = dt.Rows[0]["orderno"].ToString();
+                    MainForm.Text = OrderNo;
+                    AgreementNo = dt.Rows[0]["AgreementNo"].ToString();
+                    Customer = new idocCustomer(dt.Rows[0]["CUSTOMERID"].ToString(), Client);
+                    //!Тимчасово
+                    MainForm.tB_Customer.Text = dt.Rows[0]["VCUSTOMERNAME"].ToString(); 
+                    TotalCost = 0;
+                    TotalPrice = (decimal)dt.Rows[0]["TOTALPRICE"];
+                    Currency = dt.Rows[0]["VCURRENCYNAME"].ToString();
+                    RComment = dt.Rows[0]["RCOMMENT"].ToString();
+                    Owner = dt.Rows[0]["VMANAGERNAME"].ToString();
+
+                    isCreated = true;
+                    isChanged = false;
+
+                    MainForm.OrderStatesLoad();
+                }
+            }
+        }
 
         private WindowOrderForm MainForm;
-
-        public string Type { get; private set; } = "idocWindowOrder";
-        public string Key { get; private set; }
-
+        
         public string OrderNo
         {
             get
@@ -95,15 +162,17 @@ namespace ASF.Documents
                 MainForm.dTP_AgreementDate.Value = value;
             }
         }
-        public string Customer
+        private idocCustomer _Customer;
+        public idocCustomer Customer
         {
             get
             {
-                return MainForm.tB_Customer.Text;
+                return _Customer;
             }
             set
             {
-                MainForm.tB_Customer.Text = value;
+                MainForm.tB_Customer.Text = value.Name;
+                _Customer = value;
             }
         }
         public string Currency
@@ -180,78 +249,38 @@ namespace ASF.Documents
             }
         }
 
-        public bool isCreated
+        public override bool isCreated
         {
             get
             {
                 return MainForm.isCreated;
             }
-            private set
+            protected set
             {
                 MainForm.isCreated = value;
             }
         }
-        public bool isChanged
+        public override bool isChanged
         {
             get
             {
                 return MainForm.isChanged;
             }
-            private set
+            protected set
             {
                 MainForm.isChanged = value;
             }
         }
-        public FBClient Client { get; private set; }
 
-        public void Create()
+        public override void Create()
         {
             long key = Client.QueryValue(@"select gen_id(gen_orders, 1) from rdb$database");
             Key = key.ToString();
             isCreated = false;
             isChanged = true;
         }
-        public void Load()
-        {
-            if (Key == "")
-            {
-                Create();
-
-                AgreementDate = DateTime.Now;
-                ProdDate = DateTime.MinValue;
-                DateOrder = DateTime.MinValue;
-
-                MainForm.Text = "Нове замовлення";
-                Currency = "грн.";
-                Owner = "Administrator";
-            }
-            else
-            {
-                DataTable dt = Client.QueryRecordsList(qryOrderLoad.ToString().Replace(":orderid", Key));
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    AgreementDate = dt.Rows[0]["AgreementDate"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["AgreementDate"];
-                    ProdDate = dt.Rows[0]["ProdDate"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["ProdDate"];
-                    DateOrder = dt.Rows[0]["dateorder"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["dateorder"];
-
-                    OrderNo = dt.Rows[0]["orderno"].ToString();
-                    MainForm.Text = OrderNo;
-                    AgreementNo = dt.Rows[0]["AgreementNo"].ToString();
-                    Customer = dt.Rows[0]["VCUSTOMERNAME"].ToString();
-                    TotalCost = 0;
-                    TotalPrice = (decimal)dt.Rows[0]["TOTALPRICE"];
-                    Currency = dt.Rows[0]["VCURRENCYNAME"].ToString();
-                    RComment = dt.Rows[0]["RCOMMENT"].ToString();
-                    Owner = dt.Rows[0]["VMANAGERNAME"].ToString();
-
-                    isCreated = true;
-                    isChanged = false;
-
-                    MainForm.OrderStatesLoad();
-                }
-            }
-        }
-        public void Save()
+        
+        public override void Save()
         {
             if (isCreated)
             {
@@ -263,26 +292,25 @@ namespace ASF.Documents
             }
             MessageBox.Show("Збереження...");
         }
-        public void Delete()
+        public override void Delete()
         {
             MessageBox.Show("Видалення...");
         }
 
-        public void Show()
+        public override void Show()
         {
             MainForm.Visible = true;
         }
-        public void Close()
+        public override void Close()
         {
             MainForm.Close();
         }
 
-        //Скрипти SQL
+        #region Скрипти SQL
         private string qryOrderLoad { get; set; } =
             @"
 select * from vtorders o where o.orderid=:orderid
             ";
-        //Скрипти SQL
 
         private string qryInsertIntoOrders { get; set; } =
             @"
@@ -398,5 +426,28 @@ update ORDERS set
     ACCOUNTID = :ACCOUNTID
 where ORDERID = :ORDERID
             ";
+        #endregion Скрипти SQL
     }
+
+    public class idocCustomer : idocDocument
+    {
+        protected override void Constructor(string key, FBClient client, string type)
+        {
+            MainForm = new CustomerForm(this);
+            base.Constructor(key, client, type);
+        }
+        public idocCustomer(string key, FBClient client) : base(key, client, "idocCustomer") { }
+        public idocCustomer(int key, FBClient client) : base(key, client, "idocCustomer") { }
+        public idocCustomer(FBClient client) : base("", client, "idocCustomer") { }
+
+        public override void Load()
+        {
+
+        }
+
+        public string Name { get; set; }
+
+        private CustomerForm MainForm;
+    }
+    
 }

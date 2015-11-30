@@ -13,12 +13,14 @@ using System.Globalization;
 
 namespace ASF.Documents
 {
-    public partial class WindowOrderForm : Form
+    public partial class WindowOrderForm : DocumentForm
     {
-        public WindowOrderForm(idocWindowOrder document)
+        public WindowOrderForm(idocWindowOrder document) : base()
         {
-            InitializeComponent(document);
+            Document = document;
+            InitializeComponent();
         }
+        private idocWindowOrder Document { get; set; }
         private void WindowOrderForm_Load(object sender, EventArgs e)
         {
         }
@@ -80,7 +82,7 @@ namespace ASF.Documents
             isChanged = true;
         }
 
-        //Запити SQL
+        #region Запити SQL
         private string qryOrderStates { get; set; } =
             @"
 select
@@ -96,10 +98,9 @@ from orderstatesreg osr
 where osr.orderid=:orderid
 order by osr.changedate
             ";
-        //Запити SQL
+        #endregion
 
-        private idocWindowOrder Document { get; set; }
-        public  bool isCreated { get; set; } = true;
+        //public override bool isCreated { get; set; } = true;
         private bool _ReadOnly = false;
         public  bool ReadOnly
         {
@@ -123,8 +124,9 @@ order by osr.changedate
                 }
             }
         }
+
         private bool _isChanged;
-        public  bool isChanged
+        public override bool isChanged
         {
             get
             {
@@ -138,6 +140,7 @@ order by osr.changedate
                 toolStripStatusIsChanged.ForeColor = CanBeSaved ? Color.DarkGreen : Color.DarkRed;
             }
         }
+
         private bool _CanBeSaved = true;
         public  bool CanBeSaved
         {
@@ -151,6 +154,7 @@ order by osr.changedate
                 зберегтиToolStripMenuItem.Enabled = value;
             }
         }
+
         private void CheckFieldsMain()
         {
             CanBeSaved = true;
