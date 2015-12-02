@@ -60,13 +60,14 @@ namespace AFS
                 {
                     "Номер замовлення", "orderno",
                     "Дата готовності", "dateorder",
-                    "Стан", "VORDERSTATENAME"
+                    "Стан", "VORDERSTATENAME",
+                    "Клієнт", "VCUSTOMERNAME"
                 }));
                 page.Tag = true;
             }
         }
 
-        //Скрипти SQL
+        #region Скрипти SQL
         private string qryOrders { get; set; } = 
             @"
 select * from vtorders
@@ -75,7 +76,7 @@ select * from vtorders
             @"
 select * from getcustomers
             ";
-        //Скрипти SQL
+        #endregion
 
         private void toolStripButton_New_Click(object sender, EventArgs e)
         {
@@ -86,6 +87,8 @@ select * from getcustomers
                     Order.Show();
                     break;
                 case "Клієнти":
+                    idocCustomer Customer = new idocCustomer(Client);
+                    Customer.Show();
                     break;
                 case "Співробітники":
                     break;
@@ -106,8 +109,8 @@ select * from getcustomers
                 if (sender.Position.Row > 0)
                 {
                     SourceGridUtilities.RowTag rt = (SourceGridUtilities.RowTag)Grid.Rows[sender.Position.Row].Tag;
-                    //idocWindowOrder Order = new idocWindowOrder(rt.Key.ToString(), Client);
-                    //Order.Show();
+                    idocCustomer Customer = new idocCustomer(rt.Key.ToString(), Client);
+                    Customer.Show();
                 }
             }
         }

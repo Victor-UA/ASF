@@ -21,9 +21,19 @@ namespace ASF.Documents
             InitializeComponent();
         }
         private idocWindowOrder Document { get; set; }
-        private void WindowOrderForm_Load(object sender, EventArgs e)
+        private void WindowOrderForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (isChanged)
+            {
+                dynamic mb = MessageBox.Show("Зберегти зміни?", "Увага!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+                if (mb == DialogResult.Yes)
+                {
+                    Document.Save();
+                }
+                e.Cancel = mb == DialogResult.Cancel;
+            }
         }
+
         private class OrderStatesGridController : GridController
         {
             private FBClient Client;
@@ -61,18 +71,6 @@ namespace ASF.Documents
         {
             Document.Save();
         }
-        private void WindowOrderForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (isChanged)
-            {
-                dynamic mb = MessageBox.Show("Зберегти зміни?", "Увага!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
-                if (mb == DialogResult.Yes)
-                {
-                    Document.Save();
-                }
-                e.Cancel = mb == DialogResult.Cancel;
-            }
-        }
         private void dTP_DateOrder_ValueChanged(object sender, EventArgs e)
         {
             isChanged = true;
@@ -101,7 +99,6 @@ order by osr.changedate
         #endregion
 
         //public override bool isCreated { get; set; } = true;
-        private bool _ReadOnly = false;
         public  bool ReadOnly
         {
             get
@@ -124,8 +121,6 @@ order by osr.changedate
                 }
             }
         }
-
-        private bool _isChanged;
         public override bool isChanged
         {
             get
@@ -140,8 +135,6 @@ order by osr.changedate
                 toolStripStatusIsChanged.ForeColor = CanBeSaved ? Color.DarkGreen : Color.DarkRed;
             }
         }
-
-        private bool _CanBeSaved = true;
         public  bool CanBeSaved
         {
             get
@@ -152,6 +145,7 @@ order by osr.changedate
             {
                 _CanBeSaved = value;
                 зберегтиToolStripMenuItem.Enabled = value;
+                toolStripButton_Save.Enabled = value;
             }
         }
 
@@ -207,6 +201,7 @@ order by osr.changedate
         {
             isChanged = true;
         }
+
         private void tB_TotalCost_TextChanged(object sender, EventArgs e)
         {
             isChanged = true;
@@ -236,6 +231,7 @@ order by osr.changedate
                 Document.TotalCost = 0;
             }
         }
+
         private void tB_TotalPrice_TextChanged(object sender, EventArgs e)
         {
             isChanged = true;
@@ -265,6 +261,7 @@ order by osr.changedate
                 Document.TotalPrice = 0;
             }
         }
+
         private void tB_Currency_TextChanged(object sender, EventArgs e)
         {
             isChanged = true;
@@ -273,6 +270,11 @@ order by osr.changedate
         private void toolStripButton_Save_Click(object sender, EventArgs e)
         {
             Document.Save();
+        }
+
+        private void tB_Customer_Click(object sender, EventArgs e)
+        {
+            Document.Customer.Show();
         }
     }
 }

@@ -39,9 +39,9 @@
             this.tabList1 = new Cyotek.Windows.Forms.TabList();
             this.tabListPageOrders = new Cyotek.Windows.Forms.TabListPage();
             this.tabListPageCustomers = new Cyotek.Windows.Forms.TabListPage();
-            this.tabListPageEmployee = new Cyotek.Windows.Forms.TabListPage();
             this.CustomersPanel = new System.Windows.Forms.Panel();
             this.CustomersGrid = new SourceGrid.Grid();
+            this.tabListPageEmployee = new Cyotek.Windows.Forms.TabListPage();
             this.toolStrip1.SuspendLayout();
             this.OrdersPanel.SuspendLayout();
             this.tabList1.SuspendLayout();
@@ -150,16 +150,6 @@
             this.tabListPageCustomers.Text = "Клієнти";
             this.tabListPageCustomers.Paint += new System.Windows.Forms.PaintEventHandler(this.tabListPageCustomers_Paint);
             // 
-            // tabListPageEmployee
-            // 
-            this.tabListPageEmployee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabListPageEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabListPageEmployee.Name = "tabListPageEmployee";
-            this.tabListPageEmployee.Size = new System.Drawing.Size(658, 461);
-            this.tabListPageEmployee.TabIndex = 2;
-            this.tabListPageEmployee.Tag = "idocEmployee";
-            this.tabListPageEmployee.Text = "Співробітники";
-            // 
             // CustomersPanel
             // 
             this.CustomersPanel.Controls.Add(this.CustomersGrid);
@@ -182,6 +172,16 @@
             this.CustomersGrid.TabIndex = 1;
             this.CustomersGrid.TabStop = true;
             this.CustomersGrid.ToolTipText = "";
+            // 
+            // tabListPageEmployee
+            // 
+            this.tabListPageEmployee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabListPageEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabListPageEmployee.Name = "tabListPageEmployee";
+            this.tabListPageEmployee.Size = new System.Drawing.Size(42, 192);
+            this.tabListPageEmployee.TabIndex = 2;
+            this.tabListPageEmployee.Tag = "idocEmployee";
+            this.tabListPageEmployee.Text = "Співробітники";
             // 
             // MainForm
             // 
