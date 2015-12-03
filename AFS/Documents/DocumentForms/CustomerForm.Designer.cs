@@ -76,12 +76,12 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.panel1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(584, 398);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(584, 391);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 24);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(584, 423);
+            this.toolStripContainer1.Size = new System.Drawing.Size(584, 416);
             this.toolStripContainer1.TabIndex = 3;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -118,7 +118,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(584, 398);
+            this.panel1.Size = new System.Drawing.Size(584, 391);
             this.panel1.TabIndex = 0;
             // 
             // tB_RComment
@@ -126,11 +126,11 @@
             this.tB_RComment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_RComment.Location = new System.Drawing.Point(108, 263);
+            this.tB_RComment.Location = new System.Drawing.Point(107, 263);
             this.tB_RComment.Multiline = true;
             this.tB_RComment.Name = "tB_RComment";
             this.tB_RComment.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tB_RComment.Size = new System.Drawing.Size(462, 130);
+            this.tB_RComment.Size = new System.Drawing.Size(462, 124);
             this.tB_RComment.TabIndex = 10;
             this.tB_RComment.WordWrap = false;
             this.tB_RComment.TextChanged += new System.EventHandler(this.tB_RComment_TextChanged);
@@ -359,7 +359,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusIsChanged,
             this.toolStripStatusOwner});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 447);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 440);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(584, 22);
             this.statusStrip1.TabIndex = 2;
@@ -417,12 +417,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 469);
+            this.ClientSize = new System.Drawing.Size(584, 462);
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MinimumSize = new System.Drawing.Size(600, 294);
             this.Name = "CustomerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CustomerForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CustomerForm_FormClosing);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);

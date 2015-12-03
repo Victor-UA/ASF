@@ -77,6 +77,7 @@ namespace ASF.Documents
         {
             if (Key == "")
             {
+                isCreated = false;
                 Create();
 
                 AgreementDate = DateTime.Now;
@@ -286,7 +287,7 @@ namespace ASF.Documents
             }
             catch (ObjectDisposedException)
             {
-                MainForm = new CustomerForm(this);
+                MainForm = new WindowOrderForm(this);
                 Load();
                 MainForm.Visible = true;
             }
@@ -453,6 +454,7 @@ where ORDERID = :ORDERID
         {
             if (Key == "")
             {
+                isCreated = false;
                 Create();
                 MainForm.Text = "Нове замовлення";
                 Owner = "Administrator";
@@ -661,22 +663,38 @@ where ORDERID = :ORDERID
                 MainForm.Visible = true;
             }
         }
+        public override void Save()
+        {
+
+            string SQL = qryCustomerSave;
+            try
+            {
+                SQL = SQL.Replace(":customerid", Key.ToString());
+                SQL = SQL.Replace(":name", "'" + Name.ToString() + "'");
+                SQL = SQL.Replace(":_phone", Phone.ToString() == "" ? "null" : "'" + Phone.ToString() + "'");
+                SQL = SQL.Replace(":country", "'" + Country.ToString() + "'");
+                SQL = SQL.Replace(":region", "'" + Region.ToString() + "'");
+                SQL = SQL.Replace(":district", "'" + District.ToString() + "'");
+                SQL = SQL.Replace(":_address", "'" + Address.ToString() + "'");
+                SQL = SQL.Replace(":postalcode", "'" + PostalCode.ToString() + "'");
+                SQL = SQL.Replace(":_email", "'" + Email.ToString() + "'");
+                SQL = SQL.Replace(":website", "'" + WebSite.ToString() + "'");
+                SQL = SQL.Replace(":rcomment", "'" + RComment.ToString() + "'");
+                SQL = SQL.Replace(":ownerid", "0"); //Тимчасово!
+                SQL = SQL.Replace(":city", "'" + City.ToString() + "'");
+                Client.ExecuteSQLCommit(SQL);
+
+                isChanged = false;
+                isCreated = true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message + "\n");
+            }
+        }
         public override void Close()
         {
             MainForm.Close();
-        }
-
-        public override void Save()
-        {
-            if (isCreated)
-            {
-                
-            }
-            else
-            {
-                
-            }
-            MessageBox.Show("Збереження...");
         }
         public override void Delete()
         {
@@ -694,6 +712,160 @@ from vtcustomers vc
   join persons p on p.personid = e.personid
   ) on e.empid = vc.ownerid
 where vc.customerid=:customerid
+            ";
+        private string qryCustomerSave { get; set; } =
+            @"
+execute block
+as
+  declare variable isCreated bool;
+  declare variable guidhi num_int64;
+  declare variable guidlo num_int64;
+  declare variable contragid id;
+  declare variable phoneid id;
+  declare variable existing_phoneid id;
+  declare variable addressid id;
+  declare variable emailid id;
+Begin
+
+  select
+    ca.contragid,
+    ph.phoneid,
+    ad.addressid,
+    ea.emailid
+  from customers cu
+    join (contragents ca
+    left join phones ph on ph.contragid = ca.contragid
+    left join addresses ad on ad.contragid = ca.contragid
+    left join emailaddresses ea on ea.contragid = ca.contragid
+    ) on ca.contragid = cu.contragid
+  where cu.customerid = :customerid
+  into :contragid, :phoneid, :addressid, :emailid;
+
+  isCreated = iif(:contragid is null, 0, 1);
+
+  if (:contragid is null) then begin
+    select
+      cast(ng.guidhi as num_int64),
+      cast(ng.guidlo as num_int64)
+    from new_guid ng
+    into :guidhi, :guidlo;
+
+    select
+      gen_id(gen_contragents, 1)
+    from rdb$database
+    into :contragid;
+  end
+
+  update or insert into contragents (contragid,name,persontype,website,guidhi,guidlo,rcomment)
+  values (
+    :contragid,
+    :name,
+    0,
+    :website,
+    :guidhi,
+    :guidlo,
+    :rcomment
+  )
+  matching(contragid);
+
+  if (:_phone is null) then
+    update contragents ca
+    set ca.mainphoneid = null
+    where ca.contragid=:contragid;
+  else begin
+    if (:phoneid is null) then
+      select
+        gen_id(gen_phone, 1)
+      from rdb$database
+      into :phoneid;
+    else begin
+      select
+        ph.phoneid
+      from phones ph
+      where ph.phone=:_phone
+      into :existing_phoneid;
+
+      if (:existing_phoneid <> :phoneid) then
+        phoneid = :existing_phoneid;
+    end
+
+    update or insert into phones (phoneid,contragid,phtypeid,phone)
+    values (
+      :phoneid,
+      :contragid,
+      1,
+      :_phone
+    )
+    matching(phoneid);
+
+    update contragents ca
+    set ca.mainphoneid = :phoneid
+    where ca.contragid = :contragid;
+  end
+
+  if (:addressid is null) then begin
+    select
+      cast(ng.guidhi as num_int64),
+      cast(ng.guidlo as num_int64)
+    from new_guid ng
+    into :guidhi, :guidlo;
+
+    select
+      gen_id(gen_addresses, 1)
+    from rdb$database
+    into :addressid;
+  end
+
+  update or insert into addresses (addressid,contragid,addresstypeid,city,country,address,guidhi,guidlo,region,district,postalcode)
+  values (
+    :addressid,
+    :contragid,
+    2,
+    :city,
+    :country,
+    :_address,
+    :guidhi,
+    :guidlo,
+    :region,
+    :district,
+    :postalcode
+  );
+
+  if (:emailid is null) then begin
+    select
+      gen_id(gen_emailaddresses, 1)
+    from rdb$database
+    into :emailid;
+  end
+
+  update or insert into emailaddresses (emailid,contragid,email)
+  values (
+    :emailid,
+    :contragid,
+    :_email
+  )
+  matching(emailid);
+
+  if (isCreated = 0) then begin
+    select
+      cast(ng.guidhi as num_int64),
+      cast(ng.guidlo as num_int64)
+    from new_guid ng
+    into :guidhi, :guidlo;
+  end
+  update or insert into customers (customerid,contragid,payer,ownerid,guidhi,guidlo,isseller)
+  values (
+    :customerid,
+    :contragid,
+    0,
+    :ownerid,
+    :guidhi,
+    :guidlo,
+    0
+  )
+  matching(customerid);
+
+End
             ";
         #endregion
 

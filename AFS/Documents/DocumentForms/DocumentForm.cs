@@ -10,7 +10,7 @@ namespace ASF.Documents
         protected bool _isChanged;
         protected bool _CanBeSaved = true;
 
-        public virtual bool isCreated { get; set; } = true;
+        public virtual bool isCreated { get; set; } = false;
         public virtual bool isChanged { get; set; }
     }
 }
