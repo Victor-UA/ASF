@@ -7,8 +7,8 @@
     <ProjectGuid>{F3666243-4549-4D1D-87CB-0E128D68F750}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AFS</RootNamespace>
-    <AssemblyName>AFS</AssemblyName>
+    <RootNamespace>ASF</RootNamespace>
+    <AssemblyName>ASF</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -76,6 +76,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Documents\Document Classes\idoc.cs" />
+    <Compile Include="Documents\Document Classes\idocCustomer.cs" />
+    <Compile Include="Documents\Document Classes\idocEmployee.cs" />
+    <Compile Include="Documents\Document Classes\idocWindowOrder.cs" />
+    <Compile Include="Documents\DocumentForms\EmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documents\DocumentForms\EmployeeForm.Designer.cs">
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Documents\DocumentForms\CustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,7 +96,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GridController.cs" />
-    <Compile Include="Documents\Documents.cs" />
+    <Compile Include="Documents\Document Classes\idocDocuments.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +116,9 @@
     <Compile Include="Documents\DocumentForms\WindowOrderForm.Designer.cs">
       <DependentUpon>WindowOrderForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Documents\DocumentForms\EmployeeForm.resx">
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Documents\DocumentForms\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,7 +163,7 @@
     <None Include="Resources\ico\NewDocument.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Save.bmp" />
+    <None Include="Resources\ico\Save.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

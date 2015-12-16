@@ -1,6 +1,6 @@
 ﻿namespace ASF.Documents
 {
-    partial class CustomerForm
+    partial class EmployeeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -347,7 +347,7 @@
             // toolStripButton_Save
             // 
             this.toolStripButton_Save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_Save.Image = global::AFS.Properties.Resources.Save;
+            this.toolStripButton_Save.Image = global::ASF.Properties.Resources.Save;
             this.toolStripButton_Save.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton_Save.Name = "toolStripButton_Save";
             this.toolStripButton_Save.Size = new System.Drawing.Size(23, 22);
@@ -413,7 +413,7 @@
             this.зберегтиToolStripMenuItem.Text = "Зберегти";
             this.зберегтиToolStripMenuItem.Click += new System.EventHandler(this.зберегтиToolStripMenuItem_Click);
             // 
-            // CustomerForm
+            // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -422,10 +422,10 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MinimumSize = new System.Drawing.Size(600, 294);
-            this.Name = "CustomerForm";
+            this.Name = "EmployeeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CustomerForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CustomerForm_FormClosing);
+            this.Text = "Працівник";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EmployeeForm_FormClosing);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();

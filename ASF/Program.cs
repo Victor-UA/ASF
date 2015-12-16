@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AFS
+namespace ASF
 {
     static class Program
     {
@@ -18,5 +18,8 @@ namespace AFS
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
         }
+        static public bool OrdersAreChanged { get; set; } = true;
+        static public bool CustomersAreChanged { get; set; } = true;
+        static public bool EmployeesAreChanged { get; set; } = true;
     }
 }

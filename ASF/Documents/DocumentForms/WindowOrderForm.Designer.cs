@@ -363,6 +363,7 @@ namespace ASF.Documents
             this.b_SelectCustomer.TabIndex = 5;
             this.b_SelectCustomer.Text = "...";
             this.b_SelectCustomer.UseVisualStyleBackColor = true;
+            this.b_SelectCustomer.Click += new System.EventHandler(this.b_SelectCustomer_Click);
             // 
             // label7
             // 
@@ -475,7 +476,7 @@ namespace ASF.Documents
             // toolStripButton_Save
             // 
             this.toolStripButton_Save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_Save.Image = global::AFS.Properties.Resources.Save;
+            this.toolStripButton_Save.Image = global::ASF.Properties.Resources.Save;
             this.toolStripButton_Save.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton_Save.Name = "toolStripButton_Save";
             this.toolStripButton_Save.Size = new System.Drawing.Size(23, 22);

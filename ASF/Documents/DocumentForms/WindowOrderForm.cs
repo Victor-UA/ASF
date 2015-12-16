@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AFS;
+using ASF;
 using Victors;
 using System.Globalization;
 
@@ -275,6 +275,11 @@ order by osr.changedate
         private void tB_Customer_Click(object sender, EventArgs e)
         {
             Document.Customer.Show();
+        }
+
+        private void b_SelectCustomer_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Вибір клієнта");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace AFS
+﻿namespace ASF
 {
     partial class MainForm
     {
@@ -41,13 +41,17 @@
             this.tabListPageCustomers = new Cyotek.Windows.Forms.TabListPage();
             this.CustomersPanel = new System.Windows.Forms.Panel();
             this.CustomersGrid = new SourceGrid.Grid();
-            this.tabListPageEmployee = new Cyotek.Windows.Forms.TabListPage();
+            this.tabListPageEmployees = new Cyotek.Windows.Forms.TabListPage();
+            this.EmployeesPanel = new System.Windows.Forms.Panel();
+            this.EmployeesGrid = new SourceGrid.Grid();
             this.toolStrip1.SuspendLayout();
             this.OrdersPanel.SuspendLayout();
             this.tabList1.SuspendLayout();
             this.tabListPageOrders.SuspendLayout();
             this.tabListPageCustomers.SuspendLayout();
             this.CustomersPanel.SuspendLayout();
+            this.tabListPageEmployees.SuspendLayout();
+            this.EmployeesPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -80,7 +84,7 @@
             // toolStripButton_New
             // 
             this.toolStripButton_New.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_New.Image = global::AFS.Properties.Resources.NewDocument;
+            this.toolStripButton_New.Image = global::ASF.Properties.Resources.NewDocument;
             this.toolStripButton_New.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton_New.Name = "toolStripButton_New";
             this.toolStripButton_New.Size = new System.Drawing.Size(23, 22);
@@ -119,7 +123,7 @@
             // 
             this.tabList1.Controls.Add(this.tabListPageOrders);
             this.tabList1.Controls.Add(this.tabListPageCustomers);
-            this.tabList1.Controls.Add(this.tabListPageEmployee);
+            this.tabList1.Controls.Add(this.tabListPageEmployees);
             this.tabList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabList1.Location = new System.Drawing.Point(0, 49);
             this.tabList1.Name = "tabList1";
@@ -173,15 +177,40 @@
             this.CustomersGrid.TabStop = true;
             this.CustomersGrid.ToolTipText = "";
             // 
-            // tabListPageEmployee
+            // tabListPageEmployees
             // 
-            this.tabListPageEmployee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabListPageEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabListPageEmployee.Name = "tabListPageEmployee";
-            this.tabListPageEmployee.Size = new System.Drawing.Size(42, 192);
-            this.tabListPageEmployee.TabIndex = 2;
-            this.tabListPageEmployee.Tag = "idocEmployee";
-            this.tabListPageEmployee.Text = "Співробітники";
+            this.tabListPageEmployees.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabListPageEmployees.Controls.Add(this.EmployeesPanel);
+            this.tabListPageEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabListPageEmployees.Name = "tabListPageEmployees";
+            this.tabListPageEmployees.Size = new System.Drawing.Size(658, 461);
+            this.tabListPageEmployees.TabIndex = 2;
+            this.tabListPageEmployees.Tag = "idocEmployee";
+            this.tabListPageEmployees.Text = "Співробітники";
+            // 
+            // EmployeesPanel
+            // 
+            this.EmployeesPanel.Controls.Add(this.EmployeesGrid);
+            this.EmployeesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EmployeesPanel.Location = new System.Drawing.Point(0, 0);
+            this.EmployeesPanel.Name = "EmployeesPanel";
+            this.EmployeesPanel.Size = new System.Drawing.Size(656, 459);
+            this.EmployeesPanel.TabIndex = 3;
+            // 
+            // EmployeesGrid
+            // 
+            this.EmployeesGrid.ContextMenuStrip = this.contextMenuStripGrid1;
+            this.EmployeesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EmployeesGrid.EnableSort = true;
+            this.EmployeesGrid.Location = new System.Drawing.Point(0, 0);
+            this.EmployeesGrid.Name = "EmployeesGrid";
+            this.EmployeesGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
+            this.EmployeesGrid.SelectionMode = SourceGrid.GridSelectionMode.Row;
+            this.EmployeesGrid.Size = new System.Drawing.Size(656, 459);
+            this.EmployeesGrid.TabIndex = 2;
+            this.EmployeesGrid.TabStop = true;
+            this.EmployeesGrid.ToolTipText = "";
+            this.EmployeesGrid.Paint += new System.Windows.Forms.PaintEventHandler(this.EmployeesGrid_Paint);
             // 
             // MainForm
             // 
@@ -205,6 +234,8 @@
             this.tabListPageOrders.ResumeLayout(false);
             this.tabListPageCustomers.ResumeLayout(false);
             this.CustomersPanel.ResumeLayout(false);
+            this.tabListPageEmployees.ResumeLayout(false);
+            this.EmployeesPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,10 +252,12 @@
         private Cyotek.Windows.Forms.TabList tabList1;
         private Cyotek.Windows.Forms.TabListPage tabListPageOrders;
         private Cyotek.Windows.Forms.TabListPage tabListPageCustomers;
-        private Cyotek.Windows.Forms.TabListPage tabListPageEmployee;
+        private Cyotek.Windows.Forms.TabListPage tabListPageEmployees;
         private System.Windows.Forms.ToolStripButton toolStripButton_New;
         private System.Windows.Forms.Panel CustomersPanel;
         private SourceGrid.Grid CustomersGrid;
+        private SourceGrid.Grid EmployeesGrid;
+        private System.Windows.Forms.Panel EmployeesPanel;
     }
 }
 
