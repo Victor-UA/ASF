@@ -94,6 +94,7 @@ namespace ASF.Documents
 
         private void tB_Name_TextChanged(object sender, EventArgs e)
         {
+            Text = tB_Name.Text;
             isChanged = true;
         }
         private void tB_Phone_TextChanged(object sender, EventArgs e)

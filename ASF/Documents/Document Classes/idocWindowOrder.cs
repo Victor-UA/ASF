@@ -28,6 +28,7 @@ namespace ASF.Documents
             set
             {
                 MainForm.tB_OrderNo.Text = value;
+                MainForm.Text = value;
             }
         }
         public string AgreementNo
@@ -205,7 +206,7 @@ namespace ASF.Documents
                     DateOrder = dt.Rows[0]["dateorder"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["dateorder"];
 
                     OrderNo = dt.Rows[0]["orderno"].ToString();
-                    MainForm.Text = OrderNo;
+                    
                     AgreementNo = dt.Rows[0]["AgreementNo"].ToString();
                     Customer = new idocCustomer(dt.Rows[0]["CUSTOMERID"].ToString(), Client);
                     MainForm.tB_Customer.Text = dt.Rows[0]["VCUSTOMERNAME"].ToString();

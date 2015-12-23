@@ -29,6 +29,7 @@ namespace ASF.Documents
             set
             {
                 MainForm.tB_Name.Text = value.ToString();
+                MainForm.Text = value.ToString();
             }
         }
         public string Phone
@@ -199,7 +200,6 @@ namespace ASF.Documents
                 if (dt != null && dt.Rows.Count > 0)
                 {
                     Name = dt.Rows[0]["Name"].ToString();
-                    MainForm.Text = Name;
                     Phone = dt.Rows[0]["Phone"].ToString();
                     Email = dt.Rows[0]["Email"].ToString();
 

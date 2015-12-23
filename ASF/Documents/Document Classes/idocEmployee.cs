@@ -19,6 +19,29 @@ namespace ASF.Documents
 
         private EmployeeForm MainForm;
 
+        public string Title
+        {
+            get
+            {
+                return MainForm.tB_Title.Text;
+            }
+            set
+            {
+                MainForm.tB_Title.Text = value.ToString();
+                MainForm.Text = value.ToString();
+            }
+        }
+        public string Surname
+        {
+            get
+            {
+                return MainForm.tB_Surname.Text;
+            }
+            set
+            {
+                MainForm.tB_Surname.Text = value.ToString();
+            }
+        }
         public string Name
         {
             get
@@ -30,6 +53,18 @@ namespace ASF.Documents
                 MainForm.tB_Name.Text = value.ToString();
             }
         }
+        public string Middlename
+        {
+            get
+            {
+                return MainForm.tB_Middlename.Text;
+            }
+            set
+            {
+                MainForm.tB_Middlename.Text = value.ToString();
+            }
+        }
+
         public string Phone
         {
             get
@@ -118,17 +153,6 @@ namespace ASF.Documents
                 MainForm.tB_PostalCode.Text = value.ToString();
             }
         }
-        public string WebSite
-        {
-            get
-            {
-                return MainForm.tB_Website.Text;
-            }
-            set
-            {
-                MainForm.tB_Website.Text = value.ToString();
-            }
-        }
         public string RComment
         {
             get
@@ -185,31 +209,33 @@ namespace ASF.Documents
         }
         public override void Load()
         {
-            MessageBox.Show("Завантаження");
             if (Key == "")
             {
                 isCreated = false;
                 Create();
-                MainForm.Text = "Нове замовлення";
+                MainForm.Text = "Новий співробітник";
                 Owner = "Administrator";
             }
             else
             {
-                DataTable dt = Client.QueryRecordsList(qryEmployeeLoad.ToString().Replace(":customerid", Key));
+                DataTable dt = Client.QueryRecordsList(qryEmployeeLoad.ToString().Replace(":empid", Key));
                 if (dt != null && dt.Rows.Count > 0)
                 {
+                    Title = dt.Rows[0]["Title"].ToString();
+                    Surname = dt.Rows[0]["Surname"].ToString();
                     Name = dt.Rows[0]["Name"].ToString();
-                    MainForm.Text = Name;
+                    Middlename = dt.Rows[0]["Middlename"].ToString();
+
                     Phone = dt.Rows[0]["Phone"].ToString();
                     Email = dt.Rows[0]["Email"].ToString();
 
-                    Address = dt.Rows[0]["Adress"].ToString();
+                    Address = dt.Rows[0]["Address"].ToString();
                     City = dt.Rows[0]["City"].ToString();
                     Region = dt.Rows[0]["Region"].ToString();
                     District = dt.Rows[0]["District"].ToString();
                     Country = dt.Rows[0]["Country"].ToString();
                     PostalCode = dt.Rows[0]["PostalCode"].ToString();
-                    WebSite = dt.Rows[0]["WebSite"].ToString();
+
                     RComment = dt.Rows[0]["RComment"].ToString();
 
                     Owner = dt.Rows[0]["ownerpersontitle"].ToString();
@@ -279,9 +305,14 @@ namespace ASF.Documents
             @"
 select
   ve.*,
-  veo.title
+  veo.title ownerpersontitle,
+  veo.empid ownerid,
+  ad.*,
+  ea.*
 from vtemployee ve
-  left join vtemployee veo on veo.empid = ve.ownerid
+  join vtemployee veo on veo.empid = ve.ownerid
+  left join addresses ad on ad.addressid=ve.mainaddressid
+left join EMAILADDRESSES ea on ea.emailid=ve.mainemailid
 where ve.empid=:empid
             ";
         private string qryEmployeeSave { get; set; } =

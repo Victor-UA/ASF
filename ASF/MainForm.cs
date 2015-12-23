@@ -18,9 +18,8 @@ namespace ASF
         public MainForm()
         {
             InitializeComponent();
+            Program.UserContext = new idocEmployee(0, Client);
         }
-        
-
 
         private FBClient Client = new FBClient(@"character set=WIN1251;data source=localhost;initial catalog=D:\NASTROECHNAYA_2015.GDB ;user id=SYSDBA;password=masterkey");
         private void Form1_Load(object sender, EventArgs e)
@@ -126,7 +125,7 @@ namespace ASF
                 Program.CustomersAreChanged = false;
             }
         }
-        private void EmployeesGrid_Paint(object sender, PaintEventArgs e)
+        private void tabListPageEmployees_Paint(object sender, PaintEventArgs e)
         {
             TabListPage page = (TabListPage)sender;
             if (Program.EmployeesAreChanged)
@@ -136,11 +135,17 @@ namespace ASF
                 EmployeesGrid.Controller.AddController(new EmployeesGridController(EmployeesGrid, dt, "empid", Client));
                 SourceGridUtilities.Grid.Fill(EmployeesGrid, dt, "empid", new Dictionary(new List<dynamic>
                     {
-                        "Найменування", "Name",
-                        "Адреса", "adress",
-                        "Номер телефону", "phone"
+                        "Найменування", "title",
+                        "Прізвище", "Surname",
+                        "Ім'я", "Name",
+                        "По батькові", "Middlename",
+                        "Адреса", "address",
+                        "Номер телефону", "phone",
+                        "Дата народження", "dateborn",
+                        "Ім'я користувача", "username",
+                        "Коментар", "RComment"
                     }));
-                EmployeesGrid.Visible = false;
+                EmployeesGrid.Visible = true;
                 Program.EmployeesAreChanged = false;
             }
         }
@@ -158,6 +163,8 @@ namespace ASF
                     Customer.Show();
                     break;
                 case "Співробітники":
+                    idocEmployee Employee = new idocEmployee(Client);
+                    Employee.Show();
                     break;
             }
         }
@@ -166,19 +173,26 @@ namespace ASF
         private string qryOrders { get; set; } = 
             @"
 select * from vtorders
+where deleted = 0
             ";
         private string qryCustomers { get; set; } =
             @"
 select * from getcustomers
+where deleted = 0
             ";
         private string qryEmployees { get; set; } =
             @"
 select
   ve.*,
-  veo.title
+  veo.title,
+  veo.empid ownerid,
+  ad.*,
+  ea.*
 from vtemployee ve
-  left join vtemployee veo on veo.empid = ve.ownerid
-where ve.empid=:empid
+  join vtemployee veo on veo.empid = ve.ownerid
+  left join addresses ad on ad.addressid=ve.mainaddressid
+left join EMAILADDRESSES ea on ea.emailid=ve.mainemailid
+where ve.deleted = 0
             ";
 
         #endregion

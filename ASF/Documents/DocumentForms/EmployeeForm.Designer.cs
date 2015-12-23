@@ -31,10 +31,14 @@
         {
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tB_Middlename = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tB_Name = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tB_Surname = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.tB_RComment = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.tB_Website = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.tB_Email = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tB_PostalCode = new System.Windows.Forms.TextBox();
@@ -51,7 +55,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tB_Phone = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.tB_Name = new System.Windows.Forms.TextBox();
+            this.tB_Title = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton_Save = new System.Windows.Forms.ToolStripButton();
@@ -76,12 +80,12 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.panel1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(584, 391);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(584, 501);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 24);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(584, 416);
+            this.toolStripContainer1.Size = new System.Drawing.Size(584, 526);
             this.toolStripContainer1.TabIndex = 3;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -93,10 +97,14 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.tB_Middlename);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.tB_Name);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.tB_Surname);
+            this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.tB_RComment);
             this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.tB_Website);
-            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.tB_Email);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.tB_PostalCode);
@@ -113,70 +121,111 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.tB_Phone);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.tB_Name);
+            this.panel1.Controls.Add(this.tB_Title);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(584, 391);
+            this.panel1.Size = new System.Drawing.Size(584, 501);
             this.panel1.TabIndex = 0;
+            // 
+            // tB_Middlename
+            // 
+            this.tB_Middlename.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tB_Middlename.Location = new System.Drawing.Point(108, 81);
+            this.tB_Middlename.Name = "tB_Middlename";
+            this.tB_Middlename.Size = new System.Drawing.Size(462, 20);
+            this.tB_Middlename.TabIndex = 3;
+            this.tB_Middlename.Tag = "wasEmpty";
+            this.tB_Middlename.TextChanged += new System.EventHandler(this.tB_Middlename_TextChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(12, 84);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(67, 13);
+            this.label14.TabIndex = 35;
+            this.label14.Text = "По батькові";
+            // 
+            // tB_Name
+            // 
+            this.tB_Name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tB_Name.Location = new System.Drawing.Point(108, 55);
+            this.tB_Name.Name = "tB_Name";
+            this.tB_Name.Size = new System.Drawing.Size(462, 20);
+            this.tB_Name.TabIndex = 2;
+            this.tB_Name.Tag = "wasEmpty";
+            this.tB_Name.TextChanged += new System.EventHandler(this.tB_Name_TextChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(12, 58);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(26, 13);
+            this.label13.TabIndex = 33;
+            this.label13.Text = "Ім\'я";
+            // 
+            // tB_Surname
+            // 
+            this.tB_Surname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tB_Surname.Location = new System.Drawing.Point(108, 29);
+            this.tB_Surname.Name = "tB_Surname";
+            this.tB_Surname.Size = new System.Drawing.Size(462, 20);
+            this.tB_Surname.TabIndex = 1;
+            this.tB_Surname.Tag = "wasEmpty";
+            this.tB_Surname.TextChanged += new System.EventHandler(this.tB_Surname_TextChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(12, 32);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(56, 13);
+            this.label12.TabIndex = 31;
+            this.label12.Text = "Прізвище";
             // 
             // tB_RComment
             // 
             this.tB_RComment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_RComment.Location = new System.Drawing.Point(107, 263);
+            this.tB_RComment.Location = new System.Drawing.Point(108, 315);
             this.tB_RComment.Multiline = true;
             this.tB_RComment.Name = "tB_RComment";
             this.tB_RComment.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tB_RComment.Size = new System.Drawing.Size(462, 124);
-            this.tB_RComment.TabIndex = 10;
+            this.tB_RComment.Size = new System.Drawing.Size(462, 156);
+            this.tB_RComment.TabIndex = 12;
             this.tB_RComment.WordWrap = false;
             this.tB_RComment.TextChanged += new System.EventHandler(this.tB_RComment_TextChanged);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 266);
+            this.label11.Location = new System.Drawing.Point(12, 318);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(57, 13);
             this.label11.TabIndex = 29;
             this.label11.Text = "Коментар";
             // 
-            // tB_Website
-            // 
-            this.tB_Website.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_Website.Location = new System.Drawing.Point(108, 237);
-            this.tB_Website.Name = "tB_Website";
-            this.tB_Website.Size = new System.Drawing.Size(462, 20);
-            this.tB_Website.TabIndex = 9;
-            this.tB_Website.TextChanged += new System.EventHandler(this.tB_Website_TextChanged);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 240);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(46, 13);
-            this.label10.TabIndex = 27;
-            this.label10.Text = "Website";
-            // 
             // tB_Email
             // 
             this.tB_Email.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_Email.Location = new System.Drawing.Point(108, 55);
+            this.tB_Email.Location = new System.Drawing.Point(108, 133);
             this.tB_Email.Name = "tB_Email";
             this.tB_Email.Size = new System.Drawing.Size(462, 20);
-            this.tB_Email.TabIndex = 2;
+            this.tB_Email.TabIndex = 5;
             this.tB_Email.TextChanged += new System.EventHandler(this.tB_Email_TextChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 58);
+            this.label9.Location = new System.Drawing.Point(12, 136);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(32, 13);
             this.label9.TabIndex = 25;
@@ -186,16 +235,16 @@
             // 
             this.tB_PostalCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_PostalCode.Location = new System.Drawing.Point(108, 211);
+            this.tB_PostalCode.Location = new System.Drawing.Point(108, 289);
             this.tB_PostalCode.Name = "tB_PostalCode";
             this.tB_PostalCode.Size = new System.Drawing.Size(462, 20);
-            this.tB_PostalCode.TabIndex = 8;
+            this.tB_PostalCode.TabIndex = 11;
             this.tB_PostalCode.TextChanged += new System.EventHandler(this.tB_PostalCode_TextChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 214);
+            this.label8.Location = new System.Drawing.Point(12, 292);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(79, 13);
             this.label8.TabIndex = 23;
@@ -205,16 +254,16 @@
             // 
             this.tB_Country.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_Country.Location = new System.Drawing.Point(108, 185);
+            this.tB_Country.Location = new System.Drawing.Point(108, 263);
             this.tB_Country.Name = "tB_Country";
             this.tB_Country.Size = new System.Drawing.Size(462, 20);
-            this.tB_Country.TabIndex = 7;
+            this.tB_Country.TabIndex = 10;
             this.tB_Country.TextChanged += new System.EventHandler(this.tB_Country_TextChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 188);
+            this.label7.Location = new System.Drawing.Point(12, 266);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 13);
             this.label7.TabIndex = 21;
@@ -224,16 +273,16 @@
             // 
             this.tB_District.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_District.Location = new System.Drawing.Point(108, 159);
+            this.tB_District.Location = new System.Drawing.Point(108, 237);
             this.tB_District.Name = "tB_District";
             this.tB_District.Size = new System.Drawing.Size(462, 20);
-            this.tB_District.TabIndex = 6;
+            this.tB_District.TabIndex = 9;
             this.tB_District.TextChanged += new System.EventHandler(this.tB_District_TextChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 162);
+            this.label6.Location = new System.Drawing.Point(12, 240);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(50, 13);
             this.label6.TabIndex = 19;
@@ -243,16 +292,16 @@
             // 
             this.tB_Region.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_Region.Location = new System.Drawing.Point(108, 133);
+            this.tB_Region.Location = new System.Drawing.Point(108, 211);
             this.tB_Region.Name = "tB_Region";
             this.tB_Region.Size = new System.Drawing.Size(462, 20);
-            this.tB_Region.TabIndex = 5;
+            this.tB_Region.TabIndex = 8;
             this.tB_Region.TextChanged += new System.EventHandler(this.tB_Region_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 136);
+            this.label5.Location = new System.Drawing.Point(12, 214);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(38, 13);
             this.label5.TabIndex = 17;
@@ -262,16 +311,16 @@
             // 
             this.tB_City.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_City.Location = new System.Drawing.Point(108, 107);
+            this.tB_City.Location = new System.Drawing.Point(108, 185);
             this.tB_City.Name = "tB_City";
             this.tB_City.Size = new System.Drawing.Size(462, 20);
-            this.tB_City.TabIndex = 4;
+            this.tB_City.TabIndex = 7;
             this.tB_City.TextChanged += new System.EventHandler(this.tB_City_TextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 110);
+            this.label4.Location = new System.Drawing.Point(12, 188);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 15;
@@ -281,16 +330,16 @@
             // 
             this.tB_Address.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_Address.Location = new System.Drawing.Point(108, 81);
+            this.tB_Address.Location = new System.Drawing.Point(108, 159);
             this.tB_Address.Name = "tB_Address";
             this.tB_Address.Size = new System.Drawing.Size(462, 20);
-            this.tB_Address.TabIndex = 3;
+            this.tB_Address.TabIndex = 6;
             this.tB_Address.TextChanged += new System.EventHandler(this.tB_Address_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 84);
+            this.label3.Location = new System.Drawing.Point(12, 162);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 13;
@@ -300,30 +349,31 @@
             // 
             this.tB_Phone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_Phone.Location = new System.Drawing.Point(108, 29);
+            this.tB_Phone.Location = new System.Drawing.Point(108, 107);
             this.tB_Phone.Name = "tB_Phone";
             this.tB_Phone.Size = new System.Drawing.Size(462, 20);
-            this.tB_Phone.TabIndex = 1;
+            this.tB_Phone.TabIndex = 4;
             this.tB_Phone.TextChanged += new System.EventHandler(this.tB_Phone_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 32);
+            this.label2.Location = new System.Drawing.Point(12, 110);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 11;
             this.label2.Text = "№ телефону";
             // 
-            // tB_Name
+            // tB_Title
             // 
-            this.tB_Name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tB_Title.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_Name.Location = new System.Drawing.Point(108, 3);
-            this.tB_Name.Name = "tB_Name";
-            this.tB_Name.Size = new System.Drawing.Size(462, 20);
-            this.tB_Name.TabIndex = 0;
-            this.tB_Name.TextChanged += new System.EventHandler(this.tB_Name_TextChanged);
+            this.tB_Title.Location = new System.Drawing.Point(108, 3);
+            this.tB_Title.Name = "tB_Title";
+            this.tB_Title.Size = new System.Drawing.Size(462, 20);
+            this.tB_Title.TabIndex = 0;
+            this.tB_Title.Tag = "wasEmpty";
+            this.tB_Title.TextChanged += new System.EventHandler(this.tB_Title_TextChanged);
             // 
             // label1
             // 
@@ -337,11 +387,12 @@
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton_Save});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(35, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(26, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButton_Save
@@ -359,7 +410,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusIsChanged,
             this.toolStripStatusOwner});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 440);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 550);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(584, 22);
             this.statusStrip1.TabIndex = 2;
@@ -417,7 +468,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 462);
+            this.ClientSize = new System.Drawing.Size(584, 572);
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -456,7 +507,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton_Save;
-        public System.Windows.Forms.TextBox tB_Name;
+        public System.Windows.Forms.TextBox tB_Title;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox tB_Phone;
         private System.Windows.Forms.Label label2;
@@ -474,9 +525,13 @@
         private System.Windows.Forms.Label label8;
         public System.Windows.Forms.TextBox tB_Email;
         private System.Windows.Forms.Label label9;
-        public System.Windows.Forms.TextBox tB_Website;
-        private System.Windows.Forms.Label label10;
         public System.Windows.Forms.TextBox tB_RComment;
         private System.Windows.Forms.Label label11;
+        public System.Windows.Forms.TextBox tB_Middlename;
+        private System.Windows.Forms.Label label14;
+        public System.Windows.Forms.TextBox tB_Name;
+        private System.Windows.Forms.Label label13;
+        public System.Windows.Forms.TextBox tB_Surname;
+        private System.Windows.Forms.Label label12;
     }
 }

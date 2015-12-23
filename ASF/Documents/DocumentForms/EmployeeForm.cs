@@ -67,7 +67,7 @@ namespace ASF.Documents
             {
                 if (x is TextBox)
                 {
-                    if ((new[] { tB_Name, tB_Phone }).Contains(x))
+                    if ((new[] { tB_Title }).Contains(x))
                     {
                         if ((x as TextBox).Text == "")
                         {
@@ -92,8 +92,76 @@ namespace ASF.Documents
             Document.Save();
         }
 
+        private void tB_Title_TextChanged(object sender, EventArgs e)
+        {
+            Text = tB_Title.Text;
+            tB_Title.Tag = tB_Title.Text == "" ? "wasEmpty" : "";
+            string[] words = tB_Title.Text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            if (tB_Surname.Tag.ToString() == "wasEmpty" & words.Length > 0)
+            {
+                tB_Surname.TextChanged -= tB_Surname_TextChanged;
+                tB_Surname.Text = words[0];
+                tB_Surname.TextChanged += tB_Surname_TextChanged;
+            }
+            if (tB_Name.Tag.ToString() == "wasEmpty" & words.Length > 1)
+            {
+                tB_Name.TextChanged -= tB_Name_TextChanged;
+                tB_Name.Text = words[1];
+                tB_Name.TextChanged += tB_Name_TextChanged;
+            }
+            if (tB_Middlename.Tag.ToString() == "wasEmpty" & words.Length >2)
+            {
+                tB_Middlename.TextChanged -= tB_Middlename_TextChanged;
+                tB_Middlename.Text = words[2];
+                tB_Middlename.TextChanged += tB_Middlename_TextChanged;
+            }
+
+            isChanged = true;
+        }
+        private void tB_Surname_TextChanged(object sender, EventArgs e)
+        {
+            tB_Surname.Tag = tB_Surname.Text == "" ? "wasEmpty" : "";
+            if (tB_Title.Text == "" | tB_Title.Tag.ToString() == "wasEmpty")
+            {
+                tB_Title.TextChanged -= tB_Title_TextChanged;
+                tB_Title.Text = tB_Surname.Text;
+                tB_Title.Text += tB_Title.Text == "" ? tB_Name.Text : " " + tB_Name.Text;
+                tB_Title.Text += tB_Title.Text == "" ? tB_Name.Text : " " + tB_Middlename.Text;
+                Text = tB_Title.Text;
+                tB_Title.TextChanged += tB_Title_TextChanged;
+                tB_Title.Tag = "wasEmpty";
+            }
+            isChanged = true;
+        }
         private void tB_Name_TextChanged(object sender, EventArgs e)
         {
+            tB_Name.Tag = tB_Name.Text == "" ? "wasEmpty" : "";
+            if (tB_Title.Text == "" | tB_Title.Tag.ToString() == "wasEmpty")
+            {
+                tB_Title.TextChanged -= tB_Title_TextChanged;
+                tB_Title.Text = tB_Surname.Text;
+                tB_Title.Text += tB_Title.Text == "" ? tB_Name.Text : " " + tB_Name.Text;
+                tB_Title.Text += tB_Title.Text == "" ? tB_Name.Text : " " + tB_Middlename.Text;
+                Text = tB_Title.Text;
+                tB_Title.TextChanged += tB_Title_TextChanged;
+                tB_Title.Tag = "wasEmpty";
+            }
+            
+            isChanged = true;
+        }
+        private void tB_Middlename_TextChanged(object sender, EventArgs e)
+        {
+            tB_Middlename.Tag = tB_Middlename.Text == "" ? "wasEmpty" : "";
+            if (tB_Title.Text == "" | tB_Title.Tag.ToString() == "wasEmpty")
+            {
+                tB_Title.TextChanged -= tB_Title_TextChanged;
+                tB_Title.Text = tB_Surname.Text;
+                tB_Title.Text += tB_Title.Text == "" ? tB_Name.Text : " " + tB_Name.Text;
+                tB_Title.Text += tB_Title.Text == "" ? tB_Middlename.Text : " " + tB_Middlename.Text;
+                Text = tB_Title.Text;
+                tB_Title.TextChanged += tB_Title_TextChanged;
+                tB_Title.Tag = "wasEmpty";
+            }
             isChanged = true;
         }
         private void tB_Phone_TextChanged(object sender, EventArgs e)
@@ -148,6 +216,5 @@ namespace ASF.Documents
                 }
                 e.Cancel = mb == DialogResult.Cancel;
             }
-        }
-    }
+        }    }
 }

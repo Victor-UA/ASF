@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ASF.Documents;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,5 +22,6 @@ namespace ASF
         static public bool OrdersAreChanged { get; set; } = true;
         static public bool CustomersAreChanged { get; set; } = true;
         static public bool EmployeesAreChanged { get; set; } = true;
+        static public idocEmployee UserContext { get; set; }
     }
 }

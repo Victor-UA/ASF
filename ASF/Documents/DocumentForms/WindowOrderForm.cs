@@ -274,7 +274,11 @@ order by osr.changedate
 
         private void tB_Customer_Click(object sender, EventArgs e)
         {
-            Document.Customer.Show();
+            try
+            {
+                Document.Customer.Show();
+            }
+            catch(Exception) { }
         }
 
         private void b_SelectCustomer_Click(object sender, EventArgs e)
