@@ -19,6 +19,9 @@ namespace ASF
         {
             InitializeComponent();
             Program.UserContext = new idocEmployee(0, Client);
+            OrdersGrid.Controller.AddController(new OrdersGridController(OrdersGrid, Client));
+            CustomersGrid.Controller.AddController(new CustomersGridController(CustomersGrid, Client));
+            EmployeesGrid.Controller.AddController(new EmployeesGridController(EmployeesGrid, Client));
         }
 
         private FBClient Client = new FBClient(@"character set=WIN1251;data source=localhost;initial catalog=D:\NASTROECHNAYA_2015.GDB ;user id=SYSDBA;password=masterkey");
@@ -34,7 +37,7 @@ namespace ASF
         {
             private FBClient Client;
             private SourceGrid.Grid Grid;
-            public OrdersGridController(SourceGrid.Grid grid, DataTable dt, string key, FBClient client)
+            public OrdersGridController(SourceGrid.Grid grid, FBClient client)
             {
                 Client = client;
                 Grid = grid;
@@ -53,7 +56,7 @@ namespace ASF
         {
             private FBClient Client;
             private SourceGrid.Grid Grid;
-            public CustomersGridController(SourceGrid.Grid grid, DataTable dt, string key, FBClient client)
+            public CustomersGridController(SourceGrid.Grid grid, FBClient client)
             {
                 Client = client;
                 Grid = grid;
@@ -72,7 +75,7 @@ namespace ASF
         {
             private FBClient Client;
             private SourceGrid.Grid Grid;
-            public EmployeesGridController(SourceGrid.Grid grid, DataTable dt, string key, FBClient client)
+            public EmployeesGridController(SourceGrid.Grid grid, FBClient client)
             {
                 Client = client;
                 Grid = grid;
@@ -88,6 +91,10 @@ namespace ASF
             }
         }
 
+        public void tabListPageOrders_Repaint()
+        {
+            tabListPageOrders_Paint(null, null);
+        }
         private void tabListPageOrders_Paint(object sender, PaintEventArgs e)
         {          
             TabListPage page = (TabListPage)sender;
@@ -95,7 +102,6 @@ namespace ASF
             {
                 OrdersGrid.Visible = false;
                 DataTable dt = Client.QueryRecordsList(qryOrders);
-                OrdersGrid.Controller.AddController(new OrdersGridController(OrdersGrid, dt, "orderid", Client));
                 SourceGridUtilities.Grid.Fill(OrdersGrid, dt, "orderid", new Dictionary(new List<dynamic>
                     {
                         "Номер замовлення", "orderno",
@@ -107,6 +113,10 @@ namespace ASF
                 Program.OrdersAreChanged = false;
             }
         }
+        public void tabListPageCustomers_Repaint()
+        {
+            tabListPageCustomers_Paint(null, null);
+        }
         private void tabListPageCustomers_Paint(object sender, PaintEventArgs e)
         {
             TabListPage page = (TabListPage)sender;
@@ -114,7 +124,6 @@ namespace ASF
             {
                 CustomersGrid.Visible = false;
                 DataTable dt = Client.QueryRecordsList(qryCustomers);
-                CustomersGrid.Controller.AddController(new CustomersGridController(CustomersGrid, dt, "customerid", Client));
                 SourceGridUtilities.Grid.Fill(CustomersGrid, dt, "customerid", new Dictionary(new List<dynamic>
                     {
                         "Найменування", "Name",
@@ -125,6 +134,10 @@ namespace ASF
                 Program.CustomersAreChanged = false;
             }
         }
+        public void tabListPageEmployees_Repaint()
+        {
+            tabListPageEmployees_Paint(null, null);
+        }
         private void tabListPageEmployees_Paint(object sender, PaintEventArgs e)
         {
             TabListPage page = (TabListPage)sender;
@@ -132,7 +145,6 @@ namespace ASF
             {
                 EmployeesGrid.Visible = false;
                 DataTable dt = Client.QueryRecordsList(qryEmployees);
-                EmployeesGrid.Controller.AddController(new EmployeesGridController(EmployeesGrid, dt, "empid", Client));
                 SourceGridUtilities.Grid.Fill(EmployeesGrid, dt, "empid", new Dictionary(new List<dynamic>
                     {
                         "Найменування", "title",
@@ -143,11 +155,18 @@ namespace ASF
                         "Номер телефону", "phone",
                         "Дата народження", "dateborn",
                         "Ім'я користувача", "username",
-                        "Коментар", "RComment"
+                        "Коментар", "RComment",
+                        "Заблоковано", "Locked"
                     }));
                 EmployeesGrid.Visible = true;
                 Program.EmployeesAreChanged = false;
             }
+        }
+
+        public void ChangeEmployee(idocEmployee Employee)
+        {
+            //foreach ()
+            //EmployeesGrid.Rows
         }
 
         private void toolStripButton_New_Click(object sender, EventArgs e)

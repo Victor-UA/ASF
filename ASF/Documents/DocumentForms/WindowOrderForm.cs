@@ -151,7 +151,7 @@ order by osr.changedate
 
         private void CheckFieldsMain()
         {
-            CanBeSaved = true;
+            CanBeSaved = isChanged;
             foreach (Control x in MainPanel1.Controls)
             {
                 if (x is TextBox)

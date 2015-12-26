@@ -62,7 +62,7 @@ namespace ASF.Documents
 
         private void CheckFieldsMain()
         {
-            CanBeSaved = true;
+            CanBeSaved = isChanged;
             foreach (Control x in panel1.Controls)
             {
                 if (x is TextBox)

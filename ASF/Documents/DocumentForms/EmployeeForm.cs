@@ -62,7 +62,7 @@ namespace ASF.Documents
 
         private void CheckFieldsMain()
         {
-            CanBeSaved = true;
+            CanBeSaved = isChanged;
             foreach (Control x in panel1.Controls)
             {
                 if (x is TextBox)
@@ -204,6 +204,19 @@ namespace ASF.Documents
         {
             isChanged = true;
         }
+        private void tB_Login_TextChanged(object sender, EventArgs e)
+        {
+            isChanged = true;
+        }
+        private void tB_Password_TextChanged(object sender, EventArgs e)
+        {
+            isChanged = true;
+        }
+        private void cB_Locked_Click(object sender, EventArgs e)
+        {
+            isChanged = true;
+        }
+
 
         private void EmployeeForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -216,5 +229,6 @@ namespace ASF.Documents
                 }
                 e.Cancel = mb == DialogResult.Cancel;
             }
-        }    }
+        }
+    }
 }

@@ -148,7 +148,7 @@
             this.tabListPageCustomers.Controls.Add(this.CustomersPanel);
             this.tabListPageCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabListPageCustomers.Name = "tabListPageCustomers";
-            this.tabListPageCustomers.Size = new System.Drawing.Size(42, 192);
+            this.tabListPageCustomers.Size = new System.Drawing.Size(658, 461);
             this.tabListPageCustomers.TabIndex = 1;
             this.tabListPageCustomers.Tag = "idocCustomer";
             this.tabListPageCustomers.Text = "Клієнти";
@@ -160,7 +160,7 @@
             this.CustomersPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CustomersPanel.Location = new System.Drawing.Point(0, 0);
             this.CustomersPanel.Name = "CustomersPanel";
-            this.CustomersPanel.Size = new System.Drawing.Size(40, 190);
+            this.CustomersPanel.Size = new System.Drawing.Size(656, 459);
             this.CustomersPanel.TabIndex = 0;
             // 
             // CustomersGrid
@@ -172,7 +172,7 @@
             this.CustomersGrid.Name = "CustomersGrid";
             this.CustomersGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.CustomersGrid.SelectionMode = SourceGrid.GridSelectionMode.Row;
-            this.CustomersGrid.Size = new System.Drawing.Size(40, 190);
+            this.CustomersGrid.Size = new System.Drawing.Size(656, 459);
             this.CustomersGrid.TabIndex = 1;
             this.CustomersGrid.TabStop = true;
             this.CustomersGrid.ToolTipText = "";
@@ -249,15 +249,15 @@
         private System.Windows.Forms.Panel OrdersPanel;
         private SourceGrid.Grid OrdersGrid;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripGrid1;
-        private Cyotek.Windows.Forms.TabList tabList1;
-        private Cyotek.Windows.Forms.TabListPage tabListPageOrders;
-        private Cyotek.Windows.Forms.TabListPage tabListPageCustomers;
-        private Cyotek.Windows.Forms.TabListPage tabListPageEmployees;
         private System.Windows.Forms.ToolStripButton toolStripButton_New;
         private System.Windows.Forms.Panel CustomersPanel;
         private SourceGrid.Grid CustomersGrid;
         private SourceGrid.Grid EmployeesGrid;
         private System.Windows.Forms.Panel EmployeesPanel;
+        private Cyotek.Windows.Forms.TabList tabList1;
+        private Cyotek.Windows.Forms.TabListPage tabListPageOrders;
+        private Cyotek.Windows.Forms.TabListPage tabListPageCustomers;
+        private Cyotek.Windows.Forms.TabListPage tabListPageEmployees;
     }
 }
 

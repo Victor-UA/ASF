@@ -240,17 +240,22 @@ namespace ASF.Documents
             {
                 SQL = SQL.Replace(":customerid", Key.ToString());
                 SQL = SQL.Replace(":name", "'" + Name.ToString() + "'");
+
                 SQL = SQL.Replace(":_phone", Phone.ToString() == "" ? "null" : "'" + Phone.ToString() + "'");
+
+                SQL = SQL.Replace(":city", "'" + City.ToString() + "'");
                 SQL = SQL.Replace(":country", "'" + Country.ToString() + "'");
                 SQL = SQL.Replace(":region", "'" + Region.ToString() + "'");
                 SQL = SQL.Replace(":district", "'" + District.ToString() + "'");
                 SQL = SQL.Replace(":_address", "'" + Address.ToString() + "'");
                 SQL = SQL.Replace(":postalcode", "'" + PostalCode.ToString() + "'");
+
                 SQL = SQL.Replace(":_email", "'" + Email.ToString() + "'");
                 SQL = SQL.Replace(":website", "'" + WebSite.ToString() + "'");
+
                 SQL = SQL.Replace(":rcomment", "'" + RComment.ToString() + "'");
                 SQL = SQL.Replace(":ownerid", "0"); //Тимчасово!
-                SQL = SQL.Replace(":city", "'" + City.ToString() + "'");
+                
                 Client.ExecuteSQLCommit(SQL);
 
                 isChanged = false;
@@ -351,10 +356,11 @@ Begin
       from rdb$database
       into :phoneid;
     else begin
-      select
+      select first 1
         ph.phoneid
       from phones ph
       where ph.phone=:_phone
+      order by 1 desc
       into :existing_phoneid;
 
       if (:existing_phoneid <> :phoneid) then

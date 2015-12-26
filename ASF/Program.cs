@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,11 +18,50 @@ namespace ASF
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            fMainForm = new MainForm();
+            Application.Run(fMainForm);
         }
-        static public bool OrdersAreChanged { get; set; } = true;
-        static public bool CustomersAreChanged { get; set; } = true;
-        static public bool EmployeesAreChanged { get; set; } = true;
-        static public idocEmployee UserContext { get; set; }
+        private static MainForm fMainForm { get; set; }
+        public static bool OrdersAreChanged
+        {
+            get
+            {
+                return _OrdersAreChanged;
+            }
+            set
+            {
+                _OrdersAreChanged = value;
+                fMainForm.tabListPageOrders_Repaint();
+            }
+        }
+        private static bool _OrdersAreChanged = true;
+        public static bool CustomersAreChanged
+        {
+            get
+            {
+                return _CustomersAreChanged;
+            }
+            set
+            {
+                _CustomersAreChanged = value;
+                fMainForm.tabListPageCustomers_Repaint();
+            }
+        }
+        private static bool _CustomersAreChanged = true;
+        public static bool EmployeesAreChanged
+        {
+            get
+            {
+                return _EmployeesAreChanged;
+            }
+         
+            set
+            {
+                _EmployeesAreChanged = value;
+                fMainForm.tabListPageEmployees_Repaint();
+            }
+        }
+        private static bool _EmployeesAreChanged = true;
+        public static idocEmployee UserContext { get; set; }
     }
 }

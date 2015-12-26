@@ -30,6 +30,8 @@
         private void InitializeComponent()
         {
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tB_Middlename = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -57,6 +59,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tB_Title = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.cB_Locked = new System.Windows.Forms.CheckBox();
+            this.tB_UserPassword = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tB_UserName = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton_Save = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -68,7 +78,11 @@
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -79,7 +93,7 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.panel1);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.tabControl1);
             this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(584, 501);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
@@ -92,6 +106,28 @@
             // toolStripContainer1.TopToolStripPanel
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(584, 501);
+            this.tabControl1.TabIndex = 4;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.panel1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(576, 475);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Загальна інформація";
             // 
             // panel1
             // 
@@ -124,18 +160,18 @@
             this.panel1.Controls.Add(this.tB_Title);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(584, 501);
+            this.panel1.Size = new System.Drawing.Size(570, 469);
             this.panel1.TabIndex = 0;
             // 
             // tB_Middlename
             // 
             this.tB_Middlename.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_Middlename.Location = new System.Drawing.Point(108, 81);
+            this.tB_Middlename.Location = new System.Drawing.Point(116, 81);
             this.tB_Middlename.Name = "tB_Middlename";
-            this.tB_Middlename.Size = new System.Drawing.Size(462, 20);
+            this.tB_Middlename.Size = new System.Drawing.Size(448, 20);
             this.tB_Middlename.TabIndex = 3;
             this.tB_Middlename.Tag = "wasEmpty";
             this.tB_Middlename.TextChanged += new System.EventHandler(this.tB_Middlename_TextChanged);
@@ -153,9 +189,9 @@
             // 
             this.tB_Name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_Name.Location = new System.Drawing.Point(108, 55);
+            this.tB_Name.Location = new System.Drawing.Point(116, 55);
             this.tB_Name.Name = "tB_Name";
-            this.tB_Name.Size = new System.Drawing.Size(462, 20);
+            this.tB_Name.Size = new System.Drawing.Size(448, 20);
             this.tB_Name.TabIndex = 2;
             this.tB_Name.Tag = "wasEmpty";
             this.tB_Name.TextChanged += new System.EventHandler(this.tB_Name_TextChanged);
@@ -173,9 +209,9 @@
             // 
             this.tB_Surname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_Surname.Location = new System.Drawing.Point(108, 29);
+            this.tB_Surname.Location = new System.Drawing.Point(116, 29);
             this.tB_Surname.Name = "tB_Surname";
-            this.tB_Surname.Size = new System.Drawing.Size(462, 20);
+            this.tB_Surname.Size = new System.Drawing.Size(448, 20);
             this.tB_Surname.TabIndex = 1;
             this.tB_Surname.Tag = "wasEmpty";
             this.tB_Surname.TextChanged += new System.EventHandler(this.tB_Surname_TextChanged);
@@ -194,11 +230,11 @@
             this.tB_RComment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_RComment.Location = new System.Drawing.Point(108, 315);
+            this.tB_RComment.Location = new System.Drawing.Point(116, 315);
             this.tB_RComment.Multiline = true;
             this.tB_RComment.Name = "tB_RComment";
             this.tB_RComment.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tB_RComment.Size = new System.Drawing.Size(462, 156);
+            this.tB_RComment.Size = new System.Drawing.Size(448, 149);
             this.tB_RComment.TabIndex = 12;
             this.tB_RComment.WordWrap = false;
             this.tB_RComment.TextChanged += new System.EventHandler(this.tB_RComment_TextChanged);
@@ -216,9 +252,9 @@
             // 
             this.tB_Email.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_Email.Location = new System.Drawing.Point(108, 133);
+            this.tB_Email.Location = new System.Drawing.Point(116, 133);
             this.tB_Email.Name = "tB_Email";
-            this.tB_Email.Size = new System.Drawing.Size(462, 20);
+            this.tB_Email.Size = new System.Drawing.Size(448, 20);
             this.tB_Email.TabIndex = 5;
             this.tB_Email.TextChanged += new System.EventHandler(this.tB_Email_TextChanged);
             // 
@@ -235,9 +271,9 @@
             // 
             this.tB_PostalCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_PostalCode.Location = new System.Drawing.Point(108, 289);
+            this.tB_PostalCode.Location = new System.Drawing.Point(116, 289);
             this.tB_PostalCode.Name = "tB_PostalCode";
-            this.tB_PostalCode.Size = new System.Drawing.Size(462, 20);
+            this.tB_PostalCode.Size = new System.Drawing.Size(448, 20);
             this.tB_PostalCode.TabIndex = 11;
             this.tB_PostalCode.TextChanged += new System.EventHandler(this.tB_PostalCode_TextChanged);
             // 
@@ -254,9 +290,9 @@
             // 
             this.tB_Country.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_Country.Location = new System.Drawing.Point(108, 263);
+            this.tB_Country.Location = new System.Drawing.Point(116, 263);
             this.tB_Country.Name = "tB_Country";
-            this.tB_Country.Size = new System.Drawing.Size(462, 20);
+            this.tB_Country.Size = new System.Drawing.Size(448, 20);
             this.tB_Country.TabIndex = 10;
             this.tB_Country.TextChanged += new System.EventHandler(this.tB_Country_TextChanged);
             // 
@@ -273,9 +309,9 @@
             // 
             this.tB_District.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_District.Location = new System.Drawing.Point(108, 237);
+            this.tB_District.Location = new System.Drawing.Point(116, 237);
             this.tB_District.Name = "tB_District";
-            this.tB_District.Size = new System.Drawing.Size(462, 20);
+            this.tB_District.Size = new System.Drawing.Size(448, 20);
             this.tB_District.TabIndex = 9;
             this.tB_District.TextChanged += new System.EventHandler(this.tB_District_TextChanged);
             // 
@@ -292,9 +328,9 @@
             // 
             this.tB_Region.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_Region.Location = new System.Drawing.Point(108, 211);
+            this.tB_Region.Location = new System.Drawing.Point(116, 211);
             this.tB_Region.Name = "tB_Region";
-            this.tB_Region.Size = new System.Drawing.Size(462, 20);
+            this.tB_Region.Size = new System.Drawing.Size(448, 20);
             this.tB_Region.TabIndex = 8;
             this.tB_Region.TextChanged += new System.EventHandler(this.tB_Region_TextChanged);
             // 
@@ -311,9 +347,9 @@
             // 
             this.tB_City.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_City.Location = new System.Drawing.Point(108, 185);
+            this.tB_City.Location = new System.Drawing.Point(116, 185);
             this.tB_City.Name = "tB_City";
-            this.tB_City.Size = new System.Drawing.Size(462, 20);
+            this.tB_City.Size = new System.Drawing.Size(448, 20);
             this.tB_City.TabIndex = 7;
             this.tB_City.TextChanged += new System.EventHandler(this.tB_City_TextChanged);
             // 
@@ -330,9 +366,9 @@
             // 
             this.tB_Address.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_Address.Location = new System.Drawing.Point(108, 159);
+            this.tB_Address.Location = new System.Drawing.Point(116, 159);
             this.tB_Address.Name = "tB_Address";
-            this.tB_Address.Size = new System.Drawing.Size(462, 20);
+            this.tB_Address.Size = new System.Drawing.Size(448, 20);
             this.tB_Address.TabIndex = 6;
             this.tB_Address.TextChanged += new System.EventHandler(this.tB_Address_TextChanged);
             // 
@@ -349,9 +385,9 @@
             // 
             this.tB_Phone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_Phone.Location = new System.Drawing.Point(108, 107);
+            this.tB_Phone.Location = new System.Drawing.Point(116, 107);
             this.tB_Phone.Name = "tB_Phone";
-            this.tB_Phone.Size = new System.Drawing.Size(462, 20);
+            this.tB_Phone.Size = new System.Drawing.Size(448, 20);
             this.tB_Phone.TabIndex = 4;
             this.tB_Phone.TextChanged += new System.EventHandler(this.tB_Phone_TextChanged);
             // 
@@ -368,9 +404,9 @@
             // 
             this.tB_Title.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_Title.Location = new System.Drawing.Point(108, 3);
+            this.tB_Title.Location = new System.Drawing.Point(116, 3);
             this.tB_Title.Name = "tB_Title";
-            this.tB_Title.Size = new System.Drawing.Size(462, 20);
+            this.tB_Title.Size = new System.Drawing.Size(448, 20);
             this.tB_Title.TabIndex = 0;
             this.tB_Title.Tag = "wasEmpty";
             this.tB_Title.TextChanged += new System.EventHandler(this.tB_Title_TextChanged);
@@ -384,13 +420,100 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Найменування";
             // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.panel2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(576, 475);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Дані користувача";
+            // 
+            // panel2
+            // 
+            this.panel2.AutoScroll = true;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label16);
+            this.panel2.Controls.Add(this.cB_Locked);
+            this.panel2.Controls.Add(this.tB_UserPassword);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.tB_UserName);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(570, 469);
+            this.panel2.TabIndex = 0;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(12, 56);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(74, 13);
+            this.label16.TabIndex = 37;
+            this.label16.Text = "Заблоковано";
+            // 
+            // cB_Locked
+            // 
+            this.cB_Locked.AutoSize = true;
+            this.cB_Locked.Location = new System.Drawing.Point(116, 55);
+            this.cB_Locked.Name = "cB_Locked";
+            this.cB_Locked.Size = new System.Drawing.Size(15, 14);
+            this.cB_Locked.TabIndex = 36;
+            this.cB_Locked.UseVisualStyleBackColor = true;
+            this.cB_Locked.Click += new System.EventHandler(this.cB_Locked_Click);
+            // 
+            // tB_UserPassword
+            // 
+            this.tB_UserPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tB_UserPassword.Location = new System.Drawing.Point(116, 29);
+            this.tB_UserPassword.Name = "tB_UserPassword";
+            this.tB_UserPassword.PasswordChar = '*';
+            this.tB_UserPassword.Size = new System.Drawing.Size(448, 20);
+            this.tB_UserPassword.TabIndex = 33;
+            this.tB_UserPassword.Tag = "wasEmpty";
+            this.tB_UserPassword.TextChanged += new System.EventHandler(this.tB_Password_TextChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(12, 32);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(45, 13);
+            this.label10.TabIndex = 35;
+            this.label10.Text = "Пароль";
+            // 
+            // tB_UserName
+            // 
+            this.tB_UserName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tB_UserName.Location = new System.Drawing.Point(116, 3);
+            this.tB_UserName.Name = "tB_UserName";
+            this.tB_UserName.Size = new System.Drawing.Size(448, 20);
+            this.tB_UserName.TabIndex = 32;
+            this.tB_UserName.Tag = "wasEmpty";
+            this.tB_UserName.TextChanged += new System.EventHandler(this.tB_Login_TextChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(12, 6);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(86, 13);
+            this.label15.TabIndex = 34;
+            this.label15.Text = "Ім\'я коистувача";
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton_Save});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(6, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(26, 25);
             this.toolStrip1.TabIndex = 0;
@@ -482,8 +605,13 @@
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -533,5 +661,15 @@
         private System.Windows.Forms.Label label13;
         public System.Windows.Forms.TextBox tB_Surname;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Panel panel2;
+        public System.Windows.Forms.TextBox tB_UserPassword;
+        private System.Windows.Forms.Label label10;
+        public System.Windows.Forms.TextBox tB_UserName;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        public System.Windows.Forms.CheckBox cB_Locked;
     }
 }
