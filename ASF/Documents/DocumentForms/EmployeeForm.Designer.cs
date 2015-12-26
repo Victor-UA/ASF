@@ -75,6 +75,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.документToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.зберегтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label17 = new System.Windows.Forms.Label();
+            this.dTP_Birthday = new Victors.DateTimePicker();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -133,6 +135,8 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.dTP_Birthday);
+            this.panel1.Controls.Add(this.label17);
             this.panel1.Controls.Add(this.tB_Middlename);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.tB_Name);
@@ -230,11 +234,11 @@
             this.tB_RComment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tB_RComment.Location = new System.Drawing.Point(116, 315);
+            this.tB_RComment.Location = new System.Drawing.Point(116, 341);
             this.tB_RComment.Multiline = true;
             this.tB_RComment.Name = "tB_RComment";
             this.tB_RComment.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tB_RComment.Size = new System.Drawing.Size(448, 149);
+            this.tB_RComment.Size = new System.Drawing.Size(448, 123);
             this.tB_RComment.TabIndex = 12;
             this.tB_RComment.WordWrap = false;
             this.tB_RComment.TextChanged += new System.EventHandler(this.tB_RComment_TextChanged);
@@ -242,7 +246,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 318);
+            this.label11.Location = new System.Drawing.Point(12, 344);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(57, 13);
             this.label11.TabIndex = 29;
@@ -587,6 +591,24 @@
             this.зберегтиToolStripMenuItem.Text = "Зберегти";
             this.зберегтиToolStripMenuItem.Click += new System.EventHandler(this.зберегтиToolStripMenuItem_Click);
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(12, 318);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(99, 13);
+            this.label17.TabIndex = 37;
+            this.label17.Text = "День народження";
+            // 
+            // dTP_Birthday
+            // 
+            this.dTP_Birthday.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dTP_Birthday.Location = new System.Drawing.Point(116, 315);
+            this.dTP_Birthday.Name = "dTP_Birthday";
+            this.dTP_Birthday.Size = new System.Drawing.Size(146, 20);
+            this.dTP_Birthday.TabIndex = 38;
+            this.dTP_Birthday.Value = new System.DateTime(2015, 10, 7, 22, 52, 46, 0);
+            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -671,5 +693,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         public System.Windows.Forms.CheckBox cB_Locked;
+        private System.Windows.Forms.Label label17;
+        public Victors.DateTimePicker dTP_Birthday;
     }
 }

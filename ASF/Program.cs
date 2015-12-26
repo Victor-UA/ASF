@@ -31,7 +31,7 @@ namespace ASF
             set
             {
                 _OrdersAreChanged = value;
-                fMainForm.tabListPageOrders_Repaint();
+                //fMainForm.OrdersRepaint();
             }
         }
         private static bool _OrdersAreChanged = true;
@@ -44,7 +44,7 @@ namespace ASF
             set
             {
                 _CustomersAreChanged = value;
-                fMainForm.tabListPageCustomers_Repaint();
+                //fMainForm.CustomersRepaint();
             }
         }
         private static bool _CustomersAreChanged = true;
@@ -58,10 +58,14 @@ namespace ASF
             set
             {
                 _EmployeesAreChanged = value;
-                fMainForm.tabListPageEmployees_Repaint();
+                //fMainForm.EmployeesRepaint();
             }
         }
         private static bool _EmployeesAreChanged = true;
+        public static void RefreshEmployee(idocEmployee Employee)
+        {
+            fMainForm.RefreshEmployee(Employee);
+        }
         public static idocEmployee UserContext { get; set; }
     }
 }

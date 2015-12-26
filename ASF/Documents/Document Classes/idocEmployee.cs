@@ -153,6 +153,17 @@ namespace ASF.Documents
                 MainForm.tB_PostalCode.Text = value.ToString();
             }
         }
+        public DateTime Birthday
+        {
+            get
+            {
+                return MainForm.dTP_Birthday.Value;
+            }
+            set
+            {
+                MainForm.dTP_Birthday.Value = value;
+            }
+        }
         public string RComment
         {
             get
@@ -248,6 +259,7 @@ namespace ASF.Documents
                 isCreated = false;
                 Create();
                 MainForm.Text = "Новий співробітник";
+                Birthday = DateTime.MinValue;
                 Owner = "Administrator";
             }
             else
@@ -270,13 +282,15 @@ namespace ASF.Documents
                     Country = dt.Rows[0]["Country"].ToString();
                     PostalCode = dt.Rows[0]["PostalCode"].ToString();
 
+                    Birthday = dt.Rows[0]["DateBorn"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["DateBorn"];
+
                     RComment = dt.Rows[0]["RComment"].ToString();
 
                     UserName = dt.Rows[0]["UserName"].ToString();
                     UserPassword = dt.Rows[0]["UserPassword"].ToString();
                     Locked = (int)dt.Rows[0]["Locked"] == 1 ? true : false;
 
-                    Owner = dt.Rows[0]["ownerpersontitle"].ToString();
+                    Owner = dt.Rows[0]["OwnerPersonTitle"].ToString();
 
                     isCreated = true;
                     isChanged = false;
@@ -317,6 +331,8 @@ namespace ASF.Documents
                 SQL = SQL.Replace(":_address", "'" + Address.ToString() + "'");
                 SQL = SQL.Replace(":postalcode", "'" + PostalCode.ToString() + "'");
 
+                SQL = SQL.Replace(":dateborn", "'" + Birthday.ToString() + "'");
+
                 SQL = SQL.Replace(":_email", "'" + Email.ToString() + "'");
 
                 SQL = SQL.Replace(":rcomment", "'" + RComment.ToString() + "'");
@@ -331,6 +347,7 @@ namespace ASF.Documents
                 isChanged = false;
                 isCreated = true;
                 Program.EmployeesAreChanged = true;
+                Program.RefreshEmployee(this);
             }
             catch (Exception e)
             {
@@ -435,7 +452,7 @@ Begin
     into :personid;
   end
 
-  update or insert into persons (personid, contragid, persontitle, personname, personmiddle, personlastname, guidhi, guidlo)
+  update or insert into persons (personid, contragid, persontitle, personname, personmiddle, personlastname, dateborn, guidhi, guidlo)
   values (
     :personid,
     :contragid,
@@ -443,6 +460,7 @@ Begin
     :personname,
     :personmiddle,
     :personlastname,
+    :dateborn,
     :guidhi,
     :guidlo
   )

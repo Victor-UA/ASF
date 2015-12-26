@@ -10,6 +10,7 @@ using Victors;
 using ASF.Documents;
 using System.Collections.Generic;
 using Cyotek.Windows.Forms;
+using SourceGrid;
 
 namespace ASF
 {
@@ -91,7 +92,7 @@ namespace ASF
             }
         }
 
-        public void tabListPageOrders_Repaint()
+        public void OrdersRepaint()
         {
             tabListPageOrders_Paint(null, null);
         }
@@ -113,7 +114,7 @@ namespace ASF
                 Program.OrdersAreChanged = false;
             }
         }
-        public void tabListPageCustomers_Repaint()
+        public void CustomersRepaint()
         {
             tabListPageCustomers_Paint(null, null);
         }
@@ -134,7 +135,7 @@ namespace ASF
                 Program.CustomersAreChanged = false;
             }
         }
-        public void tabListPageEmployees_Repaint()
+        public void EmployeesRepaint()
         {
             tabListPageEmployees_Paint(null, null);
         }
@@ -163,10 +164,59 @@ namespace ASF
             }
         }
 
-        public void ChangeEmployee(idocEmployee Employee)
+        public void RefreshEmployee(idocEmployee Employee)
         {
-            //foreach ()
-            //EmployeesGrid.Rows
+            foreach (GridRow Row in EmployeesGrid.Rows)
+            {
+                if (Row.Tag != null)
+                {
+                    SourceGridUtilities.RowTag rt = (SourceGridUtilities.RowTag)Row.Tag;
+                    if (Convert.ToString(rt.Key) == Employee.Key)
+                    {
+                        foreach (GridColumn Column in EmployeesGrid.Columns)
+                        {
+                            switch (EmployeesGrid[0, Column.Index].DisplayText)
+                            {
+                                case "Найменування":
+                                    EmployeesGrid[Row.Index, Column.Index].Value = Employee.Title;
+                                    break;
+                                case "Прізвище":
+                                    EmployeesGrid[Row.Index, Column.Index].Value = Employee.Surname;
+                                    break;
+                                case "Ім'я":
+                                    EmployeesGrid[Row.Index, Column.Index].Value = Employee.Name;
+                                    break;
+                                case "По батькові":
+                                    EmployeesGrid[Row.Index, Column.Index].Value = Employee.Middlename;
+                                    break;
+                                case "Адреса":
+                                    EmployeesGrid[Row.Index, Column.Index].Value = Employee.Address;
+                                    break;
+                                case "Номер телефону":
+                                    EmployeesGrid[Row.Index, Column.Index].Value = Employee.Phone;
+                                    break;
+                                /*
+                                case "Дата народження":
+                                    EmployeesGrid[Row.Index, Column.Index].Value = Employee.;
+                                    break;
+                                */
+                                case "Ім'я користувача":
+                                    EmployeesGrid[Row.Index, Column.Index].Value = Employee.UserName;
+                                    break;
+                                case "Коментар":
+                                    EmployeesGrid[Row.Index, Column.Index].Value = Employee.RComment;
+                                    break;
+                                case "Заблоковано":
+                                    EmployeesGrid[Row.Index, Column.Index].Value = Employee.Locked;
+                                    break;
+                            }
+                        }
+                        break;
+                    }
+                }
+                
+                
+            }
         }
 
         private void toolStripButton_New_Click(object sender, EventArgs e)
