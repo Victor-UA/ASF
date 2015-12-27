@@ -244,11 +244,13 @@ namespace ASF.Documents
             // dTP_AgreementDate
             // 
             this.dTP_AgreementDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dTP_AgreementDate.CustomFormat = " ";
+            this.dTP_AgreementDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dTP_AgreementDate.Location = new System.Drawing.Point(621, 29);
             this.dTP_AgreementDate.Name = "dTP_AgreementDate";
             this.dTP_AgreementDate.Size = new System.Drawing.Size(146, 20);
             this.dTP_AgreementDate.TabIndex = 3;
-            this.dTP_AgreementDate.Value = new System.DateTime(2015, 10, 7, 22, 52, 46, 0);
+            this.dTP_AgreementDate.Value = new System.DateTime(((long)(0)));
             this.dTP_AgreementDate.ValueChanged += new System.EventHandler(this.dTP_AgreementDate_ValueChanged);
             // 
             // tB_OrderNo
@@ -264,11 +266,13 @@ namespace ASF.Documents
             // dTP_ProdDate
             // 
             this.dTP_ProdDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dTP_ProdDate.CustomFormat = " ";
+            this.dTP_ProdDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dTP_ProdDate.Location = new System.Drawing.Point(621, 3);
             this.dTP_ProdDate.Name = "dTP_ProdDate";
             this.dTP_ProdDate.Size = new System.Drawing.Size(146, 20);
             this.dTP_ProdDate.TabIndex = 1;
-            this.dTP_ProdDate.Value = new System.DateTime(2015, 10, 7, 22, 52, 46, 0);
+            this.dTP_ProdDate.Value = new System.DateTime(((long)(0)));
             this.dTP_ProdDate.ValueChanged += new System.EventHandler(this.dTP_ProdDate_ValueChanged);
             // 
             // tB_Customer
@@ -291,11 +295,13 @@ namespace ASF.Documents
             // dTP_DateOrder
             // 
             this.dTP_DateOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dTP_DateOrder.CustomFormat = " ";
+            this.dTP_DateOrder.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dTP_DateOrder.Location = new System.Drawing.Point(621, 55);
             this.dTP_DateOrder.Name = "dTP_DateOrder";
             this.dTP_DateOrder.Size = new System.Drawing.Size(146, 20);
             this.dTP_DateOrder.TabIndex = 6;
-            this.dTP_DateOrder.Value = new System.DateTime(2015, 10, 7, 22, 51, 11, 34);
+            this.dTP_DateOrder.Value = new System.DateTime(((long)(0)));
             this.dTP_DateOrder.ValueChanged += new System.EventHandler(this.dTP_DateOrder_ValueChanged);
             // 
             // tB_TotalCost
@@ -471,7 +477,7 @@ namespace ASF.Documents
             this.toolStripButton_Save});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(57, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(26, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButton_Save

@@ -19,6 +19,12 @@ namespace ASF.Documents
         {
             Document = document;
             InitializeComponent();
+            dTP_AgreementDate.Value = DateTime.Now;
+            dTP_AgreementDate.Format = DateTimePickerFormat.Long;
+            dTP_DateOrder.Value = DateTime.Now;
+            dTP_DateOrder.Format = DateTimePickerFormat.Long;
+            dTP_ProdDate.Value = DateTime.Now;
+            dTP_ProdDate.Format = DateTimePickerFormat.Long;
         }
         private idocWindowOrder Document { get; set; }
         private void WindowOrderForm_FormClosing(object sender, FormClosingEventArgs e)

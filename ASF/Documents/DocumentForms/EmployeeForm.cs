@@ -18,6 +18,8 @@ namespace ASF.Documents
         {
             Document = document;
             InitializeComponent();
+            dTP_Birthday.Value = DateTime.Now;
+            dTP_Birthday.Format = DateTimePickerFormat.Long;
         }
         private idocEmployee Document { get; set; }
 
@@ -32,6 +34,7 @@ namespace ASF.Documents
                 _ReadOnly = value;
             }
         }
+
         public override bool isChanged
         {
             get
@@ -216,7 +219,10 @@ namespace ASF.Documents
         {
             isChanged = true;
         }
-
+        private void dTP_Birthday_ValueChanged(object sender, EventArgs e)
+        {
+            isChanged = true;
+        }
 
         private void EmployeeForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -230,5 +236,6 @@ namespace ASF.Documents
                 e.Cancel = mb == DialogResult.Cancel;
             }
         }
+
     }
 }

@@ -33,6 +33,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dTP_Birthday = new Victors.DateTimePicker();
+            this.label17 = new System.Windows.Forms.Label();
             this.tB_Middlename = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.tB_Name = new System.Windows.Forms.TextBox();
@@ -75,8 +77,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.документToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.зберегтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label17 = new System.Windows.Forms.Label();
-            this.dTP_Birthday = new Victors.DateTimePicker();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -168,6 +168,27 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(570, 469);
             this.panel1.TabIndex = 0;
+            // 
+            // dTP_Birthday
+            // 
+            this.dTP_Birthday.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dTP_Birthday.CustomFormat = " ";
+            this.dTP_Birthday.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dTP_Birthday.Location = new System.Drawing.Point(116, 315);
+            this.dTP_Birthday.Name = "dTP_Birthday";
+            this.dTP_Birthday.Size = new System.Drawing.Size(146, 20);
+            this.dTP_Birthday.TabIndex = 38;
+            this.dTP_Birthday.Value = new System.DateTime(2015, 12, 27, 9, 14, 17, 0);
+            this.dTP_Birthday.ValueChanged += new System.EventHandler(this.dTP_Birthday_ValueChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(12, 318);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(99, 13);
+            this.label17.TabIndex = 37;
+            this.label17.Text = "День народження";
             // 
             // tB_Middlename
             // 
@@ -590,24 +611,6 @@
             this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.зберегтиToolStripMenuItem.Text = "Зберегти";
             this.зберегтиToolStripMenuItem.Click += new System.EventHandler(this.зберегтиToolStripMenuItem_Click);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(12, 318);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(99, 13);
-            this.label17.TabIndex = 37;
-            this.label17.Text = "День народження";
-            // 
-            // dTP_Birthday
-            // 
-            this.dTP_Birthday.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dTP_Birthday.Location = new System.Drawing.Point(116, 315);
-            this.dTP_Birthday.Name = "dTP_Birthday";
-            this.dTP_Birthday.Size = new System.Drawing.Size(146, 20);
-            this.dTP_Birthday.TabIndex = 38;
-            this.dTP_Birthday.Value = new System.DateTime(2015, 10, 7, 22, 52, 46, 0);
             // 
             // EmployeeForm
             // 
