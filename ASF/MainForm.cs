@@ -110,6 +110,16 @@ namespace ASF
                         "Клієнт", "VCUSTOMERNAME"
                     }));
                 OrdersGrid.Visible = true;
+                try
+                {
+                    for (int i = 0; i < OrdersGrid.ColumnsCount; i++)
+                    {
+                        tSCB_Filter.Items.Add(OrdersGrid[0, i].Value.ToString());
+                    }
+                    tSCB_Filter.Text = tSCB_Filter.Items[0].ToString();
+                }
+                catch { }
+                
                 Program.OrdersAreChanged = false;
             }
         }

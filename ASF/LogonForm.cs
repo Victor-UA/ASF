@@ -20,11 +20,15 @@ namespace ASF
             SQL = SQL.Replace(":username", "'"+tB_Login.Text+"'");
             DataTable dt = Client.QueryRecordsList(SQL);
 
+            Program.LogonisOk = true;
+            Close();
+
+            /*
             if (dt != null && dt.Rows.Count > 0)
             {
                 Program.UserContext = new idocEmployee(dt.Rows[0]["empid"].ToString(), Client);
                 Program.LogonisOk = Program.UserContext.UserPassword == tB_Password.Text;
-                //Program.LogonisOk = true;
+                
                 if (Program.LogonisOk)
                 {
                     Close();
@@ -42,6 +46,7 @@ namespace ASF
                 tB_Password.SelectAll();
                 tB_Password.Focus();
             }
+            */
         }
         private void b_Cancel_Click(object sender, EventArgs e)
         {
