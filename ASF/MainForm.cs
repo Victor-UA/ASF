@@ -18,14 +18,13 @@ namespace ASF
     {
         public MainForm()
         {
-            InitializeComponent();
-            Program.UserContext = new idocEmployee(0, Client);
+            InitializeComponent();        
             OrdersGrid.Controller.AddController(new OrdersGridController(OrdersGrid, Client));
             CustomersGrid.Controller.AddController(new CustomersGridController(CustomersGrid, Client));
             EmployeesGrid.Controller.AddController(new EmployeesGridController(EmployeesGrid, Client));
         }
 
-        private FBClient Client = new FBClient(@"character set=WIN1251;data source=localhost;initial catalog=D:\NASTROECHNAYA_2015.GDB ;user id=SYSDBA;password=masterkey");
+        private FBClient Client = new FBClient(Program.BaseConnectionString);
         private void Form1_Load(object sender, EventArgs e)
         {
             foreach (TabListPage page in tabList1.TabListPages)
@@ -207,7 +206,7 @@ namespace ASF
                                     EmployeesGrid[Row.Index, Column.Index].Value = Employee.RComment;
                                     break;
                                 case "Заблоковано":
-                                    EmployeesGrid[Row.Index, Column.Index].Value = Employee.Locked;
+                                    EmployeesGrid[Row.Index, Column.Index].Value = Employee.Locked ? "1" : "0";
                                     break;
                             }
                         }

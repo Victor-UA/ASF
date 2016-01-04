@@ -95,8 +95,15 @@
     <Compile Include="Documents\DocumentForms\DocumentForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Encryption.cs" />
     <Compile Include="GridController.cs" />
     <Compile Include="Documents\Document Classes\idocDocuments.cs" />
+    <Compile Include="LogonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogonForm.Designer.cs">
+      <DependentUpon>LogonForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Documents\DocumentForms\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogonForm.resx">
+      <DependentUpon>LogonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -164,6 +174,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ico\Save.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Documents\Dialogs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

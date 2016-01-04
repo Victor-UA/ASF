@@ -6,6 +6,7 @@ namespace ASF.Documents
     {
         string Type { get; }
         string Key { get; }
+        idocEmployee Owner { get; }
         bool isCreated { get; }
         bool isChanged { get; }
         void Create();

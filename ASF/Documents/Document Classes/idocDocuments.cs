@@ -27,13 +27,14 @@ namespace ASF.Documents
 
         public string Type { get; protected set; }
         public string Key { get; protected set; }
+        public idocEmployee Owner { get; protected set; }
 
         public FBClient Client { get; private set; }
-
+        
         virtual public void Load() { }
 
-        public virtual bool isCreated { get; protected set; }
-        public virtual bool isChanged { get; protected set; }
+        virtual public bool isCreated { get; protected set; }
+        virtual public bool isChanged { get; protected set; }
 
         virtual public void Create() { }
         virtual public void Show() { }

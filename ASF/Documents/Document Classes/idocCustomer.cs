@@ -143,18 +143,6 @@ namespace ASF.Documents
             }
         }
 
-        public string Owner
-        {
-            get
-            {
-                return MainForm.toolStripStatusOwner.Text;
-            }
-            set
-            {
-                MainForm.toolStripStatusOwner.Text = value;
-            }
-        }
-
         public override bool isCreated
         {
             get
@@ -192,7 +180,7 @@ namespace ASF.Documents
                 isCreated = false;
                 Create();
                 MainForm.Text = "Нове замовлення";
-                Owner = "Administrator";
+                Owner = Program.UserContext;
             }
             else
             {
@@ -212,7 +200,8 @@ namespace ASF.Documents
                     WebSite = dt.Rows[0]["WebSite"].ToString();
                     RComment = dt.Rows[0]["RComment"].ToString();
 
-                    Owner = dt.Rows[0]["ownerpersontitle"].ToString();
+                    Owner = new idocEmployee(dt.Rows[0]["ownerid"].ToString(), Client);
+                    MainForm.toolStripStatusOwner.Text = Owner.Title;
 
                     isCreated = true;
                     isChanged = false;
@@ -238,6 +227,10 @@ namespace ASF.Documents
             string SQL = qryCustomerSave;
             try
             {
+                if (!Owner.isCreated)
+                {
+                    Owner = Program.UserContext;
+                }
                 SQL = SQL.Replace(":customerid", Key.ToString());
                 SQL = SQL.Replace(":name", "'" + Name.ToString() + "'");
 
@@ -254,9 +247,11 @@ namespace ASF.Documents
                 SQL = SQL.Replace(":website", "'" + WebSite.ToString() + "'");
 
                 SQL = SQL.Replace(":rcomment", "'" + RComment.ToString() + "'");
-                SQL = SQL.Replace(":ownerid", "0"); //Тимчасово!
+                SQL = SQL.Replace(":ownerid", isCreated ? Owner.Key : Program.UserContext.Key);
                 
                 Client.ExecuteSQLCommit(SQL);
+
+                MainForm.toolStripStatusOwner.Text = Owner.Title;
 
                 isChanged = false;
                 isCreated = true;
@@ -280,12 +275,8 @@ namespace ASF.Documents
         private string qryCustomersLoad { get; set; } =
             @"
 select
-  vc.*,
-  p.persontitle ownerpersontitle
+  vc.*
 from vtcustomers vc
-  left join (employee e
-  join persons p on p.personid = e.personid
-  ) on e.empid = vc.ownerid
 where vc.customerid=:customerid
             ";
         private string qryCustomerSave { get; set; } =

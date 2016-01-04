@@ -100,17 +100,7 @@ namespace ASF.Documents
                 MainForm.dTP_ProdDate.Value = value;
             }
         }
-        public string Owner
-        {
-            get
-            {
-                return MainForm.toolStripStatusOwner.Text;
-            }
-            set
-            {
-                MainForm.toolStripStatusOwner.Text = value;
-            }
-        }
+
         public decimal TotalCost
         {
             get
@@ -194,7 +184,7 @@ namespace ASF.Documents
 
                 MainForm.Text = "Нове замовлення";
                 Currency = "грн.";
-                Owner = "Administrator";
+                Owner = Program.UserContext;
             }
             else
             {
@@ -214,7 +204,8 @@ namespace ASF.Documents
                     TotalPrice = (decimal)dt.Rows[0]["TOTALPRICE"];
                     Currency = dt.Rows[0]["VCURRENCYNAME"].ToString();
                     RComment = dt.Rows[0]["RCOMMENT"].ToString();
-                    Owner = dt.Rows[0]["VMANAGERNAME"].ToString();
+                    Owner = new idocEmployee(dt.Rows[0]["ownerid"].ToString(), Client);
+                    MainForm.toolStripStatusOwner.Text = Owner.Title;
 
                     isCreated = true;
                     isChanged = false;

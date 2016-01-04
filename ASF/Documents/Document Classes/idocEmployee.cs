@@ -210,18 +210,6 @@ namespace ASF.Documents
             }
         }
 
-        public string Owner
-        {
-            get
-            {
-                return MainForm.toolStripStatusOwner.Text;
-            }
-            set
-            {
-                MainForm.toolStripStatusOwner.Text = value;
-            }
-        }
-
         public override bool isCreated
         {
             get
@@ -260,7 +248,7 @@ namespace ASF.Documents
                 Create();
                 MainForm.Text = "Новий співробітник";
                 Birthday = DateTime.MinValue;
-                Owner = "Administrator";
+                Owner = Program.UserContext;
             }
             else
             {
@@ -287,10 +275,11 @@ namespace ASF.Documents
                     RComment = dt.Rows[0]["RComment"].ToString();
 
                     UserName = dt.Rows[0]["UserName"].ToString();
-                    UserPassword = dt.Rows[0]["UserPassword"].ToString();
+                    UserPassword = Encryption.Decode(dt.Rows[0]["UserPassword"].ToString(), Program.PasswordKey);
                     Locked = (int)dt.Rows[0]["Locked"] == 1 ? true : false;
 
-                    Owner = dt.Rows[0]["OwnerPersonTitle"].ToString();
+                    Owner = new idocEmployee(dt.Rows[0]["ownerid"].ToString(), Client);
+                    MainForm.toolStripStatusOwner.Text = Owner.Title;
 
                     isCreated = true;
                     isChanged = false;
@@ -316,6 +305,10 @@ namespace ASF.Documents
             string SQL = qryEmployeeSave;
             try
             {
+                if (!Owner.isCreated)
+                {
+                    Owner = Program.UserContext;
+                }
                 SQL = SQL.Replace(":empid", Key.ToString());
                 SQL = SQL.Replace(":persontitle", "'" + Title.ToString() + "'");
                 SQL = SQL.Replace(":personname", "'" + Name.ToString() + "'");
@@ -336,13 +329,15 @@ namespace ASF.Documents
                 SQL = SQL.Replace(":_email", "'" + Email.ToString() + "'");
 
                 SQL = SQL.Replace(":rcomment", "'" + RComment.ToString() + "'");
-                SQL = SQL.Replace(":ownerid", "0"); //Тимчасово!
+                SQL = SQL.Replace(":ownerid", isCreated ? Owner.Key : Program.UserContext.Key);
 
                 SQL = SQL.Replace(":locked", Locked ? "1" : "0");
                 SQL = SQL.Replace(":username", "'" + UserName.ToString() + "'");
-                SQL = SQL.Replace(":userpassword", "'" + UserPassword.ToString() + "'");
+                SQL = SQL.Replace(":userpassword", "'" + Encryption.Encode(UserPassword.ToString(), Program.PasswordKey) + "'");
 
                 Client.ExecuteSQLCommit(SQL);
+
+                MainForm.toolStripStatusOwner.Text = Owner.Title;
 
                 isChanged = false;
                 isCreated = true;
@@ -379,7 +374,7 @@ select
     where e.empid=ve.empid
   ) userpassword
 from vtemployee ve
-  join vtemployee veo on veo.empid = ve.ownerid
+  left join vtemployee veo on veo.empid = ve.ownerid
   left join addresses ad on ad.addressid=ve.mainaddressid
 left join EMAILADDRESSES ea on ea.emailid=ve.mainemailid
 where ve.empid=:empid

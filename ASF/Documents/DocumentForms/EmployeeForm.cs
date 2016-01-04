@@ -237,5 +237,9 @@ namespace ASF.Documents
             }
         }
 
+        private void label10_DoubleClick(object sender, EventArgs e)
+        {
+            tB_UserPassword.PasswordChar = tB_UserPassword.PasswordChar == '\0' ? '*' : '\0';
+        }
     }
 }

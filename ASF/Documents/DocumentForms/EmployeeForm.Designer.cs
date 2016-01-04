@@ -511,6 +511,7 @@
             this.label10.Size = new System.Drawing.Size(45, 13);
             this.label10.TabIndex = 35;
             this.label10.Text = "Пароль";
+            this.label10.DoubleClick += new System.EventHandler(this.label10_DoubleClick);
             // 
             // tB_UserName
             // 

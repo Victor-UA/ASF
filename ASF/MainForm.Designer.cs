@@ -44,14 +44,19 @@
             this.tabListPageEmployees = new Cyotek.Windows.Forms.TabListPage();
             this.EmployeesPanel = new System.Windows.Forms.Panel();
             this.EmployeesGrid = new SourceGrid.Grid();
+            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStrip1.SuspendLayout();
             this.OrdersPanel.SuspendLayout();
+            this.OrdersGrid.SuspendLayout();
             this.tabList1.SuspendLayout();
             this.tabListPageOrders.SuspendLayout();
             this.tabListPageCustomers.SuspendLayout();
             this.CustomersPanel.SuspendLayout();
             this.tabListPageEmployees.SuspendLayout();
             this.EmployeesPanel.SuspendLayout();
+            this.toolStripContainer1.ContentPanel.SuspendLayout();
+            this.toolStripContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -97,19 +102,20 @@
             this.OrdersPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OrdersPanel.Location = new System.Drawing.Point(0, 0);
             this.OrdersPanel.Name = "OrdersPanel";
-            this.OrdersPanel.Size = new System.Drawing.Size(656, 459);
+            this.OrdersPanel.Size = new System.Drawing.Size(656, 434);
             this.OrdersPanel.TabIndex = 3;
             // 
             // OrdersGrid
             // 
             this.OrdersGrid.ContextMenuStrip = this.contextMenuStripGrid1;
+            this.OrdersGrid.Controls.Add(this.toolStrip2);
             this.OrdersGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OrdersGrid.EnableSort = true;
             this.OrdersGrid.Location = new System.Drawing.Point(0, 0);
             this.OrdersGrid.Name = "OrdersGrid";
             this.OrdersGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.OrdersGrid.SelectionMode = SourceGrid.GridSelectionMode.Row;
-            this.OrdersGrid.Size = new System.Drawing.Size(656, 459);
+            this.OrdersGrid.Size = new System.Drawing.Size(656, 434);
             this.OrdersGrid.TabIndex = 0;
             this.OrdersGrid.TabStop = true;
             this.OrdersGrid.ToolTipText = "";
@@ -133,7 +139,7 @@
             // tabListPageOrders
             // 
             this.tabListPageOrders.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabListPageOrders.Controls.Add(this.OrdersPanel);
+            this.tabListPageOrders.Controls.Add(this.toolStripContainer1);
             this.tabListPageOrders.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabListPageOrders.Name = "tabListPageOrders";
             this.tabListPageOrders.Size = new System.Drawing.Size(658, 461);
@@ -183,7 +189,7 @@
             this.tabListPageEmployees.Controls.Add(this.EmployeesPanel);
             this.tabListPageEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabListPageEmployees.Name = "tabListPageEmployees";
-            this.tabListPageEmployees.Size = new System.Drawing.Size(658, 461);
+            this.tabListPageEmployees.Size = new System.Drawing.Size(42, 192);
             this.tabListPageEmployees.TabIndex = 2;
             this.tabListPageEmployees.Tag = "idocEmployee";
             this.tabListPageEmployees.Text = "Співробітники";
@@ -195,7 +201,7 @@
             this.EmployeesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EmployeesPanel.Location = new System.Drawing.Point(0, 0);
             this.EmployeesPanel.Name = "EmployeesPanel";
-            this.EmployeesPanel.Size = new System.Drawing.Size(656, 459);
+            this.EmployeesPanel.Size = new System.Drawing.Size(40, 190);
             this.EmployeesPanel.TabIndex = 3;
             // 
             // EmployeesGrid
@@ -207,10 +213,32 @@
             this.EmployeesGrid.Name = "EmployeesGrid";
             this.EmployeesGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.EmployeesGrid.SelectionMode = SourceGrid.GridSelectionMode.Row;
-            this.EmployeesGrid.Size = new System.Drawing.Size(656, 459);
+            this.EmployeesGrid.Size = new System.Drawing.Size(40, 190);
             this.EmployeesGrid.TabIndex = 2;
             this.EmployeesGrid.TabStop = true;
             this.EmployeesGrid.ToolTipText = "";
+            // 
+            // toolStripContainer1
+            // 
+            // 
+            // toolStripContainer1.ContentPanel
+            // 
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.OrdersPanel);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(656, 434);
+            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
+            this.toolStripContainer1.Name = "toolStripContainer1";
+            this.toolStripContainer1.Size = new System.Drawing.Size(656, 459);
+            this.toolStripContainer1.TabIndex = 4;
+            this.toolStripContainer1.Text = "toolStripContainer1";
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(656, 25);
+            this.toolStrip2.TabIndex = 4;
+            this.toolStrip2.Text = "toolStrip2";
             // 
             // MainForm
             // 
@@ -230,12 +258,17 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.OrdersPanel.ResumeLayout(false);
+            this.OrdersGrid.ResumeLayout(false);
+            this.OrdersGrid.PerformLayout();
             this.tabList1.ResumeLayout(false);
             this.tabListPageOrders.ResumeLayout(false);
             this.tabListPageCustomers.ResumeLayout(false);
             this.CustomersPanel.ResumeLayout(false);
             this.tabListPageEmployees.ResumeLayout(false);
             this.EmployeesPanel.ResumeLayout(false);
+            this.toolStripContainer1.ContentPanel.ResumeLayout(false);
+            this.toolStripContainer1.ResumeLayout(false);
+            this.toolStripContainer1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,6 +291,8 @@
         private Cyotek.Windows.Forms.TabListPage tabListPageOrders;
         private Cyotek.Windows.Forms.TabListPage tabListPageCustomers;
         private Cyotek.Windows.Forms.TabListPage tabListPageEmployees;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripContainer toolStripContainer1;
     }
 }
 
