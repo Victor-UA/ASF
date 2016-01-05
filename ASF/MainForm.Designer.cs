@@ -39,7 +39,7 @@
             this.contextMenuStripGrid1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tSCB_Filter = new System.Windows.Forms.ToolStripComboBox();
-            this.tSTB_Filter = new System.Windows.Forms.ToolStripTextBox();
+            this.tSTB_FilterText = new System.Windows.Forms.ToolStripTextBox();
             this.tabList1 = new Cyotek.Windows.Forms.TabList();
             this.tabListPageOrders = new Cyotek.Windows.Forms.TabListPage();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
@@ -149,22 +149,26 @@
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tSCB_Filter,
-            this.tSTB_Filter});
+            this.tSTB_FilterText});
             this.toolStrip2.Location = new System.Drawing.Point(3, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(228, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(338, 25);
             this.toolStrip2.TabIndex = 4;
             this.toolStrip2.Text = "toolStrip2";
             // 
             // tSCB_Filter
             // 
+            this.tSCB_Filter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tSCB_Filter.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
             this.tSCB_Filter.Name = "tSCB_Filter";
-            this.tSCB_Filter.Size = new System.Drawing.Size(121, 25);
+            this.tSCB_Filter.Size = new System.Drawing.Size(150, 25);
             // 
-            // tSTB_Filter
+            // tSTB_FilterText
             // 
-            this.tSTB_Filter.Name = "tSTB_Filter";
-            this.tSTB_Filter.Size = new System.Drawing.Size(100, 25);
+            this.tSTB_FilterText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tSTB_FilterText.Name = "tSTB_FilterText";
+            this.tSTB_FilterText.Size = new System.Drawing.Size(150, 25);
+            this.tSTB_FilterText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tSTB_FilterText_KeyPress);
             // 
             // tabList1
             // 
@@ -335,7 +339,7 @@
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.ToolStripComboBox tSCB_Filter;
-        private System.Windows.Forms.ToolStripTextBox tSTB_Filter;
+        private System.Windows.Forms.ToolStripTextBox tSTB_FilterText;
         private System.Windows.Forms.ToolStripStatusLabel tSSL_User;
     }
 }

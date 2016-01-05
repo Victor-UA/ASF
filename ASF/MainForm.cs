@@ -1,10 +1,5 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Victors;
 using ASF.Documents;
@@ -100,42 +95,50 @@ namespace ASF
             }
         }
 
-        public void OrdersRepaint()
-        {
-            tabListPageOrders_Paint(null, null);
-        }
         private void tabListPageOrders_Paint(object sender, PaintEventArgs e)
-        {          
-            TabListPage page = (TabListPage)sender;
-            if (Program.OrdersAreChanged)
+        {
+            //TabListPage page = (TabListPage)sender;
+            Dictionary Filter = new Dictionary();
+            if (!string.IsNullOrEmpty(tSTB_FilterText.Text) & !string.IsNullOrEmpty(tSCB_Filter.Text))
+            {
+                Filter.Add(tSCB_Filter.Text, tSTB_FilterText.Text);
+            }
+            if (Program.OrdersAreChanged | sender == null)
             {
                 OrdersGrid.Visible = false;
                 DataTable dt = Client.QueryRecordsList(qryOrders);
-                SourceGridUtilities.Grid.Fill(OrdersGrid, dt, "orderid", new Dictionary(new List<dynamic>
+                SourceGridUtilities.Grid.Fill(OrdersGrid, dt, "orderid", 
+                    new Dictionary(new List<dynamic>
                     {
                         "Номер замовлення", "orderno",
                         "Дата готовності", "dateorder",
                         "Стан", "VORDERSTATENAME",
                         "Клієнт", "VCUSTOMERNAME"
-                    }));
+                    }),
+                    Filter
+                );
                 OrdersGrid.Visible = true;
                 try
                 {
-                    for (int i = 0; i < OrdersGrid.ColumnsCount; i++)
+                    if (tSCB_Filter.Items.Count == 0)
                     {
-                        tSCB_Filter.Items.Add(OrdersGrid[0, i].Value.ToString());
+                        for (int i = 0; i < OrdersGrid.ColumnsCount; i++)
+                        {
+                            tSCB_Filter.Items.Add(OrdersGrid[0, i].Value.ToString());
+                        }
+                        tSCB_Filter.Text = tSCB_Filter.Items[0].ToString();
                     }
-                    tSCB_Filter.Text = tSCB_Filter.Items[0].ToString();
                 }
                 catch { }
                 
                 Program.OrdersAreChanged = false;
             }
         }
-        public void CustomersRepaint()
+        public void OrdersRepaint()
         {
-            tabListPageCustomers_Paint(null, null);
+            tabListPageOrders_Paint(null, null);
         }
+
         private void tabListPageCustomers_Paint(object sender, PaintEventArgs e)
         {
             TabListPage page = (TabListPage)sender;
@@ -153,10 +156,11 @@ namespace ASF
                 Program.CustomersAreChanged = false;
             }
         }
-        public void EmployeesRepaint()
+        public void CustomersRepaint()
         {
-            tabListPageEmployees_Paint(null, null);
+            tabListPageCustomers_Paint(null, null);
         }
+
         private void tabListPageEmployees_Paint(object sender, PaintEventArgs e)
         {
             TabListPage page = (TabListPage)sender;
@@ -181,8 +185,11 @@ namespace ASF
                 Program.EmployeesAreChanged = false;
             }
         }
-
-        public void RefreshEmployee(idocEmployee Employee)
+        public void EmployeesRepaint()
+        {
+            tabListPageEmployees_Paint(null, null);
+        }
+        public void EmployeeRefresh(idocEmployee Employee)
         {
             foreach (GridRow Row in EmployeesGrid.Rows)
             {
@@ -213,11 +220,9 @@ namespace ASF
                                 case "Номер телефону":
                                     EmployeesGrid[Row.Index, Column.Index].Value = Employee.Phone;
                                     break;
-                                /*
                                 case "Дата народження":
-                                    EmployeesGrid[Row.Index, Column.Index].Value = Employee.;
+                                    EmployeesGrid[Row.Index, Column.Index].Value = Employee.Birthday;
                                     break;
-                                */
                                 case "Ім'я користувача":
                                     EmployeesGrid[Row.Index, Column.Index].Value = Employee.UserName;
                                     break;
@@ -254,6 +259,7 @@ namespace ASF
             }
         }
 
+
         private void toolStripButton_New_Click(object sender, EventArgs e)
         {
             switch (tabList1.SelectedPage.Text)
@@ -280,6 +286,15 @@ namespace ASF
                 emp.Show();
             }
             catch { }
+        }
+        private void tSTB_FilterText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)
+            {
+                case '\r':
+                    OrdersRepaint();
+                    break;
+            }
         }
 
         #region Скрипти SQL

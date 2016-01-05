@@ -72,7 +72,7 @@ namespace ASF
         private static bool _EmployeesAreChanged = true;
         public static void RefreshEmployee(idocEmployee Employee)
         {
-            fMainForm.RefreshEmployee(Employee);
+            fMainForm.EmployeeRefresh(Employee);
         }
         public static idocEmployee UserContext { get; set; }
     }
