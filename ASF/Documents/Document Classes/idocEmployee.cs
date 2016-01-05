@@ -278,7 +278,7 @@ namespace ASF.Documents
                     UserPassword = Encryption.Decode(dt.Rows[0]["UserPassword"].ToString(), Program.PasswordKey);
                     Locked = (int)dt.Rows[0]["Locked"] == 1 ? true : false;
 
-                    Owner = new idocEmployee(dt.Rows[0]["ownerid"].ToString(), Client);
+                    Owner = dt.Rows[0]["ownerid"].ToString() == Key.ToString() ? this : new idocEmployee(dt.Rows[0]["ownerid"].ToString(), Client);
                     MainForm.toolStripStatusOwner.Text = Owner.Title;
 
                     isCreated = true;
@@ -337,6 +337,7 @@ namespace ASF.Documents
 
                 Client.ExecuteSQLCommit(SQL);
 
+                Owner.Load();
                 MainForm.toolStripStatusOwner.Text = Owner.Title;
 
                 isChanged = false;

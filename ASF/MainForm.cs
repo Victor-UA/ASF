@@ -22,6 +22,15 @@ namespace ASF
             OrdersGrid.Controller.AddController(new OrdersGridController(OrdersGrid, Client));
             CustomersGrid.Controller.AddController(new CustomersGridController(CustomersGrid, Client));
             EmployeesGrid.Controller.AddController(new EmployeesGridController(EmployeesGrid, Client));
+            try
+            {
+                tSSL_User.Text = Program.UserContext.Title;
+            }
+            catch
+            {
+                tSSL_User.Text = "Невідомо";
+            }
+            
         }
 
         private FBClient Client = new FBClient(Program.BaseConnectionString);
@@ -223,8 +232,25 @@ namespace ASF
                         break;
                     }
                 }
-                
-                
+            }
+            try
+            {
+                if (Program.UserContext.Key.ToString() == Employee.Key.ToString())
+                {
+                    try
+                    {
+                        Program.UserContext.Load();
+                        tSSL_User.Text = Program.UserContext.Title;
+                    }
+                    catch
+                    {
+                        tSSL_User.Text = "Невідомо";
+                    }
+                }
+            }
+            catch
+            {
+                tSSL_User.Text = "Невідомо";
             }
         }
 
@@ -245,6 +271,15 @@ namespace ASF
                     Employee.Show();
                     break;
             }
+        }
+        private void tSSL_User_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                idocEmployee emp = new idocEmployee(Program.UserContext.Key, Client);
+                emp.Show();
+            }
+            catch { }
         }
 
         #region Скрипти SQL

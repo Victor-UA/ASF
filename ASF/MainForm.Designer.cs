@@ -31,12 +31,15 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tSSL_User = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton_New = new System.Windows.Forms.ToolStripButton();
             this.OrdersPanel = new System.Windows.Forms.Panel();
             this.OrdersGrid = new SourceGrid.Grid();
             this.contextMenuStripGrid1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.tSCB_Filter = new System.Windows.Forms.ToolStripComboBox();
+            this.tSTB_Filter = new System.Windows.Forms.ToolStripTextBox();
             this.tabList1 = new Cyotek.Windows.Forms.TabList();
             this.tabListPageOrders = new Cyotek.Windows.Forms.TabListPage();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
@@ -46,8 +49,7 @@
             this.tabListPageEmployees = new Cyotek.Windows.Forms.TabListPage();
             this.EmployeesPanel = new System.Windows.Forms.Panel();
             this.EmployeesGrid = new SourceGrid.Grid();
-            this.tSCB_Filter = new System.Windows.Forms.ToolStripComboBox();
-            this.tSTB_Filter = new System.Windows.Forms.ToolStripTextBox();
+            this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.OrdersPanel.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -72,11 +74,25 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tSSL_User});
             this.statusStrip1.Location = new System.Drawing.Point(0, 518);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(816, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tSSL_User
+            // 
+            this.tSSL_User.AutoSize = false;
+            this.tSSL_User.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.tSSL_User.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.tSSL_User.IsLink = true;
+            this.tSSL_User.Name = "tSSL_User";
+            this.tSSL_User.Size = new System.Drawing.Size(200, 17);
+            this.tSSL_User.Click += new System.EventHandler(this.tSSL_User_Click);
             // 
             // toolStrip1
             // 
@@ -136,9 +152,19 @@
             this.tSTB_Filter});
             this.toolStrip2.Location = new System.Drawing.Point(3, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(259, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(228, 25);
             this.toolStrip2.TabIndex = 4;
             this.toolStrip2.Text = "toolStrip2";
+            // 
+            // tSCB_Filter
+            // 
+            this.tSCB_Filter.Name = "tSCB_Filter";
+            this.tSCB_Filter.Size = new System.Drawing.Size(121, 25);
+            // 
+            // tSTB_Filter
+            // 
+            this.tSTB_Filter.Name = "tSTB_Filter";
+            this.tSTB_Filter.Size = new System.Drawing.Size(100, 25);
             // 
             // tabList1
             // 
@@ -187,7 +213,7 @@
             this.tabListPageCustomers.Controls.Add(this.CustomersPanel);
             this.tabListPageCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabListPageCustomers.Name = "tabListPageCustomers";
-            this.tabListPageCustomers.Size = new System.Drawing.Size(658, 461);
+            this.tabListPageCustomers.Size = new System.Drawing.Size(42, 192);
             this.tabListPageCustomers.TabIndex = 1;
             this.tabListPageCustomers.Tag = "idocCustomer";
             this.tabListPageCustomers.Text = "Клієнти";
@@ -199,7 +225,7 @@
             this.CustomersPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CustomersPanel.Location = new System.Drawing.Point(0, 0);
             this.CustomersPanel.Name = "CustomersPanel";
-            this.CustomersPanel.Size = new System.Drawing.Size(656, 459);
+            this.CustomersPanel.Size = new System.Drawing.Size(40, 190);
             this.CustomersPanel.TabIndex = 0;
             // 
             // CustomersGrid
@@ -211,7 +237,7 @@
             this.CustomersGrid.Name = "CustomersGrid";
             this.CustomersGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.CustomersGrid.SelectionMode = SourceGrid.GridSelectionMode.Row;
-            this.CustomersGrid.Size = new System.Drawing.Size(656, 459);
+            this.CustomersGrid.Size = new System.Drawing.Size(40, 190);
             this.CustomersGrid.TabIndex = 1;
             this.CustomersGrid.TabStop = true;
             this.CustomersGrid.ToolTipText = "";
@@ -222,7 +248,7 @@
             this.tabListPageEmployees.Controls.Add(this.EmployeesPanel);
             this.tabListPageEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabListPageEmployees.Name = "tabListPageEmployees";
-            this.tabListPageEmployees.Size = new System.Drawing.Size(658, 461);
+            this.tabListPageEmployees.Size = new System.Drawing.Size(42, 192);
             this.tabListPageEmployees.TabIndex = 2;
             this.tabListPageEmployees.Tag = "idocEmployee";
             this.tabListPageEmployees.Text = "Співробітники";
@@ -234,7 +260,7 @@
             this.EmployeesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EmployeesPanel.Location = new System.Drawing.Point(0, 0);
             this.EmployeesPanel.Name = "EmployeesPanel";
-            this.EmployeesPanel.Size = new System.Drawing.Size(656, 459);
+            this.EmployeesPanel.Size = new System.Drawing.Size(40, 190);
             this.EmployeesPanel.TabIndex = 3;
             // 
             // EmployeesGrid
@@ -246,20 +272,10 @@
             this.EmployeesGrid.Name = "EmployeesGrid";
             this.EmployeesGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.EmployeesGrid.SelectionMode = SourceGrid.GridSelectionMode.Row;
-            this.EmployeesGrid.Size = new System.Drawing.Size(656, 459);
+            this.EmployeesGrid.Size = new System.Drawing.Size(40, 190);
             this.EmployeesGrid.TabIndex = 2;
             this.EmployeesGrid.TabStop = true;
             this.EmployeesGrid.ToolTipText = "";
-            // 
-            // tSCB_Filter
-            // 
-            this.tSCB_Filter.Name = "tSCB_Filter";
-            this.tSCB_Filter.Size = new System.Drawing.Size(121, 25);
-            // 
-            // tSTB_Filter
-            // 
-            this.tSTB_Filter.Name = "tSTB_Filter";
-            this.tSTB_Filter.Size = new System.Drawing.Size(100, 25);
             // 
             // MainForm
             // 
@@ -276,6 +292,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "База даних компанії";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.OrdersPanel.ResumeLayout(false);
@@ -318,6 +336,7 @@
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.ToolStripComboBox tSCB_Filter;
         private System.Windows.Forms.ToolStripTextBox tSTB_Filter;
+        private System.Windows.Forms.ToolStripStatusLabel tSSL_User;
     }
 }
 

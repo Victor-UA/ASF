@@ -119,6 +119,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(584, 501);
             this.tabControl1.TabIndex = 4;
+            this.tabControl1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // tabPage1
             // 
@@ -200,6 +201,7 @@
             this.tB_Middlename.TabIndex = 3;
             this.tB_Middlename.Tag = "wasEmpty";
             this.tB_Middlename.TextChanged += new System.EventHandler(this.tB_Middlename_TextChanged);
+            this.tB_Middlename.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // label14
             // 
@@ -220,6 +222,7 @@
             this.tB_Name.TabIndex = 2;
             this.tB_Name.Tag = "wasEmpty";
             this.tB_Name.TextChanged += new System.EventHandler(this.tB_Name_TextChanged);
+            this.tB_Name.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // label13
             // 
@@ -240,6 +243,7 @@
             this.tB_Surname.TabIndex = 1;
             this.tB_Surname.Tag = "wasEmpty";
             this.tB_Surname.TextChanged += new System.EventHandler(this.tB_Surname_TextChanged);
+            this.tB_Surname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // label12
             // 
@@ -263,6 +267,7 @@
             this.tB_RComment.TabIndex = 12;
             this.tB_RComment.WordWrap = false;
             this.tB_RComment.TextChanged += new System.EventHandler(this.tB_RComment_TextChanged);
+            this.tB_RComment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // label11
             // 
@@ -282,6 +287,7 @@
             this.tB_Email.Size = new System.Drawing.Size(448, 20);
             this.tB_Email.TabIndex = 5;
             this.tB_Email.TextChanged += new System.EventHandler(this.tB_Email_TextChanged);
+            this.tB_Email.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // label9
             // 
@@ -301,6 +307,7 @@
             this.tB_PostalCode.Size = new System.Drawing.Size(448, 20);
             this.tB_PostalCode.TabIndex = 11;
             this.tB_PostalCode.TextChanged += new System.EventHandler(this.tB_PostalCode_TextChanged);
+            this.tB_PostalCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // label8
             // 
@@ -320,6 +327,7 @@
             this.tB_Country.Size = new System.Drawing.Size(448, 20);
             this.tB_Country.TabIndex = 10;
             this.tB_Country.TextChanged += new System.EventHandler(this.tB_Country_TextChanged);
+            this.tB_Country.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // label7
             // 
@@ -339,6 +347,7 @@
             this.tB_District.Size = new System.Drawing.Size(448, 20);
             this.tB_District.TabIndex = 9;
             this.tB_District.TextChanged += new System.EventHandler(this.tB_District_TextChanged);
+            this.tB_District.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // label6
             // 
@@ -358,6 +367,7 @@
             this.tB_Region.Size = new System.Drawing.Size(448, 20);
             this.tB_Region.TabIndex = 8;
             this.tB_Region.TextChanged += new System.EventHandler(this.tB_Region_TextChanged);
+            this.tB_Region.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // label5
             // 
@@ -377,6 +387,7 @@
             this.tB_City.Size = new System.Drawing.Size(448, 20);
             this.tB_City.TabIndex = 7;
             this.tB_City.TextChanged += new System.EventHandler(this.tB_City_TextChanged);
+            this.tB_City.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // label4
             // 
@@ -396,6 +407,7 @@
             this.tB_Address.Size = new System.Drawing.Size(448, 20);
             this.tB_Address.TabIndex = 6;
             this.tB_Address.TextChanged += new System.EventHandler(this.tB_Address_TextChanged);
+            this.tB_Address.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // label3
             // 
@@ -415,6 +427,7 @@
             this.tB_Phone.Size = new System.Drawing.Size(448, 20);
             this.tB_Phone.TabIndex = 4;
             this.tB_Phone.TextChanged += new System.EventHandler(this.tB_Phone_TextChanged);
+            this.tB_Phone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // label2
             // 
@@ -435,6 +448,7 @@
             this.tB_Title.TabIndex = 0;
             this.tB_Title.Tag = "wasEmpty";
             this.tB_Title.TextChanged += new System.EventHandler(this.tB_Title_TextChanged);
+            this.tB_Title.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // label1
             // 
@@ -502,6 +516,7 @@
             this.tB_UserPassword.TabIndex = 33;
             this.tB_UserPassword.Tag = "wasEmpty";
             this.tB_UserPassword.TextChanged += new System.EventHandler(this.tB_Password_TextChanged);
+            this.tB_UserPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // label10
             // 
@@ -523,6 +538,7 @@
             this.tB_UserName.TabIndex = 32;
             this.tB_UserName.Tag = "wasEmpty";
             this.tB_UserName.TextChanged += new System.EventHandler(this.tB_Login_TextChanged);
+            this.tB_UserName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // label15
             // 
@@ -584,9 +600,11 @@
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.toolStripStatusOwner.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.toolStripStatusOwner.IsLink = true;
             this.toolStripStatusOwner.Name = "toolStripStatusOwner";
             this.toolStripStatusOwner.Size = new System.Drawing.Size(200, 17);
             this.toolStripStatusOwner.Text = "toolStripStatusOwner";
+            this.toolStripStatusOwner.Click += new System.EventHandler(this.toolStripStatusOwner_Click);
             // 
             // menuStrip1
             // 

@@ -145,9 +145,39 @@ namespace ASF.Documents
                 dynamic mb = MessageBox.Show("Зберегти зміни?", "Увага!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
                 if (mb == DialogResult.Yes)
                 {
-                    Document.Save();
+                    if (CanBeSaved)
+                    {
+                        Document.Save();
+                    }
+                    else
+                    {
+                        e.Cancel = true;
+                    }
                 }
-                e.Cancel = mb == DialogResult.Cancel;
+                else
+                {
+                    e.Cancel = mb == DialogResult.Cancel;
+                }
+            }
+        }
+
+        private void toolStripStatusOwner_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                idocEmployee emp = new idocEmployee(Document.Owner.Key, Document.Client);
+                emp.Show();
+            }
+            catch { }
+        }
+
+        private void Global_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)
+            {
+                case '\u001b':
+                    Close();
+                    break;
             }
         }
     }

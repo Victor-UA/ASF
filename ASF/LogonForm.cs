@@ -20,10 +20,14 @@ namespace ASF
             SQL = SQL.Replace(":username", "'"+tB_Login.Text+"'");
             DataTable dt = Client.QueryRecordsList(SQL);
 
+            try
+            {
+                Program.UserContext = new idocEmployee(dt.Rows[0]["empid"].ToString(), Client);
+            }
+            catch { }
             Program.LogonisOk = true;
             Close();
-
-            /*
+            /*            
             if (dt != null && dt.Rows.Count > 0)
             {
                 Program.UserContext = new idocEmployee(dt.Rows[0]["empid"].ToString(), Client);

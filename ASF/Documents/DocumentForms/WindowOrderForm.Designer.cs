@@ -135,9 +135,11 @@ namespace ASF.Documents
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.toolStripStatusOwner.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.toolStripStatusOwner.IsLink = true;
             this.toolStripStatusOwner.Name = "toolStripStatusOwner";
             this.toolStripStatusOwner.Size = new System.Drawing.Size(200, 17);
             this.toolStripStatusOwner.Text = "toolStripStatusOwner";
+            this.toolStripStatusOwner.Click += new System.EventHandler(this.toolStripStatusOwner_Click);
             // 
             // toolStripContainer1
             // 
@@ -167,6 +169,7 @@ namespace ASF.Documents
             this.tabList1.Name = "tabList1";
             this.tabList1.Size = new System.Drawing.Size(930, 436);
             this.tabList1.TabIndex = 0;
+            this.tabList1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // tabListPageMain
             // 
@@ -220,6 +223,7 @@ namespace ASF.Documents
             this.tB_RComment.Size = new System.Drawing.Size(631, 293);
             this.tB_RComment.TabIndex = 19;
             this.tB_RComment.WordWrap = false;
+            this.tB_RComment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // label9
             // 
@@ -240,6 +244,7 @@ namespace ASF.Documents
             this.tB_AgreementNo.Size = new System.Drawing.Size(404, 20);
             this.tB_AgreementNo.TabIndex = 2;
             this.tB_AgreementNo.TextChanged += new System.EventHandler(this.tB_AgreementNo_TextChanged);
+            this.tB_AgreementNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // dTP_AgreementDate
             // 
@@ -262,6 +267,7 @@ namespace ASF.Documents
             this.tB_OrderNo.Size = new System.Drawing.Size(404, 20);
             this.tB_OrderNo.TabIndex = 0;
             this.tB_OrderNo.TextChanged += new System.EventHandler(this.tB_OrderNo_TextChanged);
+            this.tB_OrderNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // dTP_ProdDate
             // 
@@ -283,7 +289,7 @@ namespace ASF.Documents
             this.tB_Customer.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.tB_Customer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tB_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tB_Customer.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.tB_Customer.ForeColor = System.Drawing.Color.Blue;
             this.tB_Customer.Location = new System.Drawing.Point(99, 55);
             this.tB_Customer.Name = "tB_Customer";
             this.tB_Customer.ReadOnly = true;
@@ -291,6 +297,7 @@ namespace ASF.Documents
             this.tB_Customer.TabIndex = 4;
             this.tB_Customer.Click += new System.EventHandler(this.tB_Customer_Click);
             this.tB_Customer.TextChanged += new System.EventHandler(this.tB_Customer_TextChanged);
+            this.tB_Customer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // dTP_DateOrder
             // 
@@ -313,6 +320,7 @@ namespace ASF.Documents
             this.tB_TotalCost.Tag = "0";
             this.tB_TotalCost.TextChanged += new System.EventHandler(this.tB_TotalCost_TextChanged);
             this.tB_TotalCost.Enter += new System.EventHandler(this.tB_TotalCost_Enter);
+            this.tB_TotalCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             this.tB_TotalCost.Leave += new System.EventHandler(this.tB_TotalCost_Leave);
             // 
             // tB_TotalPrice
@@ -324,6 +332,7 @@ namespace ASF.Documents
             this.tB_TotalPrice.Tag = "0";
             this.tB_TotalPrice.TextChanged += new System.EventHandler(this.tB_TotalPrice_TextChanged);
             this.tB_TotalPrice.Enter += new System.EventHandler(this.tB_TotalPrice_Enter);
+            this.tB_TotalPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             this.tB_TotalPrice.Leave += new System.EventHandler(this.tB_TotalPrice_Leave);
             // 
             // tB_Currency
@@ -332,13 +341,14 @@ namespace ASF.Documents
             this.tB_Currency.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.tB_Currency.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tB_Currency.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tB_Currency.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.tB_Currency.ForeColor = System.Drawing.Color.Blue;
             this.tB_Currency.Location = new System.Drawing.Point(261, 107);
             this.tB_Currency.Name = "tB_Currency";
             this.tB_Currency.ReadOnly = true;
             this.tB_Currency.Size = new System.Drawing.Size(60, 20);
             this.tB_Currency.TabIndex = 9;
             this.tB_Currency.TextChanged += new System.EventHandler(this.tB_Currency_TextChanged);
+            this.tB_Currency.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // b_SelectCurrency
             // 
