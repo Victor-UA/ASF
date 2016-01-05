@@ -97,11 +97,10 @@ namespace ASF
 
         private void tabListPageOrders_Paint(object sender, PaintEventArgs e)
         {
-            //TabListPage page = (TabListPage)sender;
             Dictionary Filter = new Dictionary();
-            if (!string.IsNullOrEmpty(tSTB_FilterText.Text) & !string.IsNullOrEmpty(tSCB_Filter.Text))
+            if (!string.IsNullOrEmpty(tSTB_OrdersFilterText.Text) & !string.IsNullOrEmpty(tSCB_OrdersFilter.Text))
             {
-                Filter.Add(tSCB_Filter.Text, tSTB_FilterText.Text);
+                Filter.Add(tSCB_OrdersFilter.Text, tSTB_OrdersFilterText.Text);
             }
             if (Program.OrdersAreChanged | sender == null)
             {
@@ -118,19 +117,8 @@ namespace ASF
                     Filter
                 );
                 OrdersGrid.Visible = true;
-                try
-                {
-                    if (tSCB_Filter.Items.Count == 0)
-                    {
-                        for (int i = 0; i < OrdersGrid.ColumnsCount; i++)
-                        {
-                            tSCB_Filter.Items.Add(OrdersGrid[0, i].Value.ToString());
-                        }
-                        tSCB_Filter.Text = tSCB_Filter.Items[0].ToString();
-                    }
-                }
-                catch { }
-                
+                FilterFill(tSCB_OrdersFilter, OrdersGrid);
+
                 Program.OrdersAreChanged = false;
             }
         }
@@ -141,8 +129,12 @@ namespace ASF
 
         private void tabListPageCustomers_Paint(object sender, PaintEventArgs e)
         {
-            TabListPage page = (TabListPage)sender;
-            if (Program.CustomersAreChanged)
+            Dictionary Filter = new Dictionary();
+            if (!string.IsNullOrEmpty(tSTB_CustomersFilterText.Text) & !string.IsNullOrEmpty(tSCB_CustomersFilter.Text))
+            {
+                Filter.Add(tSCB_CustomersFilter.Text, tSTB_CustomersFilterText.Text);
+            }
+            if (Program.CustomersAreChanged | sender == null)
             {
                 CustomersGrid.Visible = false;
                 DataTable dt = Client.QueryRecordsList(qryCustomers);
@@ -151,8 +143,12 @@ namespace ASF
                         "Найменування", "Name",
                         "Адреса", "adress",
                         "Номер телефону", "phone"
-                    }));
+                    }),
+                    Filter
+                );
                 CustomersGrid.Visible = true;
+                FilterFill(tSCB_CustomersFilter, CustomersGrid);
+
                 Program.CustomersAreChanged = false;
             }
         }
@@ -163,8 +159,12 @@ namespace ASF
 
         private void tabListPageEmployees_Paint(object sender, PaintEventArgs e)
         {
-            TabListPage page = (TabListPage)sender;
-            if (Program.EmployeesAreChanged)
+            Dictionary Filter = new Dictionary();
+            if (!string.IsNullOrEmpty(tSTB_EmployeesFilterText.Text) & !string.IsNullOrEmpty(tSCB_EmployeesFilter.Text))
+            {
+                Filter.Add(tSCB_EmployeesFilter.Text, tSTB_EmployeesFilterText.Text);
+            }
+            if (Program.EmployeesAreChanged | sender == null)
             {
                 EmployeesGrid.Visible = false;
                 DataTable dt = Client.QueryRecordsList(qryEmployees);
@@ -180,8 +180,12 @@ namespace ASF
                         "Ім'я користувача", "username",
                         "Коментар", "RComment",
                         "Заблоковано", "Locked"
-                    }));
+                    }),
+                    Filter
+                );
                 EmployeesGrid.Visible = true;
+                FilterFill(tSCB_EmployeesFilter, EmployeesGrid);
+
                 Program.EmployeesAreChanged = false;
             }
         }
@@ -259,6 +263,21 @@ namespace ASF
             }
         }
 
+        private void FilterFill(ToolStripComboBox cb_filter, Grid grid)
+        {
+            try
+            {
+                if (cb_filter.Items.Count == 0)
+                {
+                    for (int i = 0; i < grid.ColumnsCount; i++)
+                    {
+                        cb_filter.Items.Add(grid[0, i].Value.ToString());
+                    }
+                    cb_filter.Text = cb_filter.Items[0].ToString();
+                }
+            }
+            catch { }
+        }
 
         private void toolStripButton_New_Click(object sender, EventArgs e)
         {
@@ -287,12 +306,31 @@ namespace ASF
             }
             catch { }
         }
-        private void tSTB_FilterText_KeyPress(object sender, KeyPressEventArgs e)
+
+        private void tSTB_OrdersFilterText_KeyPress(object sender, KeyPressEventArgs e)
         {
             switch (e.KeyChar)
             {
                 case '\r':
                     OrdersRepaint();
+                    break;
+            }
+        }
+        private void tSTB_CustomersFilterText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)
+            {
+                case '\r':
+                    CustomersRepaint();
+                    break;
+            }
+        }
+        private void tSTB_EmployeesFilterText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)
+            {
+                case '\r':
+                    EmployeesRepaint();
                     break;
             }
         }
