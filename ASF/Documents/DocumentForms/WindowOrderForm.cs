@@ -65,6 +65,10 @@ namespace ASF.Documents
                 {
                     SourceGridUtilities.RowTag rt = (SourceGridUtilities.RowTag)Grid.Rows[sender.Position.Row].Tag;
                     MessageBox.Show("Редагуємо стан: id=" + rt.Key.ToString(), sender.Value.ToString());
+                    /* Має бути OrderStateReg
+                    idocOrderState OrderState = new idocOrderState(rt.Key.ToString(), Client);
+                    OrderState.Show();
+                    */
                 }
             }
         }
@@ -320,6 +324,11 @@ order by osr.changedate
                     Close();
                     break;
             }
+        }
+
+        private void tB_RComment_TextChanged(object sender, EventArgs e)
+        {
+            isChanged = true;
         }
     }
 }

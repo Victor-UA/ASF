@@ -223,6 +223,7 @@ namespace ASF.Documents
             this.tB_RComment.Size = new System.Drawing.Size(631, 293);
             this.tB_RComment.TabIndex = 19;
             this.tB_RComment.WordWrap = false;
+            this.tB_RComment.TextChanged += new System.EventHandler(this.tB_RComment_TextChanged);
             this.tB_RComment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // label9
@@ -453,7 +454,7 @@ namespace ASF.Documents
             this.tabListPageStates.Controls.Add(this.panel2);
             this.tabListPageStates.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabListPageStates.Name = "tabListPageStates";
-            this.tabListPageStates.Size = new System.Drawing.Size(42, 192);
+            this.tabListPageStates.Size = new System.Drawing.Size(772, 428);
             this.tabListPageStates.TabIndex = 1;
             this.tabListPageStates.Text = "Стан";
             // 
@@ -463,7 +464,7 @@ namespace ASF.Documents
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(38, 188);
+            this.panel2.Size = new System.Drawing.Size(768, 424);
             this.panel2.TabIndex = 0;
             // 
             // grid_OrderStates
@@ -474,7 +475,7 @@ namespace ASF.Documents
             this.grid_OrderStates.Name = "grid_OrderStates";
             this.grid_OrderStates.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.grid_OrderStates.SelectionMode = SourceGrid.GridSelectionMode.Cell;
-            this.grid_OrderStates.Size = new System.Drawing.Size(38, 188);
+            this.grid_OrderStates.Size = new System.Drawing.Size(768, 424);
             this.grid_OrderStates.TabIndex = 1;
             this.grid_OrderStates.TabStop = true;
             this.grid_OrderStates.ToolTipText = "";

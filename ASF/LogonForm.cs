@@ -20,6 +20,7 @@ namespace ASF
             SQL = SQL.Replace(":username", "'"+tB_Login.Text+"'");
             DataTable dt = Client.QueryRecordsList(SQL);
 
+            #region Тимчасово, щоб не вводити пароль
             try
             {
                 Program.UserContext = new idocEmployee(dt.Rows[0]["empid"].ToString(), Client);
@@ -27,6 +28,8 @@ namespace ASF
             catch { }
             Program.LogonisOk = true;
             Close();
+            #endregion
+
             /*            
             if (dt != null && dt.Rows.Count > 0)
             {

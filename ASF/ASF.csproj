@@ -77,9 +77,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Documents\Document Classes\idoc.cs" />
+    <Compile Include="Documents\Document Classes\idocOrderState.cs" />
     <Compile Include="Documents\Document Classes\idocCustomer.cs" />
     <Compile Include="Documents\Document Classes\idocEmployee.cs" />
     <Compile Include="Documents\Document Classes\idocWindowOrder.cs" />
+    <Compile Include="Documents\DocumentForms\OrderStateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documents\DocumentForms\OrderStateForm.Designer.cs">
+      <DependentUpon>OrderStateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Documents\DocumentForms\EmployeeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +130,9 @@
     <Compile Include="Documents\DocumentForms\WindowOrderForm.Designer.cs">
       <DependentUpon>WindowOrderForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Documents\DocumentForms\OrderStateForm.resx">
+      <DependentUpon>OrderStateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Documents\DocumentForms\EmployeeForm.resx">
       <DependentUpon>EmployeeForm.cs</DependentUpon>
     </EmbeddedResource>
