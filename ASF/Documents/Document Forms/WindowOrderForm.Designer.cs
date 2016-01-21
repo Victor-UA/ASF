@@ -31,6 +31,7 @@ namespace ASF.Documents
         
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.документToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.зберегтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +66,8 @@ namespace ASF.Documents
             this.tabListPageStates = new Cyotek.Windows.Forms.TabListPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid_OrderStates = new SourceGrid.Grid();
+            this.contextMenuStrip_OrderStates = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemAddOrderState = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton_Save = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
@@ -77,6 +80,7 @@ namespace ASF.Documents
             this.MainPanel1.SuspendLayout();
             this.tabListPageStates.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.contextMenuStrip_OrderStates.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -454,7 +458,7 @@ namespace ASF.Documents
             this.tabListPageStates.Controls.Add(this.panel2);
             this.tabListPageStates.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabListPageStates.Name = "tabListPageStates";
-            this.tabListPageStates.Size = new System.Drawing.Size(772, 428);
+            this.tabListPageStates.Size = new System.Drawing.Size(42, 192);
             this.tabListPageStates.TabIndex = 1;
             this.tabListPageStates.Text = "Стан";
             // 
@@ -464,21 +468,35 @@ namespace ASF.Documents
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(768, 424);
+            this.panel2.Size = new System.Drawing.Size(38, 188);
             this.panel2.TabIndex = 0;
             // 
             // grid_OrderStates
             // 
+            this.grid_OrderStates.ContextMenuStrip = this.contextMenuStrip_OrderStates;
             this.grid_OrderStates.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_OrderStates.EnableSort = true;
             this.grid_OrderStates.Location = new System.Drawing.Point(0, 0);
             this.grid_OrderStates.Name = "grid_OrderStates";
             this.grid_OrderStates.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.grid_OrderStates.SelectionMode = SourceGrid.GridSelectionMode.Cell;
-            this.grid_OrderStates.Size = new System.Drawing.Size(768, 424);
+            this.grid_OrderStates.Size = new System.Drawing.Size(38, 188);
             this.grid_OrderStates.TabIndex = 1;
             this.grid_OrderStates.TabStop = true;
             this.grid_OrderStates.ToolTipText = "";
+            // 
+            // contextMenuStrip_OrderStates
+            // 
+            this.contextMenuStrip_OrderStates.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemAddOrderState});
+            this.contextMenuStrip_OrderStates.Name = "contextMenuStrip_OrderStates";
+            this.contextMenuStrip_OrderStates.Size = new System.Drawing.Size(153, 48);
+            // 
+            // toolStripMenuItemAddOrderState
+            // 
+            this.toolStripMenuItemAddOrderState.Name = "toolStripMenuItemAddOrderState";
+            this.toolStripMenuItemAddOrderState.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemAddOrderState.Text = "Додати стан";
             // 
             // toolStrip1
             // 
@@ -529,6 +547,7 @@ namespace ASF.Documents
             this.MainPanel1.PerformLayout();
             this.tabListPageStates.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.contextMenuStrip_OrderStates.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -575,5 +594,7 @@ namespace ASF.Documents
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton_Save;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_OrderStates;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAddOrderState;
     }
 }

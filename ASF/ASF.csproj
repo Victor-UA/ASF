@@ -76,30 +76,37 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialogs\Dialog Classes\Prompt.cs" />
+    <Compile Include="Dialogs\Dialog Forms\InputDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Dialog Forms\InputDialogForm.Designer.cs">
+      <DependentUpon>InputDialogForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Documents\Document Classes\idoc.cs" />
     <Compile Include="Documents\Document Classes\idocOrderState.cs" />
     <Compile Include="Documents\Document Classes\idocCustomer.cs" />
     <Compile Include="Documents\Document Classes\idocEmployee.cs" />
     <Compile Include="Documents\Document Classes\idocWindowOrder.cs" />
-    <Compile Include="Documents\DocumentForms\OrderStateForm.cs">
+    <Compile Include="Documents\Document Forms\OrderStateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Documents\DocumentForms\OrderStateForm.Designer.cs">
+    <Compile Include="Documents\Document Forms\OrderStateForm.Designer.cs">
       <DependentUpon>OrderStateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Documents\DocumentForms\EmployeeForm.cs">
+    <Compile Include="Documents\Document Forms\EmployeeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Documents\DocumentForms\EmployeeForm.Designer.cs">
+    <Compile Include="Documents\Document Forms\EmployeeForm.Designer.cs">
       <DependentUpon>EmployeeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Documents\DocumentForms\CustomerForm.cs">
+    <Compile Include="Documents\Document Forms\CustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Documents\DocumentForms\CustomerForm.Designer.cs">
+    <Compile Include="Documents\Document Forms\CustomerForm.Designer.cs">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Documents\DocumentForms\DocumentForm.cs">
+    <Compile Include="Documents\Document Forms\DocumentForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Encryption.cs" />
@@ -124,19 +131,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Documents\DocumentForms\WindowOrderForm.cs">
+    <Compile Include="Documents\Document Forms\WindowOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Documents\DocumentForms\WindowOrderForm.Designer.cs">
+    <Compile Include="Documents\Document Forms\WindowOrderForm.Designer.cs">
       <DependentUpon>WindowOrderForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Documents\DocumentForms\OrderStateForm.resx">
+    <EmbeddedResource Include="Dialogs\Dialog Forms\InputDialogForm.resx">
+      <DependentUpon>InputDialogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Documents\Document Forms\OrderStateForm.resx">
       <DependentUpon>OrderStateForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Documents\DocumentForms\EmployeeForm.resx">
+    <EmbeddedResource Include="Documents\Document Forms\EmployeeForm.resx">
       <DependentUpon>EmployeeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Documents\DocumentForms\CustomerForm.resx">
+    <EmbeddedResource Include="Documents\Document Forms\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogonForm.resx">
@@ -150,7 +160,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Documents\DocumentForms\WindowOrderForm.resx">
+    <EmbeddedResource Include="Documents\Document Forms\WindowOrderForm.resx">
       <DependentUpon>WindowOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -185,9 +195,7 @@
   <ItemGroup>
     <None Include="Resources\ico\Save.bmp" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Documents\Dialogs\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

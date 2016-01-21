@@ -51,9 +51,9 @@
             this.tSCB_CustomersFilter = new System.Windows.Forms.ToolStripComboBox();
             this.tSTB_CustomersFilterText = new System.Windows.Forms.ToolStripTextBox();
             this.tabListPageEmployees = new Cyotek.Windows.Forms.TabListPage();
+            this.toolStripContainer3 = new System.Windows.Forms.ToolStripContainer();
             this.EmployeesPanel = new System.Windows.Forms.Panel();
             this.EmployeesGrid = new SourceGrid.Grid();
-            this.toolStripContainer3 = new System.Windows.Forms.ToolStripContainer();
             this.toolStrip4 = new System.Windows.Forms.ToolStrip();
             this.tSCB_EmployeesFilter = new System.Windows.Forms.ToolStripComboBox();
             this.tSTB_EmployeesFilterText = new System.Windows.Forms.ToolStripTextBox();
@@ -73,10 +73,10 @@
             this.CustomersPanel.SuspendLayout();
             this.toolStrip3.SuspendLayout();
             this.tabListPageEmployees.SuspendLayout();
-            this.EmployeesPanel.SuspendLayout();
             this.toolStripContainer3.ContentPanel.SuspendLayout();
             this.toolStripContainer3.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer3.SuspendLayout();
+            this.EmployeesPanel.SuspendLayout();
             this.toolStrip4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -233,7 +233,7 @@
             this.tabListPageCustomers.Controls.Add(this.toolStripContainer2);
             this.tabListPageCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabListPageCustomers.Name = "tabListPageCustomers";
-            this.tabListPageCustomers.Size = new System.Drawing.Size(658, 461);
+            this.tabListPageCustomers.Size = new System.Drawing.Size(42, 192);
             this.tabListPageCustomers.TabIndex = 1;
             this.tabListPageCustomers.Tag = "idocCustomer";
             this.tabListPageCustomers.Text = "Клієнти";
@@ -245,11 +245,11 @@
             // toolStripContainer2.ContentPanel
             // 
             this.toolStripContainer2.ContentPanel.Controls.Add(this.CustomersPanel);
-            this.toolStripContainer2.ContentPanel.Size = new System.Drawing.Size(656, 434);
+            this.toolStripContainer2.ContentPanel.Size = new System.Drawing.Size(40, 163);
             this.toolStripContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer2.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer2.Name = "toolStripContainer2";
-            this.toolStripContainer2.Size = new System.Drawing.Size(656, 459);
+            this.toolStripContainer2.Size = new System.Drawing.Size(40, 190);
             this.toolStripContainer2.TabIndex = 5;
             this.toolStripContainer2.Text = "toolStripContainer2";
             // 
@@ -263,7 +263,7 @@
             this.CustomersPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CustomersPanel.Location = new System.Drawing.Point(0, 0);
             this.CustomersPanel.Name = "CustomersPanel";
-            this.CustomersPanel.Size = new System.Drawing.Size(656, 434);
+            this.CustomersPanel.Size = new System.Drawing.Size(40, 163);
             this.CustomersPanel.TabIndex = 0;
             // 
             // CustomersGrid
@@ -275,7 +275,7 @@
             this.CustomersGrid.Name = "CustomersGrid";
             this.CustomersGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.CustomersGrid.SelectionMode = SourceGrid.GridSelectionMode.Row;
-            this.CustomersGrid.Size = new System.Drawing.Size(656, 434);
+            this.CustomersGrid.Size = new System.Drawing.Size(40, 163);
             this.CustomersGrid.TabIndex = 1;
             this.CustomersGrid.TabStop = true;
             this.CustomersGrid.ToolTipText = "";
@@ -289,7 +289,7 @@
             this.tSTB_CustomersFilterText});
             this.toolStrip3.Location = new System.Drawing.Point(3, 0);
             this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(307, 25);
+            this.toolStrip3.Size = new System.Drawing.Size(50, 27);
             this.toolStrip3.TabIndex = 4;
             this.toolStrip3.Text = "toolStrip3";
             // 
@@ -298,13 +298,13 @@
             this.tSCB_CustomersFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tSCB_CustomersFilter.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
             this.tSCB_CustomersFilter.Name = "tSCB_CustomersFilter";
-            this.tSCB_CustomersFilter.Size = new System.Drawing.Size(150, 25);
+            this.tSCB_CustomersFilter.Size = new System.Drawing.Size(150, 23);
             // 
             // tSTB_CustomersFilterText
             // 
             this.tSTB_CustomersFilterText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tSTB_CustomersFilterText.Name = "tSTB_CustomersFilterText";
-            this.tSTB_CustomersFilterText.Size = new System.Drawing.Size(150, 25);
+            this.tSTB_CustomersFilterText.Size = new System.Drawing.Size(150, 23);
             this.tSTB_CustomersFilterText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tSTB_CustomersFilterText_KeyPress);
             // 
             // tabListPageEmployees
@@ -318,6 +318,24 @@
             this.tabListPageEmployees.Tag = "idocEmployee";
             this.tabListPageEmployees.Text = "Співробітники";
             this.tabListPageEmployees.Paint += new System.Windows.Forms.PaintEventHandler(this.tabListPageEmployees_Paint);
+            // 
+            // toolStripContainer3
+            // 
+            // 
+            // toolStripContainer3.ContentPanel
+            // 
+            this.toolStripContainer3.ContentPanel.Controls.Add(this.EmployeesPanel);
+            this.toolStripContainer3.ContentPanel.Size = new System.Drawing.Size(656, 434);
+            this.toolStripContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStripContainer3.Location = new System.Drawing.Point(0, 0);
+            this.toolStripContainer3.Name = "toolStripContainer3";
+            this.toolStripContainer3.Size = new System.Drawing.Size(656, 459);
+            this.toolStripContainer3.TabIndex = 6;
+            this.toolStripContainer3.Text = "toolStripContainer3";
+            // 
+            // toolStripContainer3.TopToolStripPanel
+            // 
+            this.toolStripContainer3.TopToolStripPanel.Controls.Add(this.toolStrip4);
             // 
             // EmployeesPanel
             // 
@@ -341,24 +359,6 @@
             this.EmployeesGrid.TabIndex = 2;
             this.EmployeesGrid.TabStop = true;
             this.EmployeesGrid.ToolTipText = "";
-            // 
-            // toolStripContainer3
-            // 
-            // 
-            // toolStripContainer3.ContentPanel
-            // 
-            this.toolStripContainer3.ContentPanel.Controls.Add(this.EmployeesPanel);
-            this.toolStripContainer3.ContentPanel.Size = new System.Drawing.Size(656, 434);
-            this.toolStripContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStripContainer3.Location = new System.Drawing.Point(0, 0);
-            this.toolStripContainer3.Name = "toolStripContainer3";
-            this.toolStripContainer3.Size = new System.Drawing.Size(656, 459);
-            this.toolStripContainer3.TabIndex = 6;
-            this.toolStripContainer3.Text = "toolStripContainer3";
-            // 
-            // toolStripContainer3.TopToolStripPanel
-            // 
-            this.toolStripContainer3.TopToolStripPanel.Controls.Add(this.toolStrip4);
             // 
             // toolStrip4
             // 
@@ -426,12 +426,12 @@
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
             this.tabListPageEmployees.ResumeLayout(false);
-            this.EmployeesPanel.ResumeLayout(false);
             this.toolStripContainer3.ContentPanel.ResumeLayout(false);
             this.toolStripContainer3.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer3.TopToolStripPanel.PerformLayout();
             this.toolStripContainer3.ResumeLayout(false);
             this.toolStripContainer3.PerformLayout();
+            this.EmployeesPanel.ResumeLayout(false);
             this.toolStrip4.ResumeLayout(false);
             this.toolStrip4.PerformLayout();
             this.ResumeLayout(false);
