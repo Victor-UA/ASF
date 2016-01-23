@@ -458,7 +458,7 @@ namespace ASF.Documents
             this.tabListPageStates.Controls.Add(this.panel2);
             this.tabListPageStates.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabListPageStates.Name = "tabListPageStates";
-            this.tabListPageStates.Size = new System.Drawing.Size(42, 192);
+            this.tabListPageStates.Size = new System.Drawing.Size(772, 428);
             this.tabListPageStates.TabIndex = 1;
             this.tabListPageStates.Text = "Стан";
             // 
@@ -468,7 +468,7 @@ namespace ASF.Documents
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(38, 188);
+            this.panel2.Size = new System.Drawing.Size(768, 424);
             this.panel2.TabIndex = 0;
             // 
             // grid_OrderStates
@@ -480,7 +480,7 @@ namespace ASF.Documents
             this.grid_OrderStates.Name = "grid_OrderStates";
             this.grid_OrderStates.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.grid_OrderStates.SelectionMode = SourceGrid.GridSelectionMode.Cell;
-            this.grid_OrderStates.Size = new System.Drawing.Size(38, 188);
+            this.grid_OrderStates.Size = new System.Drawing.Size(768, 424);
             this.grid_OrderStates.TabIndex = 1;
             this.grid_OrderStates.TabStop = true;
             this.grid_OrderStates.ToolTipText = "";
@@ -490,12 +490,12 @@ namespace ASF.Documents
             this.contextMenuStrip_OrderStates.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemAddOrderState});
             this.contextMenuStrip_OrderStates.Name = "contextMenuStrip_OrderStates";
-            this.contextMenuStrip_OrderStates.Size = new System.Drawing.Size(153, 48);
+            this.contextMenuStrip_OrderStates.Size = new System.Drawing.Size(141, 26);
             // 
             // toolStripMenuItemAddOrderState
             // 
             this.toolStripMenuItemAddOrderState.Name = "toolStripMenuItemAddOrderState";
-            this.toolStripMenuItemAddOrderState.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemAddOrderState.Size = new System.Drawing.Size(140, 22);
             this.toolStripMenuItemAddOrderState.Text = "Додати стан";
             // 
             // toolStrip1

@@ -64,6 +64,8 @@ namespace ASF.Documents
                 MainForm.dTP_AgreementDate.Value = value;
             }
         }
+        public idocOrderState OrderState { get; set; }
+
         private idocCustomer _Customer;
         public idocCustomer Customer
         {
@@ -100,6 +102,7 @@ namespace ASF.Documents
                 MainForm.dTP_ProdDate.Value = value;
             }
         }
+
 
         public decimal TotalCost
         {
@@ -194,6 +197,12 @@ namespace ASF.Documents
                     AgreementDate = dt.Rows[0]["AgreementDate"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["AgreementDate"];
                     ProdDate = dt.Rows[0]["ProdDate"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["ProdDate"];
                     DateOrder = dt.Rows[0]["dateorder"].ToString() == "" ? DateTime.MinValue : (DateTime)dt.Rows[0]["dateorder"];
+                    OrderState = dt.Rows[0]["orderstateid"].ToString() == "" ?
+                        null :
+                        new idocOrderState
+                            (
+                                dt.Rows[0]["orderstateid"].ToString(), Client
+                            );
 
                     OrderNo = dt.Rows[0]["orderno"].ToString();
                     
@@ -254,7 +263,6 @@ namespace ASF.Documents
             @"
 select * from vtorders o where o.orderid=:orderid
             ";
-
         private string qryInsertIntoOrders { get; set; } =
             @"
 insert into ORDERS

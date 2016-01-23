@@ -189,11 +189,45 @@ namespace ASF
                 Program.EmployeesAreChanged = false;
             }
         }
+
+        public void RefreshOrder(idocWindowOrder Order)
+        {
+            foreach (GridRow Row in OrdersGrid.Rows)
+            {
+                if (Row.Tag != null)
+                {
+                    SourceGridUtilities.RowTag rt = (SourceGridUtilities.RowTag)Row.Tag;
+                    if (Convert.ToString(rt.Key) == Order.Key)
+                    {
+                        foreach (GridColumn Column in OrdersGrid.Columns)
+                        {
+                            switch (OrdersGrid[0, Column.Index].DisplayText)
+                            {
+                                case "Номер замовлення":
+                                    OrdersGrid[Row.Index, Column.Index].Value = Order.OrderNo;
+                                    break;
+                                case "Дата готовності":
+                                    OrdersGrid[Row.Index, Column.Index].Value = Order.DateOrder;
+                                    break;
+                                case "Стан":
+                                    OrdersGrid[Row.Index, Column.Index].Value = Order.OrderState.Name;
+                                    break;
+                                case "Клієнт":
+                                    OrdersGrid[Row.Index, Column.Index].Value = Order.Customer.Name;
+                                    break;
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+
         public void EmployeesRepaint()
         {
             tabListPageEmployees_Paint(null, null);
         }
-        public void EmployeeRefresh(idocEmployee Employee)
+        public void RefreshEmployee(idocEmployee Employee)
         {
             foreach (GridRow Row in EmployeesGrid.Rows)
             {

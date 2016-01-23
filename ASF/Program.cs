@@ -70,9 +70,13 @@ namespace ASF
             }
         }
         private static bool _EmployeesAreChanged = true;
+        public static void RefreshOrder(idocWindowOrder Order)
+        {
+            fMainForm.RefreshOrder(Order);
+        }
         public static void RefreshEmployee(idocEmployee Employee)
         {
-            fMainForm.EmployeeRefresh(Employee);
+            fMainForm.RefreshEmployee(Employee);
         }
         public static idocEmployee UserContext { get; set; }
     }

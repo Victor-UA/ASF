@@ -57,6 +57,13 @@
             this.toolStrip4 = new System.Windows.Forms.ToolStrip();
             this.tSCB_EmployeesFilter = new System.Windows.Forms.ToolStripComboBox();
             this.tSTB_EmployeesFilterText = new System.Windows.Forms.ToolStripTextBox();
+            this.tabListPageOrderStates = new Cyotek.Windows.Forms.TabListPage();
+            this.toolStripContainer4 = new System.Windows.Forms.ToolStripContainer();
+            this.OrderStatesPanel = new System.Windows.Forms.Panel();
+            this.OrderStatesGrid = new SourceGrid.Grid();
+            this.toolStrip5 = new System.Windows.Forms.ToolStrip();
+            this.tSCB_OrderStatesFilter = new System.Windows.Forms.ToolStripComboBox();
+            this.tSTB_OrderStatesFilterText = new System.Windows.Forms.ToolStripTextBox();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.OrdersPanel.SuspendLayout();
@@ -78,6 +85,12 @@
             this.toolStripContainer3.SuspendLayout();
             this.EmployeesPanel.SuspendLayout();
             this.toolStrip4.SuspendLayout();
+            this.tabListPageOrderStates.SuspendLayout();
+            this.toolStripContainer4.ContentPanel.SuspendLayout();
+            this.toolStripContainer4.TopToolStripPanel.SuspendLayout();
+            this.toolStripContainer4.SuspendLayout();
+            this.OrderStatesPanel.SuspendLayout();
+            this.toolStrip5.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -191,6 +204,7 @@
             this.tabList1.Controls.Add(this.tabListPageOrders);
             this.tabList1.Controls.Add(this.tabListPageCustomers);
             this.tabList1.Controls.Add(this.tabListPageEmployees);
+            this.tabList1.Controls.Add(this.tabListPageOrderStates);
             this.tabList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabList1.Location = new System.Drawing.Point(0, 49);
             this.tabList1.Name = "tabList1";
@@ -233,7 +247,7 @@
             this.tabListPageCustomers.Controls.Add(this.toolStripContainer2);
             this.tabListPageCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabListPageCustomers.Name = "tabListPageCustomers";
-            this.tabListPageCustomers.Size = new System.Drawing.Size(42, 192);
+            this.tabListPageCustomers.Size = new System.Drawing.Size(658, 461);
             this.tabListPageCustomers.TabIndex = 1;
             this.tabListPageCustomers.Tag = "idocCustomer";
             this.tabListPageCustomers.Text = "Клієнти";
@@ -245,11 +259,11 @@
             // toolStripContainer2.ContentPanel
             // 
             this.toolStripContainer2.ContentPanel.Controls.Add(this.CustomersPanel);
-            this.toolStripContainer2.ContentPanel.Size = new System.Drawing.Size(40, 163);
+            this.toolStripContainer2.ContentPanel.Size = new System.Drawing.Size(656, 434);
             this.toolStripContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer2.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer2.Name = "toolStripContainer2";
-            this.toolStripContainer2.Size = new System.Drawing.Size(40, 190);
+            this.toolStripContainer2.Size = new System.Drawing.Size(656, 459);
             this.toolStripContainer2.TabIndex = 5;
             this.toolStripContainer2.Text = "toolStripContainer2";
             // 
@@ -263,7 +277,7 @@
             this.CustomersPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CustomersPanel.Location = new System.Drawing.Point(0, 0);
             this.CustomersPanel.Name = "CustomersPanel";
-            this.CustomersPanel.Size = new System.Drawing.Size(40, 163);
+            this.CustomersPanel.Size = new System.Drawing.Size(656, 434);
             this.CustomersPanel.TabIndex = 0;
             // 
             // CustomersGrid
@@ -275,7 +289,7 @@
             this.CustomersGrid.Name = "CustomersGrid";
             this.CustomersGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.CustomersGrid.SelectionMode = SourceGrid.GridSelectionMode.Row;
-            this.CustomersGrid.Size = new System.Drawing.Size(40, 163);
+            this.CustomersGrid.Size = new System.Drawing.Size(656, 434);
             this.CustomersGrid.TabIndex = 1;
             this.CustomersGrid.TabStop = true;
             this.CustomersGrid.ToolTipText = "";
@@ -289,7 +303,7 @@
             this.tSTB_CustomersFilterText});
             this.toolStrip3.Location = new System.Drawing.Point(3, 0);
             this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(50, 27);
+            this.toolStrip3.Size = new System.Drawing.Size(307, 25);
             this.toolStrip3.TabIndex = 4;
             this.toolStrip3.Text = "toolStrip3";
             // 
@@ -298,13 +312,13 @@
             this.tSCB_CustomersFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tSCB_CustomersFilter.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
             this.tSCB_CustomersFilter.Name = "tSCB_CustomersFilter";
-            this.tSCB_CustomersFilter.Size = new System.Drawing.Size(150, 23);
+            this.tSCB_CustomersFilter.Size = new System.Drawing.Size(150, 25);
             // 
             // tSTB_CustomersFilterText
             // 
             this.tSTB_CustomersFilterText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tSTB_CustomersFilterText.Name = "tSTB_CustomersFilterText";
-            this.tSTB_CustomersFilterText.Size = new System.Drawing.Size(150, 23);
+            this.tSTB_CustomersFilterText.Size = new System.Drawing.Size(150, 25);
             this.tSTB_CustomersFilterText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tSTB_CustomersFilterText_KeyPress);
             // 
             // tabListPageEmployees
@@ -387,6 +401,82 @@
             this.tSTB_EmployeesFilterText.Size = new System.Drawing.Size(150, 25);
             this.tSTB_EmployeesFilterText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tSTB_EmployeesFilterText_KeyPress);
             // 
+            // tabListPageOrderStates
+            // 
+            this.tabListPageOrderStates.Controls.Add(this.toolStripContainer4);
+            this.tabListPageOrderStates.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabListPageOrderStates.Name = "tabListPageOrderStates";
+            this.tabListPageOrderStates.Size = new System.Drawing.Size(658, 461);
+            this.tabListPageOrderStates.TabIndex = 3;
+            this.tabListPageOrderStates.Text = "Стани";
+            // 
+            // toolStripContainer4
+            // 
+            // 
+            // toolStripContainer4.ContentPanel
+            // 
+            this.toolStripContainer4.ContentPanel.Controls.Add(this.OrderStatesPanel);
+            this.toolStripContainer4.ContentPanel.Size = new System.Drawing.Size(658, 436);
+            this.toolStripContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStripContainer4.Location = new System.Drawing.Point(0, 0);
+            this.toolStripContainer4.Name = "toolStripContainer4";
+            this.toolStripContainer4.Size = new System.Drawing.Size(658, 461);
+            this.toolStripContainer4.TabIndex = 7;
+            this.toolStripContainer4.Text = "toolStripContainer4";
+            // 
+            // toolStripContainer4.TopToolStripPanel
+            // 
+            this.toolStripContainer4.TopToolStripPanel.Controls.Add(this.toolStrip5);
+            // 
+            // OrderStatesPanel
+            // 
+            this.OrderStatesPanel.Controls.Add(this.OrderStatesGrid);
+            this.OrderStatesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OrderStatesPanel.Location = new System.Drawing.Point(0, 0);
+            this.OrderStatesPanel.Name = "OrderStatesPanel";
+            this.OrderStatesPanel.Size = new System.Drawing.Size(658, 436);
+            this.OrderStatesPanel.TabIndex = 3;
+            // 
+            // OrderStatesGrid
+            // 
+            this.OrderStatesGrid.ContextMenuStrip = this.contextMenuStripGrid1;
+            this.OrderStatesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OrderStatesGrid.EnableSort = true;
+            this.OrderStatesGrid.Location = new System.Drawing.Point(0, 0);
+            this.OrderStatesGrid.Name = "OrderStatesGrid";
+            this.OrderStatesGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
+            this.OrderStatesGrid.SelectionMode = SourceGrid.GridSelectionMode.Row;
+            this.OrderStatesGrid.Size = new System.Drawing.Size(658, 436);
+            this.OrderStatesGrid.TabIndex = 2;
+            this.OrderStatesGrid.TabStop = true;
+            this.OrderStatesGrid.ToolTipText = "";
+            // 
+            // toolStrip5
+            // 
+            this.toolStrip5.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip5.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip5.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tSCB_OrderStatesFilter,
+            this.tSTB_OrderStatesFilterText});
+            this.toolStrip5.Location = new System.Drawing.Point(3, 0);
+            this.toolStrip5.Name = "toolStrip5";
+            this.toolStrip5.Size = new System.Drawing.Size(338, 25);
+            this.toolStrip5.TabIndex = 4;
+            this.toolStrip5.Text = "toolStrip5";
+            // 
+            // tSCB_OrderStatesFilter
+            // 
+            this.tSCB_OrderStatesFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tSCB_OrderStatesFilter.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
+            this.tSCB_OrderStatesFilter.Name = "tSCB_OrderStatesFilter";
+            this.tSCB_OrderStatesFilter.Size = new System.Drawing.Size(150, 25);
+            // 
+            // tSTB_OrderStatesFilterText
+            // 
+            this.tSTB_OrderStatesFilterText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tSTB_OrderStatesFilterText.Name = "tSTB_OrderStatesFilterText";
+            this.tSTB_OrderStatesFilterText.Size = new System.Drawing.Size(150, 25);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -434,6 +524,15 @@
             this.EmployeesPanel.ResumeLayout(false);
             this.toolStrip4.ResumeLayout(false);
             this.toolStrip4.PerformLayout();
+            this.tabListPageOrderStates.ResumeLayout(false);
+            this.toolStripContainer4.ContentPanel.ResumeLayout(false);
+            this.toolStripContainer4.TopToolStripPanel.ResumeLayout(false);
+            this.toolStripContainer4.TopToolStripPanel.PerformLayout();
+            this.toolStripContainer4.ResumeLayout(false);
+            this.toolStripContainer4.PerformLayout();
+            this.OrderStatesPanel.ResumeLayout(false);
+            this.toolStrip5.ResumeLayout(false);
+            this.toolStrip5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -469,6 +568,13 @@
         private System.Windows.Forms.ToolStrip toolStrip4;
         private System.Windows.Forms.ToolStripComboBox tSCB_EmployeesFilter;
         private System.Windows.Forms.ToolStripTextBox tSTB_EmployeesFilterText;
+        private Cyotek.Windows.Forms.TabListPage tabListPageOrderStates;
+        private System.Windows.Forms.ToolStripContainer toolStripContainer4;
+        private System.Windows.Forms.Panel OrderStatesPanel;
+        private SourceGrid.Grid OrderStatesGrid;
+        private System.Windows.Forms.ToolStrip toolStrip5;
+        private System.Windows.Forms.ToolStripComboBox tSCB_OrderStatesFilter;
+        private System.Windows.Forms.ToolStripTextBox tSTB_OrderStatesFilterText;
     }
 }
 

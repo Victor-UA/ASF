@@ -106,9 +106,8 @@ namespace ASF.Documents
             }
             set
             {
-                Switchover_ = new idocOrderState(MainForm.tB_Switchover.Tag.ToString(), Client);
-                MainForm.tB_Switchover.Text = value.Name.ToString();
-                MainForm.tB_Switchover.Tag = value.Key.ToString();
+                Switchover_ = value;
+                MainForm.tB_Switchover.Text = value == null ? "" : value.Name.ToString();
             }
         }
         public string RComment
@@ -164,8 +163,20 @@ namespace ASF.Documents
             }
             else
             {
-                DataTable dt = Client.QueryRecordsList(qryOrderStatesLoad.ToString().Replace(":ORDERSTATEID", Key));
-                if (dt != null && dt.Rows.Count > 0)
+                DataTable dt = new DataTable();
+                try
+                {
+                    dt = Client.QueryRecordsList(qryOrderStatesLoad.ToString().Replace(":orderstateid", Key));
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show
+                        (
+                            "Помилка завантаження історії зміни станів замовлення\r" + 
+                            e.Message
+                        );
+                }
+                if (dt.Rows.Count > 0)
                 {
                     Name = dt.Rows[0]["Name"].ToString();
                     Code = dt.Rows[0]["Code"].ToString();

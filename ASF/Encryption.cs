@@ -106,8 +106,9 @@ namespace ASF
             binString = reverseString;
 
             // do the padding here
-            binString = new string((char)'0', length - binString.Length) + binString;
-
+            binString.PadLeft(length);
+            //binString = new string((char)'0', length - binString.Length) + binString;
+            
             return binString;
         }
 

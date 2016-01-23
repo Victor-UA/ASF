@@ -102,10 +102,32 @@ namespace ASF.Documents
             }
 
         }
+        
+        //Зміна стану
         private void toolStripMenuItemAddOrderState_Click(object sender, EventArgs e)
         {
-            string rcomment = Prompt.InputDialog(sender.ToString(), "Додайте коментар");
-            MessageBox.Show((sender as ToolStripMenuItem).Tag.ToString());
+            string rcomment = Prompt.InputDialog("Стан: [" + sender.ToString() + ']', "Додайте коментар");
+            string SQL = qryAddOrderState;
+            SQL = SQL.Replace(":orderstateid", (sender as ToolStripMenuItem).Tag.ToString());
+            SQL = SQL.Replace(":orderid", Document.Key);
+            SQL = SQL.Replace(":empid", Program.UserContext.Key);
+            SQL = SQL.Replace(":rcomment", '\'' + rcomment + '\'');
+            try
+            {
+                int NewOrderState = Document.Client.QueryValue(SQL);
+                Document.OrderState = new idocOrderState(NewOrderState, Document.Client);
+                OrderStatesLoad();
+                Program.OrdersAreChanged = true;
+                Program.RefreshOrder(Document);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show
+                    (
+                        "Помилка зміни стану замовлення\r" + 
+                        ex.Message
+                    );
+            }
         }
 
         public void зберегтиToolStripMenuItem_Click(object sender, EventArgs e)
@@ -121,40 +143,19 @@ namespace ASF.Documents
             isChanged = true;
         }
 
-        #region Запити SQL
-        private string qryOrderStatesReg { get; } =
-            @"
-select
-    coalesce(osr.changedate, '<null>') changedate,
-    coalesce(os.name, '<null>') name,
-    coalesce(osr.rcomment, '<null>') rcomment,
-    coalesce(p.persontitle, '<null>') persontitle,
-    coalesce(osr.orderstatesregid, '<null>') orderstatesregid
-from orderstatesreg osr
-    join orderstates os on os.orderstateid=osr.orderstateid
-    left join employee e on e.empid=osr.empid
-    left join persons p on p.personid=e.personid
-where osr.orderid=:orderid
-order by osr.changedate
-            ";
-        private string qryOrderStates { get; } =
-            @"
-select
-  os.statelevel,
-  coalesce(os.recindex, 0) recindex,
-  os.name,
-  os.orderstateid
-from orderstates os
-where os.statelevel > coalesce((select os1.statelevel from orderstates os1 where os1.orderstateid=(select o.orderstateid from orders o where o.orderid=:orderid)), 0)
-  or (
-        os.statelevel = coalesce((select os1.statelevel from orderstates os1 where os1.orderstateid=(select o.orderstateid from orders o where o.orderid=:orderid)), 0)
-    and os.recindex > coalesce((select os1.recindex from orderstates os1 where os1.orderstateid=(select o.orderstateid from orders o where o.orderid=:orderid)), 0)
-  )
-order by 1,2,3
-            ";
-        #endregion
-
-        //public override bool isCreated { get; set; } = true;
+        private bool isCreated_;
+        public override bool isCreated
+        {
+            get
+            {
+                return isCreated_;
+            }
+            set
+            {
+                toolStripMenuItemAddOrderState.Enabled = value;
+                isCreated_ = value;
+            }
+        }
         public bool ReadOnly
         {
             get
@@ -366,5 +367,91 @@ order by 1,2,3
         {
             isChanged = true;
         }
+
+        #region Запити SQL
+        private string qryOrderStatesReg { get; } =
+            @"
+select
+    coalesce(osr.changedate, '<null>') changedate,
+    coalesce(os.name, '<null>') name,
+    coalesce(osr.rcomment, '') rcomment,
+    coalesce(p.persontitle, '<null>') persontitle,
+    coalesce(osr.orderstatesregid, '<null>') orderstatesregid
+from orderstatesreg osr
+    join orderstates os on os.orderstateid=osr.orderstateid
+    left join employee e on e.empid=osr.empid
+    left join persons p on p.personid=e.personid
+where osr.orderid=:orderid
+order by osr.changedate
+            ";
+        private string qryAddOrderState { get; } =
+            @"
+execute block
+  returns (
+    addorderstateidlast id
+  )
+as
+  declare variable addorderstateid id;
+  declare variable addorderstates varchar(1024);
+Begin
+
+  addorderstateid = :orderstateid;
+
+  while (:addorderstateid is not null or not :addorderstates containing '{' || :addorderstateid || '}') do begin
+
+    addorderstates = :addorderstates || '{' || cast(:addorderstateid as varchar(10)) || '}';
+
+    insert into orderstatesreg (orderstatesregid, orderid, orderstateid, empid, changedate, stateposit, rcomment)
+    values (
+      (select gen_id(gen_orderstatesreg, 1) from rdb$database),
+      :orderid,
+      :addorderstateid,
+      :empid,
+      current_timestamp,
+      (
+        select
+          max(osr.stateposit) + 1
+        from orderstatesreg osr
+        where osr.orderid=:orderid
+      ),
+      :rcomment
+    );
+
+    addorderstateidlast = :addorderstateid;
+
+    select
+      os.addorderstateid
+    from orderstates os
+    where os.orderstateid=:addorderstateid
+    into
+      :addorderstateid;
+
+  end
+
+  update orders o
+  set o.orderstateid=:addorderstateidlast
+  where o.orderid=:orderid;
+
+  suspend;
+
+End
+            ";
+        private string qryOrderStates { get; } =
+            @"
+select
+  os.statelevel,
+  coalesce(os.recindex, 0) recindex,
+  os.name,
+  os.orderstateid
+from orderstates os
+where os.statelevel > coalesce((select os1.statelevel from orderstates os1 where os1.orderstateid=(select o.orderstateid from orders o where o.orderid=:orderid)), 0)
+  or (
+        os.statelevel = coalesce((select os1.statelevel from orderstates os1 where os1.orderstateid=(select o.orderstateid from orders o where o.orderid=:orderid)), 0)
+    and os.recindex > coalesce((select os1.recindex from orderstates os1 where os1.orderstateid=(select o.orderstateid from orders o where o.orderid=:orderid)), 0)
+  )
+order by 1,2,3
+            ";
+        #endregion
+
     }
 }
