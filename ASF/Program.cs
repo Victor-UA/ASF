@@ -27,7 +27,7 @@ namespace ASF
             }
         }
         public static string PasswordKey { get; set; } = @"q2hp-orCx-qCzO-Wxqd";
-        public static string BaseConnectionString { get; set; } = @"character set = WIN1251; data source = localhost; initial catalog = D:\NASTROECHNAYA_2015.GDB ;user id = SYSDBA; password=masterkey";
+        public static string BaseConnectionString { get; set; } = @"character set = WIN1251; data source = localhost; initial catalog = D:\LISOVOI.GDB ;user id = SYSDBA; password=masterkey";
         public static bool LogonisOk { get; set; } = false;
         private static MainForm fMainForm { get; set; }
         public static bool OrdersAreChanged
